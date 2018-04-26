@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jump: {x: 0, y: 2, z: 0}
-  jumpForce: 4
+  jumpForce: 2
   isGrounded: 0
 --- !u!114 &539478596
 MonoBehaviour:
@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e4a8087d2d26944295597318e8e8278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 30
   rotationSpeed: 300
 --- !u!54 &539478597
 Rigidbody:
@@ -358,7 +358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e4a8087d2d26944295597318e8e8278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 30
   rotationSpeed: 300
 --- !u!114 &592740120
 MonoBehaviour:
@@ -372,7 +372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jump: {x: 0, y: 2, z: 0}
-  jumpForce: 4
+  jumpForce: 2
   isGrounded: 0
 --- !u!114 &592740121
 MonoBehaviour:
@@ -483,7 +483,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 7d5723facd0d13a4bb8950cde1c0b805, type: 2}
+  - {fileID: 2100000, guid: 926aa44575fbb7c459f1cdb1479a308e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

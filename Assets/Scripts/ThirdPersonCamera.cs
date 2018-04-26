@@ -5,7 +5,7 @@ using UnityEngine;
 public class ThirdPersonCamera : MonoBehaviour
 {
 
-    private const float Y_ANGLE_MIN = 0f;
+    private const float Y_ANGLE_MIN = 5f;
     private const float Y_ANGLE_MAX = 50f;
 
     public float cameraRotationSpeed = 1;
@@ -23,54 +23,67 @@ public class ThirdPersonCamera : MonoBehaviour
     private float currentX = 0f;
     private float currentY = 0f;
 
-    
+    private bool player = false;
+    private bool enemy = true;
+
+    private float transitionTime = 1.0f;
+    private Vector3 lastPosition;
+    private Quaternion lastRotation;
 
     private void Start()
     {
         camTransform = transform;
     }
 
-    IEnumerator LerpFromTo(Vector3 pos1, Vector3 pos2, float duration)
-    {
-        for (float t = 0f; t < duration; t += Time.deltaTime)
-        {
-            transform.position = Vector3.Lerp(pos1, pos2, t / duration);
-            yield return 0;
-        }
-        transform.position = pos2;
-    }
-
 
     private void Update()
     {
+        transitionTime += Time.deltaTime;
+
         // Übernehmen der Gegner
-        if (Input.GetKeyDown(KeyCode.Joystick1Button2))
+        if (Input.GetKeyDown(KeyCode.Joystick1Button2) && enemy == true)
         {
-            StartCoroutine(LerpFromTo(Player.transform.position, Enemy_01.transform.position, 1f));            
-            //lookAt = Enemy_01.transform;
+            lookAt = Enemy_01.transform;
+            enemy = false;
+            player = true;
+            SetLookAt();
         }
-        else if(Input.GetKeyDown(KeyCode.Joystick1Button1))
+        else if (Input.GetKeyDown(KeyCode.Joystick1Button1) && player == true)
         {
-            StartCoroutine(LerpFromTo(Enemy_01.transform.position, Player.transform.position, 1f));
-            //lookAt = Player.transform;
+            lookAt = Player.transform;
+            player = false;
+            enemy = true;
+            SetLookAt();
         }
 
 
-        // Camera rotation * Speed of rotation
+        // Camera rotation & Speed of rotation
         currentX += Input.GetAxis("RotationX") * cameraRotationSpeed;
         currentY += Input.GetAxis("RotationY") * cameraRotationSpeed;
         currentY = Mathf.Clamp(currentY, Y_ANGLE_MIN, Y_ANGLE_MAX);
 
         cameraInput.x = Input.GetAxis("RotationX");
         cameraInput.y = Input.GetAxis("RotationY");
-
     }
+
+
+    private void SetLookAt()
+    {
+        lastPosition = transform.position;
+        lastRotation = transform.rotation;
+        transitionTime = 0;                     // reset transition time
+        camTransform.LookAt(lookAt.position);
+    }
+
 
     private void LateUpdate()
     {
         Vector3 dir = new Vector3(distance, 0, 0);
         Quaternion rotation = Quaternion.Euler(0, currentX, currentY);
-        camTransform.position = lookAt.position + rotation * dir * cameraDistance;
+        camTransform.position = Vector3.Lerp(lastPosition, lookAt.position + rotation * dir * cameraDistance, transitionTime);
+        camTransform.rotation = Quaternion.Slerp(lastRotation, Quaternion.LookRotation((lookAt.position - transform.position).normalized, Vector3.up), transitionTime);
         camTransform.LookAt(lookAt.position);
     }
+
+
 }
