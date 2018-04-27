@@ -16,6 +16,7 @@ public class ThirdPersonCamera : MonoBehaviour
 
     public GameObject Player;
     public GameObject Enemy_01;
+    public GameObject Cube;
 
     public Vector2 cameraInput;
 
@@ -25,6 +26,7 @@ public class ThirdPersonCamera : MonoBehaviour
 
     private bool player = false;
     private bool enemy = true;
+    private bool wallCamera = true;
 
     private float transitionTime = 1.0f;
     private Vector3 lastPosition;
@@ -43,16 +45,31 @@ public class ThirdPersonCamera : MonoBehaviour
         // Übernehmen der Gegner
         if (Input.GetKeyDown(KeyCode.Joystick1Button2) && enemy == true)
         {
+            cameraDistance = .4f;
             lookAt = Enemy_01.transform;
             enemy = false;
             player = true;
+            wallCamera = true;
             SetLookAt();
         }
+
+        if (Input.GetKeyDown(KeyCode.Joystick1Button3) && wallCamera == true)
+        {
+            cameraDistance = .01f;
+            lookAt = Cube.transform;
+            enemy = true;
+            player = true;
+            wallCamera = false;
+            SetLookAt();
+        }
+
         else if (Input.GetKeyDown(KeyCode.Joystick1Button1) && player == true)
         {
+            cameraDistance = .4f;
             lookAt = Player.transform;
             player = false;
             enemy = true;
+            wallCamera = true;
             SetLookAt();
         }
 
