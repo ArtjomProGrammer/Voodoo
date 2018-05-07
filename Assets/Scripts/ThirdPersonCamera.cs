@@ -16,7 +16,7 @@ public class ThirdPersonCamera : MonoBehaviour
 
     public GameObject Player;
     public GameObject Enemy_01;
-    public GameObject Cube;
+    public GameObject Mask;
 
     public Vector2 cameraInput;
 
@@ -31,6 +31,7 @@ public class ThirdPersonCamera : MonoBehaviour
     private float transitionTime = 1.0f;
     private Vector3 lastPosition;
     private Quaternion lastRotation;
+
 
     private void Start()
     {
@@ -53,10 +54,10 @@ public class ThirdPersonCamera : MonoBehaviour
             SetLookAt();
         }
 
-        if (Input.GetKeyDown(KeyCode.Joystick1Button3) && wallCamera == true)
+        else if (Input.GetKeyDown(KeyCode.Joystick1Button3) && wallCamera == true)
         {
-            cameraDistance = .01f;
-            lookAt = Cube.transform;
+            cameraDistance = .1f;
+            lookAt = Mask.transform;
             enemy = true;
             player = true;
             wallCamera = false;
@@ -101,6 +102,4 @@ public class ThirdPersonCamera : MonoBehaviour
         camTransform.rotation = Quaternion.Slerp(lastRotation, Quaternion.LookRotation((lookAt.position - transform.position).normalized, Vector3.up), transitionTime);
         camTransform.LookAt(lookAt.position);
     }
-
-
 }
