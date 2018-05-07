@@ -8,8 +8,11 @@ public class AI_Enemy_01 : MonoBehaviour {
     private Rigidbody rb;
     public Vector3 moveDir;
     public LayerMask whatIsWall;
+    public LayerMask whatIsHiddingObject;
     public float maxDistFromWall = 0f;
     public GameObject Detector;
+    public GameObject Player;
+
 
 	// Use this for initialization
 	void Start () {
@@ -18,6 +21,7 @@ public class AI_Enemy_01 : MonoBehaviour {
         moveDir = ChooseDirection();
 	}
 	
+
 	// Update is called once per frame
 	void Update () {
 
@@ -29,11 +33,14 @@ public class AI_Enemy_01 : MonoBehaviour {
             transform.rotation = Quaternion.LookRotation(moveDir);
         }
 
-        if (GetComponentInChildren<DetectingPlayer>().watchingAtPlayer == false)
+        // Enemy contines walking after watching for Player
+        if (GetComponentInChildren<DetectingPlayer>().watchingAtPlayer == false) 
+          //!(Physics.Raycast(transform.position, Player.transform.position, 8f, whatIsHiddingObject)))
         {
             transform.rotation = Quaternion.LookRotation(moveDir);
         }
 	}
+
 
     Vector3 ChooseDirection()
     {

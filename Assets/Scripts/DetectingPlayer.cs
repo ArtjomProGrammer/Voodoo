@@ -9,6 +9,7 @@ public class DetectingPlayer : MonoBehaviour {
     public GameObject Player;
     public GameObject Enemy_01;
     public bool watchingAtPlayer = false;
+    public LayerMask whatIsHiddingObject;
 
     // Use this for initialization
     void Start () {
@@ -37,6 +38,11 @@ public class DetectingPlayer : MonoBehaviour {
 
     IEnumerator EnemySeesPlayer()
     {
+        // if !(Physics.Raycast(transform.position, Player.transform.position, 8f, whatIsHiddingObject))
+        //    {
+        //
+        //    }
+        //
         GetComponentInParent<AI_Enemy_01>().enabled = false;
         watchingAtPlayer = true;
         yield return new WaitForSeconds(3f);
