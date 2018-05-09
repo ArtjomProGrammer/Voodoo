@@ -15,9 +15,10 @@ public class PlayerJump : MonoBehaviour
         jump = new Vector3(0.0f, 2.0f, 0.0f);
     }
 
-    void OnCollisionEnter()
+    void OnCollisionEnter(Collision col)
     {
-        isGrounded = true;
+        if (col.gameObject.tag == "Ground")
+            isGrounded = true;
     }
 
     void Update()

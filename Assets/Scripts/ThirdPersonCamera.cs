@@ -5,8 +5,11 @@ using UnityEngine;
 public class ThirdPersonCamera : MonoBehaviour
 {
 
-    private const float Y_ANGLE_MIN = 5f;
+    private const float Y_ANGLE_MIN = 15f;
     private const float Y_ANGLE_MAX = 50f;
+
+    private const float X_ANGLE_MIN = 90f;
+    private const float X_ANGLE_MAX = 180f;
 
     public float cameraRotationSpeed = 1;
     public float cameraDistance = 1;
@@ -27,6 +30,7 @@ public class ThirdPersonCamera : MonoBehaviour
     private bool player = false;
     private bool enemy = true;
     private bool wallCamera = true;
+    private bool mask = false;
 
     private float transitionTime = 1.0f;
     private Vector3 lastPosition;
@@ -46,6 +50,7 @@ public class ThirdPersonCamera : MonoBehaviour
         // Übernehmen der Gegner
         if (Input.GetKeyDown(KeyCode.Joystick1Button2) && enemy == true)
         {
+            mask = false;
             cameraDistance = .4f;
             lookAt = Enemy_01.transform;
             enemy = false;
@@ -56,7 +61,8 @@ public class ThirdPersonCamera : MonoBehaviour
 
         else if (Input.GetKeyDown(KeyCode.Joystick1Button3) && wallCamera == true)
         {
-            cameraDistance = .1f;
+            mask = true;
+            cameraDistance = 0.001f;
             lookAt = Mask.transform;
             enemy = true;
             player = true;
@@ -66,7 +72,8 @@ public class ThirdPersonCamera : MonoBehaviour
 
         else if (Input.GetKeyDown(KeyCode.Joystick1Button1) && player == true)
         {
-            cameraDistance = .4f;
+            mask = false;
+            cameraDistance = .1f;
             lookAt = Player.transform;
             player = false;
             enemy = true;
@@ -75,10 +82,14 @@ public class ThirdPersonCamera : MonoBehaviour
         }
 
 
-        // Camera rotation & Speed of rotation
+        // Camera rotation & speed of rotation
         currentX += Input.GetAxis("RotationX") * cameraRotationSpeed;
         currentY += Input.GetAxis("RotationY") * cameraRotationSpeed;
         currentY = Mathf.Clamp(currentY, Y_ANGLE_MIN, Y_ANGLE_MAX);
+
+        if(mask == true)
+        currentX = Mathf.Clamp(currentX, X_ANGLE_MIN, X_ANGLE_MAX);
+
 
         cameraInput.x = Input.GetAxis("RotationX");
         cameraInput.y = Input.GetAxis("RotationY");
