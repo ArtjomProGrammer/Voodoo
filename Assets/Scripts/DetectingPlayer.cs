@@ -9,7 +9,9 @@ public class DetectingPlayer : MonoBehaviour {
     public GameObject Player;
     public GameObject Enemy_01;
     public bool watchingAtPlayer = false;
-    public LayerMask whatIsHiddingObject;
+    private bool detectingPlayer = false;
+
+    public GameObject detectorRadius;
 
     // Use this for initialization
     void Start () {
@@ -19,6 +21,8 @@ public class DetectingPlayer : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+
+        detectingPlayer = GameObject.Find("Main Camera").GetComponent<ThirdPersonCamera>().enemy;
 
         if (watchingAtPlayer == true)
         {
@@ -30,7 +34,7 @@ public class DetectingPlayer : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject == Player)
+        if (col.gameObject == Player && detectingPlayer == true)
         {
             StartCoroutine(EnemySeesPlayer());
         }
@@ -38,14 +42,11 @@ public class DetectingPlayer : MonoBehaviour {
 
     IEnumerator EnemySeesPlayer()
     {
-        // if !(Physics.Raycast(transform.position, Player.transform.position, 8f, whatIsHiddingObject))
-        //    {
-        //
-        //    }
-        //
+        detectorRadius.SetActive(false);
         GetComponentInParent<AI_Enemy_01>().enabled = false;
         watchingAtPlayer = true;
         yield return new WaitForSeconds(3f);
+        detectorRadius.SetActive(true);
         watchingAtPlayer = false;
         GetComponentInParent<AI_Enemy_01>().enabled = true;
     }

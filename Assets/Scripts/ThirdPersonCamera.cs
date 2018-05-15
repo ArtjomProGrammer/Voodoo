@@ -28,13 +28,16 @@ public class ThirdPersonCamera : MonoBehaviour
     private float currentY = 0f;
 
     private bool player = false;
-    private bool enemy = true;
+    public bool enemy = true;
     private bool wallCamera = true;
     private bool mask = false;
 
     private float transitionTime = 1.0f;
     private Vector3 lastPosition;
     private Quaternion lastRotation;
+
+    private bool controllGuard = false;
+    private bool nearToGuard = false;
 
 
     private void Start()
@@ -45,14 +48,18 @@ public class ThirdPersonCamera : MonoBehaviour
 
     private void Update()
     {
+        controllGuard = GameObject.Find("Interact_with_Objects").GetComponent<ControllObjectManager>().controllGuard;
+        nearToGuard = GameObject.Find("Interact_with_Objects").GetComponent<ControlledEnemy>().nearToGuard;
+
         transitionTime += Time.deltaTime;
 
         // Übernehmen der Gegner
-        if (Input.GetKeyDown(KeyCode.Joystick1Button2) && enemy == true)
+        if (Input.GetKeyDown(KeyCode.Joystick1Button2) && enemy == true && controllGuard == true && nearToGuard == true)
         {
             mask = false;
-            cameraDistance = .4f;
+            cameraDistance = .2f;
             lookAt = Enemy_01.transform;
+            Enemy_01.GetComponent<AI_Enemy_01>().enabled = false;
             enemy = false;
             player = true;
             wallCamera = true;
@@ -62,6 +69,7 @@ public class ThirdPersonCamera : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Joystick1Button3) && wallCamera == true)
         {
             mask = true;
+            Enemy_01.GetComponent<AI_Enemy_01>().enabled = true;
             cameraDistance = 0.001f;
             lookAt = Mask.transform;
             enemy = true;
@@ -73,6 +81,7 @@ public class ThirdPersonCamera : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Joystick1Button1) && player == true)
         {
             mask = false;
+            Enemy_01.GetComponent<AI_Enemy_01>().enabled = true;
             cameraDistance = .1f;
             lookAt = Player.transform;
             player = false;
