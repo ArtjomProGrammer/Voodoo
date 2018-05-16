@@ -9,7 +9,6 @@ public class Movement : MonoBehaviour
     public float rotationSpeed;
     private float currentX = 0f;
     private float currentY = 0f;
-    private LayerMask whatIsWall;
 
     public Vector3 rayOffset = new Vector3(0,.05f,0);
 
@@ -23,9 +22,6 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
-        Physics.Raycast(transform.position + rayOffset, transform.forward, 10f, whatIsWall);
-        //Debug.DrawLine(transform.position, transform.forward, Color.red, 9999, true);
-        Debug.DrawRay(transform.position + rayOffset, transform.forward,Color.red,10f);
         // Player movement
         transform.Translate(Input.GetAxis("Horizontal") * Time.deltaTime * speed, 0, Input.GetAxis("Vertical") * Time.deltaTime * speed);
      
