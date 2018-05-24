@@ -8,9 +8,9 @@ public class ControlledEnemy : MonoBehaviour {
     public GameObject Mask;
     public GameObject detectingRadius;
     public GameObject player;
+    public bool nearToFetish = false;
 
     private bool controllGuard = false;
-    public bool nearToGuard = false;
 
     // Use this for initialization
     void Start () {
@@ -24,25 +24,27 @@ public class ControlledEnemy : MonoBehaviour {
         
         if (Input.GetKeyDown(KeyCode.Joystick1Button1))
         {
-            nearToGuard = false;
             player.GetComponent<Movement>().enabled = true;
             player.GetComponent<PlayerJump>().enabled = true;
 
             Enemy_01.GetComponent<Movement>().enabled = false;
-            Enemy_01.GetComponent<PlayerJump>().enabled = false;
         }
     }
 
     public void OnTriggerStay(Collider collision)
     {
-        if(collision.gameObject == detectingRadius && Input.GetKeyDown(KeyCode.Joystick1Button2) && controllGuard == true)
-        {
-            nearToGuard = true;
-            player.GetComponent<Movement>().enabled = false;
-            player.GetComponent<PlayerJump>().enabled = false;
+       // if(collision.gameObject == detectingRadius && Input.GetKeyDown(KeyCode.Joystick1Button2) && controllGuard == true)
+       // {
+       //
+       // }
 
-            Enemy_01.GetComponent<Movement>().enabled = true;
-            Enemy_01.GetComponent<PlayerJump>().enabled = true;
-        }
+        if (collision.gameObject == detectingRadius && Input.GetKeyUp(KeyCode.Joystick1Button2))
+            nearToFetish = true;
+    }
+
+    public void OnTriggerExit(Collider collision)
+    {
+        if (collision.gameObject == detectingRadius)
+            nearToFetish = false;
     }
 }
