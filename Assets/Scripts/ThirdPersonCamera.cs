@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ThirdPersonCamera : MonoBehaviour
 {
@@ -28,13 +29,15 @@ public class ThirdPersonCamera : MonoBehaviour
     private float currentY = 0f;
 
     private bool player = false;
-    private bool enemy = true;
+    public bool enemy = true;
     private bool wallCamera = true;
     private bool mask = false;
 
     private float transitionTime = 1.0f;
     private Vector3 lastPosition;
     private Quaternion lastRotation;
+
+    private bool controllGuard = false;
 
 
     private void Start()
@@ -45,39 +48,58 @@ public class ThirdPersonCamera : MonoBehaviour
 
     private void Update()
     {
+        controllGuard = GameObject.Find("Interact_with_Objects").GetComponent<ControllObjectManager>().controllGuard;
+        bool nearToFetish = GameObject.Find("Interact_with_Objects").GetComponent<ControlledEnemy>().nearToFetish;
+
         transitionTime += Time.deltaTime;
 
-        // Übernehmen der Gegner
-        if (Input.GetKeyDown(KeyCode.Joystick1Button2) && enemy == true)
-        {
-            mask = false;
-            cameraDistance = .4f;
+        // Controll enemy
+        if (Input.GetKeyDown(KeyCode.Joystick1Button2) && enemy == true && controllGuard == true && nearToFetish == true)
+        {     
+            Enemy_01.GetComponent<NavMeshAgent> ().enabled = false;
+            Enemy_01.GetComponent<MoveTo>       ().enabled = false;
+            Player.GetComponent<Movement>       ().enabled = false;
+            Player.GetComponent<PlayerJump>     ().enabled = false;
+            Enemy_01.GetComponent<Movement>     ().enabled = true;
+            Enemy_01.GetComponent<Rigidbody>().isKinematic = false;
+            mask        = false;
+            enemy       = false;
+            player      = true;
+            wallCamera  = true;
+            cameraDistance = .2f;
             lookAt = Enemy_01.transform;
-            enemy = false;
-            player = true;
-            wallCamera = true;
             SetLookAt();
         }
 
+        // Controll mask
         else if (Input.GetKeyDown(KeyCode.Joystick1Button3) && wallCamera == true)
         {
-            mask = true;
+            Enemy_01.GetComponent<NavMeshAgent> ().enabled = true;
+            Enemy_01.GetComponent<MoveTo>       ().enabled = true;
+            Enemy_01.GetComponent<Movement>     ().enabled = false;
+            Enemy_01.GetComponent<Rigidbody>().isKinematic = true;
+            mask        = true;
+            enemy       = true;
+            player      = true;
+            wallCamera  = false;
             cameraDistance = 0.001f;
             lookAt = Mask.transform;
-            enemy = true;
-            player = true;
-            wallCamera = false;
             SetLookAt();
         }
 
+        // Controll Player
         else if (Input.GetKeyDown(KeyCode.Joystick1Button1) && player == true)
         {
-            mask = false;
+
+            Enemy_01.GetComponent<NavMeshAgent> ().enabled = true;
+            Enemy_01.GetComponent<MoveTo>       ().enabled = true;
+            Enemy_01.GetComponent<Rigidbody>().isKinematic = true;
+            mask        = false;
+            player      = false;
+            enemy       = true;
+            wallCamera  = true;
             cameraDistance = .1f;
             lookAt = Player.transform;
-            player = false;
-            enemy = true;
-            wallCamera = true;
             SetLookAt();
         }
 
@@ -87,8 +109,15 @@ public class ThirdPersonCamera : MonoBehaviour
         currentY += Input.GetAxis("RotationY") * cameraRotationSpeed;
         currentY = Mathf.Clamp(currentY, Y_ANGLE_MIN, Y_ANGLE_MAX);
 
-        if(mask == true)
-        currentX = Mathf.Clamp(currentX, X_ANGLE_MIN, X_ANGLE_MAX);
+        if (mask == true)
+        {
+            currentX = Mathf.Clamp(currentX, X_ANGLE_MIN, X_ANGLE_MAX);
+            cameraRotationSpeed = .7f;
+        }
+        else
+        {
+            cameraRotationSpeed = 2f;
+        }
 
 
         cameraInput.x = Input.GetAxis("RotationX");

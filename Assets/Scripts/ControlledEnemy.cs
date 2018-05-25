@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class ControlledEnemy : MonoBehaviour {
 
-    public GameObject Enemy;
+    public GameObject Enemy_01;
     public GameObject Mask;
+    public GameObject detectingRadius;
+    public GameObject player;
+    public bool nearToFetish = false;
+
+    private bool controllGuard = false;
 
     // Use this for initialization
     void Start () {
@@ -15,30 +20,31 @@ public class ControlledEnemy : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if(Input.GetKeyDown(KeyCode.Joystick1Button2))
-        {
-            GetComponent<Movement>().enabled = false;
-            GetComponent<PlayerJump>().enabled = false;
-
-            Enemy.GetComponent<Movement>().enabled = true;
-            Enemy.GetComponent<PlayerJump>().enabled = true;
-        }
-
+        controllGuard = GameObject.Find("Interact_with_Objects").GetComponent<ControllObjectManager>().controllGuard;
+        
         if (Input.GetKeyDown(KeyCode.Joystick1Button1))
         {
-            GetComponent<Movement>().enabled = true;
-            GetComponent<PlayerJump>().enabled = true;
+            player.GetComponent<Movement>().enabled = true;
+            player.GetComponent<PlayerJump>().enabled = true;
 
-            Enemy.GetComponent<Movement>().enabled = false;
-            Enemy.GetComponent<PlayerJump>().enabled = false;
+            Enemy_01.GetComponent<Movement>().enabled = false;
         }
+    }
 
-        //if (Input.GetKeyDown(KeyCode.Joystick1Button3))
-        //{
-        //    GetComponent<Movement>().enabled = false;
-        //    GetComponent<PlayerJump>().enabled = false;
-        //
-        //    Mask.GetComponent<Movement>().enabled = true;
-        //}
+    public void OnTriggerStay(Collider collision)
+    {
+       // if(collision.gameObject == detectingRadius && Input.GetKeyDown(KeyCode.Joystick1Button2) && controllGuard == true)
+       // {
+       //
+       // }
+
+        if (collision.gameObject == detectingRadius && Input.GetKeyUp(KeyCode.Joystick1Button2))
+            nearToFetish = true;
+    }
+
+    public void OnTriggerExit(Collider collision)
+    {
+        if (collision.gameObject == detectingRadius)
+            nearToFetish = false;
     }
 }
