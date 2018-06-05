@@ -6,11 +6,11 @@ using UnityEngine.AI;
 public class ThirdPersonCamera : MonoBehaviour
 {
 
-    private const float Y_ANGLE_MIN = 15f;
+    private const float Y_ANGLE_MIN = 5f;
     private const float Y_ANGLE_MAX = 50f;
 
-    private const float X_ANGLE_MIN = 90f;
-    private const float X_ANGLE_MAX = 180f;
+    private const float X_ANGLE_MIN = 180f;
+    private const float X_ANGLE_MAX = 270f;
 
     public float cameraRotationSpeed = 1;
     public float cameraDistance = 1;
@@ -40,9 +40,15 @@ public class ThirdPersonCamera : MonoBehaviour
     private bool controllGuard = false;
 
 
-    private void Start()
+    void Start()
     {
         camTransform = transform;
+
+        cameraDistance = .1f;
+        lookAt = Player.transform;
+        SetLookAt();
+        Player.GetComponent<Movement>().enabled = true;
+        Player.GetComponent<PlayerJump>().enabled = true;
     }
 
 
@@ -74,8 +80,8 @@ public class ThirdPersonCamera : MonoBehaviour
         // Controll mask
         else if (Input.GetKeyDown(KeyCode.Joystick1Button3) && wallCamera == true)
         {
-            Enemy_01.GetComponent<NavMeshAgent> ().enabled = true;
-            Enemy_01.GetComponent<MoveTo>       ().enabled = true;
+            Enemy_01.GetComponent<NavMeshAgent> ().enabled = false;
+            Enemy_01.GetComponent<MoveTo>       ().enabled = false;
             Enemy_01.GetComponent<Movement>     ().enabled = false;
             Enemy_01.GetComponent<Rigidbody>().isKinematic = true;
             mask        = true;
@@ -91,8 +97,8 @@ public class ThirdPersonCamera : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Joystick1Button1) && player == true)
         {
 
-            Enemy_01.GetComponent<NavMeshAgent> ().enabled = true;
-            Enemy_01.GetComponent<MoveTo>       ().enabled = true;
+            Enemy_01.GetComponent<NavMeshAgent> ().enabled = false;
+            Enemy_01.GetComponent<MoveTo>       ().enabled = false;
             Enemy_01.GetComponent<Rigidbody>().isKinematic = true;
             mask        = false;
             player      = false;
@@ -118,7 +124,6 @@ public class ThirdPersonCamera : MonoBehaviour
         {
             cameraRotationSpeed = 2f;
         }
-
 
         cameraInput.x = Input.GetAxis("RotationX");
         cameraInput.y = Input.GetAxis("RotationY");

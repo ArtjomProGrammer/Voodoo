@@ -13,9 +13,6 @@ public class AI_Enemy_01 : MonoBehaviour {
     public GameObject Detector;
     public GameObject Player;
 
-    private bool isWaiting01 = true;
-    private bool isWaiting02 = true;
-
 
     // Use this for initialization
     void Start () {

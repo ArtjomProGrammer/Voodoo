@@ -27,17 +27,9 @@ public class Schublade : MonoBehaviour {
     {
         if(collision.gameObject.tag == "Player" && Input.GetKeyDown(KeyCode.Joystick1Button1))
         {
-           // StartCoroutine("Closing");
             Schublade1.GetComponent<Animator>().SetBool("isOpen", false);
             Schublade2.GetComponent<Animator>().SetBool("isOpen", false);
             GetComponent<Animator>().SetBool("isOpen", true);
         }
     }
-
-    //IEnumerator Closing()
-    //{
-    //
-    //    yield return new WaitForSeconds(1f);
-    //
-    //}
 }
