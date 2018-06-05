@@ -116,11 +116,6 @@ public class CharacterController : MonoBehaviour {
         {
             targetRotation *= Quaternion.AngleAxis(moveSetting.rotateVel * turnInput * Time.deltaTime, Vector3.up);
         }
-
-        if (Mathf.Abs(turnUpInput) > inputSetting.inputDelay)
-        {            
-            targetRotation *= Quaternion.AngleAxis(moveSetting.rotateVel * turnUpInput * Time.deltaTime, Vector3.up);
-        }
         transform.rotation = targetRotation;
     }
 
