@@ -6,9 +6,9 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Regal_Boden_klein
+  m_Name: pink_text
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP
+  m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _NORMALMAP
   m_LightmapFlags: 1
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -18,7 +18,7 @@ Material:
     - first:
         name: _BumpMap
       second:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 39b662bb626f3a0439c21be5f4b4cde3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -40,12 +40,6 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
-        name: _DetailTex
-      second:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - first:
         name: _EmissionMap
       second:
         m_Texture: {fileID: 0}
@@ -54,13 +48,13 @@ Material:
     - first:
         name: _MainTex
       second:
-        m_Texture: {fileID: 2800000, guid: 2666612dde224bd46916defb24216d87, type: 3}
+        m_Texture: {fileID: 2800000, guid: b1dc85c357242414aa92fd0f5311cb97, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
         name: _MetallicGlossMap
       second:
-        m_Texture: {fileID: 2800000, guid: e711a6859fbb9e541b7ca0f9fa236cc3, type: 3}
+        m_Texture: {fileID: 2800000, guid: e1a9d148419a46d4ca0c02e8dfab8680, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -79,9 +73,6 @@ Material:
     - first:
         name: _BumpScale
       second: 1
-    - first:
-        name: _Cull
-      second: 2
     - first:
         name: _Cutoff
       second: 0.5
@@ -125,9 +116,6 @@ Material:
         name: _UVSec
       second: 0
     - first:
-        name: _WindQuality
-      second: 0
-    - first:
         name: _ZWrite
       second: 1
     m_Colors:
@@ -137,6 +125,3 @@ Material:
     - first:
         name: _EmissionColor
       second: {r: 0, g: 0, b: 0, a: 1}
-    - first:
-        name: _HueVariation
-      second: {r: 1, g: 0.5, b: 0, a: 0.1}
