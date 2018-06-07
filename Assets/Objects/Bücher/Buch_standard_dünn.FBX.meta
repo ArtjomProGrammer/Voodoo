@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 9aa07681c31a5af409f369f9df38bcd2
-timeCreated: 1528299386
+guid: dc942cca6e5698e41b12d43c1bc0e1b7
+timeCreated: 1528381191
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,8 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Box002
-    9500000: //RootNode
+    4300000: "Buch_Standart_d\xFCnn"
   materials:
     importMaterials: 1
     materialName: 0
@@ -73,7 +72,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

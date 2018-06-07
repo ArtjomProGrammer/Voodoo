@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 09e4356538982164f821656664465dbd
-timeCreated: 1528299386
+guid: c8477941fa5442748b5cbeb7bf293e4d
+timeCreated: 1528381190
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,8 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Box003
-    9500000: //RootNode
+    4300000: Buch_mittel_dick
   materials:
     importMaterials: 1
     materialName: 0
@@ -73,7 +72,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
