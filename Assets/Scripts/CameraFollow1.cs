@@ -10,19 +10,14 @@ public class CameraFollow1 : MonoBehaviour {
 	public float clampAngle = 80.0f;
     public float clampAngle2 = 80.0f;
     public float inputSensitivity = 150.0f;
+    public GameObject cameraObject;
+
+    public Vector3 cameraDistance = new Vector3(0, 0, 5);
+
 	private float rotY = 0.0f;
 	private float rotX = 0.0f;
 
-
-    #region inits
-    private const float Y_ANGLE_MIN = 5f;
-    private const float Y_ANGLE_MAX = 50f;
-    
-    private const float X_ANGLE_MIN = 180f;
-    private const float X_ANGLE_MAX = 270f;
-
-    public float cameraDistance = 0;
-    
+    #region inits    
     public Transform lookAt;
     public Transform camTransform;
     
@@ -30,8 +25,6 @@ public class CameraFollow1 : MonoBehaviour {
     public GameObject Enemy_01;
     public GameObject Mask;
     public GameObject cam;
-    
-    // Vector2 cameraInput;
     
     private float distance = 10.0f;
     
@@ -54,8 +47,7 @@ public class CameraFollow1 : MonoBehaviour {
         Vector3 rot = transform.localRotation.eulerAngles;
 		rotY = rot.y;
 		rotX = rot.x;
-
-        //---------------
+        
         camTransform = transform;
         
         //cameraDistance = .01f;
@@ -63,7 +55,6 @@ public class CameraFollow1 : MonoBehaviour {
         SetLookAt();
         Player.GetComponent<Movement>().enabled = true;
         Player.GetComponent<PlayerJump>().enabled = true;
-        //----------------
     }
 
     // Update is called once per frame
@@ -109,6 +100,7 @@ public class CameraFollow1 : MonoBehaviour {
         #region Controll Mask
         else if (Input.GetKeyDown(KeyCode.Joystick1Button3) && wallCamera == true)
         {
+            //cameraObject.transform.position += cameraDistance;
             Enemy_01.GetComponent<NavMeshAgent>().enabled = false;
             Enemy_01.GetComponent<MoveTo>().enabled = false;
             Enemy_01.GetComponent<Movement>().enabled = false;
@@ -118,7 +110,7 @@ public class CameraFollow1 : MonoBehaviour {
             player = true;
             wallCamera = false;
             lookAt = Mask.transform;
-            SetLookAt();
+            SetLookAt();            
         }
         #endregion
 
@@ -137,16 +129,6 @@ public class CameraFollow1 : MonoBehaviour {
             SetLookAt();
         }
         #endregion
-
-        if(mask == true)
-        {
-            cam.transform.position = transform.position;
-        }
-        else
-        {
-            //cam.transform.position = normTransform;
-        }
-        
     }
 
     private void SetLookAt()
@@ -159,7 +141,7 @@ public class CameraFollow1 : MonoBehaviour {
     void LateUpdate () {
 		CameraUpdater ();
         
-        Vector3 dir = new Vector3(distance, 0, 0);
+        Vector3 dir = new Vector3(0, 0, distance);
         camTransform.position = Vector3.Lerp(lastPosition, lookAt.position + localRotation * dir * .001f, transitionTime);
         //camTransform.LookAt(lookAt.position);
     }

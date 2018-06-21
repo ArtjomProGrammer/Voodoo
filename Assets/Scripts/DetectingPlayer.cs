@@ -43,12 +43,10 @@ public class DetectingPlayer : MonoBehaviour {
     IEnumerator EnemySeesPlayer()
     {
         detectorRadius.SetActive(false);
-        //GetComponentInParent<AI_Enemy_01>().enabled = false;
         watchingAtPlayer = true;
         yield return new WaitForSeconds(3f);
         detectorRadius.SetActive(true);
         watchingAtPlayer = false;
-        //GetComponentInParent<AI_Enemy_01>().enabled = true;
         Enemy_01.transform.rotation = Quaternion.Euler(0, 90, 0);
     }
 }
