@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class ThirdPersonCamera : MonoBehaviour
 {
-
+    #region inits
     private const float Y_ANGLE_MIN = 5f;
     private const float Y_ANGLE_MAX = 50f;
 
@@ -14,6 +14,7 @@ public class ThirdPersonCamera : MonoBehaviour
 
     public float cameraRotationSpeed = 1;
     public float cameraDistance = 1;
+    public float cameraDistanceTemp;
 
     public Transform lookAt;
     public Transform camTransform;
@@ -38,6 +39,9 @@ public class ThirdPersonCamera : MonoBehaviour
     private Quaternion lastRotation;
 
     private bool controllGuard = false;
+    #endregion
+
+
 
 
     void Start()
@@ -52,6 +56,7 @@ public class ThirdPersonCamera : MonoBehaviour
     }
 
 
+
     private void Update()
     {
         controllGuard = GameObject.Find("Interact_with_Objects").GetComponent<ControllObjectManager>().controllGuard;
@@ -59,7 +64,7 @@ public class ThirdPersonCamera : MonoBehaviour
 
         transitionTime += Time.deltaTime;
 
-        // Controll enemy
+        #region Controll Enemy
         if (Input.GetKeyDown(KeyCode.Joystick1Button2) && enemy == true && controllGuard == true && nearToFetish == true)
         {     
             Enemy_01.GetComponent<NavMeshAgent> ().enabled = false;
@@ -73,11 +78,13 @@ public class ThirdPersonCamera : MonoBehaviour
             player      = true;
             wallCamera  = true;
             cameraDistance = .2f;
+            cameraDistanceTemp = .2f;
             lookAt = Enemy_01.transform;
             SetLookAt();
         }
+        #endregion
 
-        // Controll mask
+        #region Controll Mask
         else if (Input.GetKeyDown(KeyCode.Joystick1Button3) && wallCamera == true)
         {
             Enemy_01.GetComponent<NavMeshAgent> ().enabled = false;
@@ -92,8 +99,9 @@ public class ThirdPersonCamera : MonoBehaviour
             lookAt = Mask.transform;
             SetLookAt();
         }
+        #endregion
 
-        // Controll Player
+        #region Controll Player
         else if (Input.GetKeyDown(KeyCode.Joystick1Button1) && player == true)
         {
 
@@ -105,9 +113,11 @@ public class ThirdPersonCamera : MonoBehaviour
             enemy       = true;
             wallCamera  = true;
             cameraDistance = .1f;
+            cameraDistanceTemp = .1f;
             lookAt = Player.transform;
             SetLookAt();
         }
+        #endregion
 
 
         // Camera rotation & speed of rotation
@@ -125,8 +135,8 @@ public class ThirdPersonCamera : MonoBehaviour
             cameraRotationSpeed = 2f;
         }
 
-        cameraInput.x = Input.GetAxis("RotationX");
-        cameraInput.y = Input.GetAxis("RotationY");
+        //cameraInput.x = Input.GetAxis("RotationX");
+        //cameraInput.y = Input.GetAxis("RotationY");
     }
 
 
@@ -140,9 +150,9 @@ public class ThirdPersonCamera : MonoBehaviour
 
 
     private void LateUpdate()
-    {
+    {   
         Vector3 dir = new Vector3(distance, 0, 0);
-        Quaternion rotation = Quaternion.Euler(0, currentX, currentY);
+        Quaternion rotation = Quaternion.Euler(0 , currentX, currentY);
         camTransform.position = Vector3.Lerp(lastPosition, lookAt.position + rotation * dir * cameraDistance, transitionTime);
         camTransform.rotation = Quaternion.Slerp(lastRotation, Quaternion.LookRotation((lookAt.position - transform.position).normalized, Vector3.up), transitionTime);
         camTransform.LookAt(lookAt.position);
