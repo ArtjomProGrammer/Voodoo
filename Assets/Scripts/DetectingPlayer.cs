@@ -22,7 +22,7 @@ public class DetectingPlayer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        detectingPlayer = GameObject.Find("Main Camera").GetComponent<ThirdPersonCamera>().enemy;
+        detectingPlayer = GameObject.Find("CameraBase").GetComponent<CameraFollow1>().enemy;
 
         if (watchingAtPlayer == true)
         {

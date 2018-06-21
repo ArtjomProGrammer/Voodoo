@@ -8,7 +8,6 @@ public class MoveTo : MonoBehaviour {
     public Transform[] points;
     private int destPoint = 0;
     private NavMeshAgent agent;
-    private bool enemy = true;
 
     public GameObject exit;
     public GameObject exitTrigger;
@@ -21,7 +20,7 @@ public class MoveTo : MonoBehaviour {
         // Disabling auto-braking allows for continuous movement
         // between points (ie, the agent doesn't slow down as it
         // approaches a destination point).
-        //agent.autoBraking = false;
+        // agent.autoBraking = false;
 
         GotoNextPoint();
     }
@@ -44,14 +43,14 @@ public class MoveTo : MonoBehaviour {
 
     void Update()
     {
-        enemy = GameObject.Find("Main Camera").GetComponent<ThirdPersonCamera>().enemy;
+        //enemy = GameObject.Find("Main Camera").GetComponent<ThirdPersonCamera>().enemy;
 
         // Choose the next destination point when the agent gets
         // close to the current one.
-        if (!agent.pathPending && agent.remainingDistance < 4f)
-        {
-            StartCoroutine("WaitOnPoint");
-        }
+        //if (!agent.pathPending && agent.remainingDistance < 4f)
+        //{
+        //    StartCoroutine("WaitOnPoint");
+        //}
 
         if (!agent.pathPending && agent.remainingDistance < 0.2f)
         {
@@ -59,12 +58,12 @@ public class MoveTo : MonoBehaviour {
         }
     }
 
-    IEnumerator WaitOnPoint()
-    {
-        GetComponent<NavMeshAgent>().speed = 0f;
-        yield return new WaitForSeconds(3f);
-        GetComponent<NavMeshAgent>().speed = .5f;
-    }
+    //IEnumerator WaitOnPoint()
+    //{
+    //    GetComponent<NavMeshAgent>().speed = 0f;
+    //    yield return new WaitForSeconds(3f);
+    //    GetComponent<NavMeshAgent>().speed = .5f;
+    //}
 
     void OnTriggerStay(Collider collision)
     {
