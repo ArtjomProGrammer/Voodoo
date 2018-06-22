@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 95705973249960138}
   - component: {fileID: 65213092948500218}
   m_Layer: 0
-  m_Name: Schreibtisch_Modul_Schubladen_Links
+  m_Name: Schubladenmodul_Links
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 33024405574967440}
   - component: {fileID: 23387212724913254}
   m_Layer: 0
-  m_Name: Object003
+  m_Name: Griff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 95311175403861698}
   - component: {fileID: 65211328217385244}
   m_Layer: 0
-  m_Name: Schreibtisch_Modul_Schubladen_Rechts
+  m_Name: Schubladenmodul_Rechts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -284,7 +284,7 @@ GameObject:
   - component: {fileID: 23882128848505904}
   - component: {fileID: 65477273879985088}
   m_Layer: 0
-  m_Name: Object002
+  m_Name: Schublade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
