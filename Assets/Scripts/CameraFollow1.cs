@@ -9,12 +9,14 @@ public class CameraFollow1 : MonoBehaviour {
 	public GameObject CameraFollowObj;
 	public float clampAngle = 80.0f;
     public float clampAngle2 = 80.0f;
+    public float clampAngle3 = 90.0f;
+    public float clampAngle4 = 180.0f;
     public float inputSensitivity = 150.0f;
     public GameObject cameraObject;
 
-    public Vector3 cameraDistance = new Vector3(0, 0, 5);
+    public float distance = 10.0f;
 
-	private float rotY = 0.0f;
+    private float rotY = 0.0f;
 	private float rotX = 0.0f;
 
     #region inits    
@@ -26,7 +28,7 @@ public class CameraFollow1 : MonoBehaviour {
     public GameObject Mask;
     public GameObject cam;
     
-    private float distance = 10.0f;
+    
     
     private bool player = false;
     public  bool enemy = true;
@@ -69,12 +71,12 @@ public class CameraFollow1 : MonoBehaviour {
 
         rotY = Mathf.Clamp (rotY, clampAngle, clampAngle2);
 
-		localRotation = Quaternion.Euler (rotY, rotX, 0.0f);
+        localRotation = Quaternion.Euler (rotY, rotX, 0.0f);
 		transform.rotation = localRotation;
 
 
         //--------------------
-        controllGuard = GameObject.Find("Interact_with_Objects").GetComponent<ControllObjectManager>().controllGuard;
+        controllGuard = GameObject.Find("ButtonSmash").GetComponent<ButtonSmash>().controllGuard;
         bool nearToFetish = GameObject.Find("Interact_with_Objects").GetComponent<ControlledEnemy>().nearToFetish;
         
         transitionTime += Time.deltaTime;
@@ -82,6 +84,7 @@ public class CameraFollow1 : MonoBehaviour {
         #region Controll Enemy
         if (Input.GetKeyDown(KeyCode.Joystick1Button2) && enemy == true && controllGuard == true && nearToFetish == true)
         {
+            distance = -800;
             Enemy_01.GetComponent<NavMeshAgent>().enabled = false;
             Enemy_01.GetComponent<MoveTo>().enabled = false;
             Player.GetComponent<Movement>().enabled = false;
@@ -98,11 +101,12 @@ public class CameraFollow1 : MonoBehaviour {
         #endregion
         
         #region Controll Mask
-        else if (Input.GetKeyDown(KeyCode.Joystick1Button3) && wallCamera == true)
+        if (Input.GetKeyDown(KeyCode.Joystick1Button3) && wallCamera == true)
         {
-            //cameraObject.transform.position += cameraDistance;
-            Enemy_01.GetComponent<NavMeshAgent>().enabled = false;
-            Enemy_01.GetComponent<MoveTo>().enabled = false;
+            
+            distance = 650;
+            Enemy_01.GetComponent<NavMeshAgent>().enabled = true;
+            Enemy_01.GetComponent<MoveTo>().enabled = true;
             Enemy_01.GetComponent<Movement>().enabled = false;
             Enemy_01.GetComponent<Rigidbody>().isKinematic = true;
             mask = true;
@@ -115,11 +119,11 @@ public class CameraFollow1 : MonoBehaviour {
         #endregion
 
         #region Controll Player
-        else if (Input.GetKeyDown(KeyCode.Joystick1Button1) && player == true)
+        if (Input.GetKeyDown(KeyCode.Joystick1Button1) && player == true)
         {
-        
-            Enemy_01.GetComponent<NavMeshAgent>().enabled = false;
-            Enemy_01.GetComponent<MoveTo>().enabled = false;
+            distance = 10;
+            Enemy_01.GetComponent<NavMeshAgent>().enabled = true;
+            Enemy_01.GetComponent<MoveTo>().enabled = true;
             Enemy_01.GetComponent<Rigidbody>().isKinematic = true;
             mask = false;
             player = false;
@@ -129,6 +133,12 @@ public class CameraFollow1 : MonoBehaviour {
             SetLookAt();
         }
         #endregion
+
+        if (mask == true)
+        {
+            rotY = Mathf.Clamp (rotY, 5, clampAngle2);
+            rotX = Mathf.Clamp(rotX, clampAngle3, clampAngle4);
+        }
     }
 
     private void SetLookAt()

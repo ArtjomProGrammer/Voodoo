@@ -11,17 +11,7 @@ public class ControllObjectManager : MonoBehaviour
     public GameObject fetish02;
     public GameObject door02;
 
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    public GameObject ButtonSmash;
 
 
     void OnTriggerStay(Collider collision)
@@ -38,5 +28,9 @@ public class ControllObjectManager : MonoBehaviour
         {
             controllGuard = true;
         }
+
+        if (collision.gameObject == fetish02 && controllGuard == true)
+            ButtonSmash.SetActive(true);
+
     }   
 }
