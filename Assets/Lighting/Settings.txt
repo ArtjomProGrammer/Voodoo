@@ -1,0 +1,7 @@
+Skybox:
+- Source: Color
+- Ambient Color: Schwarz
+
+Realtime Global Illumination:
+- Wenn an, ist alles heller
+
