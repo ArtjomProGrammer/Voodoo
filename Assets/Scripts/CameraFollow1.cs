@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class CameraFollow1 : MonoBehaviour {
 
@@ -13,6 +14,10 @@ public class CameraFollow1 : MonoBehaviour {
     public float clampAngle4 = 180.0f;
     public float inputSensitivity = 150.0f;
     public GameObject cameraObject;
+
+    private float timerAlpha;
+
+    public GameObject hurtImage;
 
     public float distance = 10.0f;
 
@@ -83,7 +88,8 @@ public class CameraFollow1 : MonoBehaviour {
         
         #region Controll Enemy
         if (Input.GetKeyDown(KeyCode.Joystick1Button2) && enemy == true && controllGuard == true && nearToFetish == true)
-        {
+        {        
+            hurtImage.SetActive(false);
             distance = -800;
             Enemy_01.GetComponent<NavMeshAgent>().enabled = false;
             Enemy_01.GetComponent<MoveTo>().enabled = false;
@@ -103,7 +109,7 @@ public class CameraFollow1 : MonoBehaviour {
         #region Controll Mask
         if (Input.GetKeyDown(KeyCode.Joystick1Button3) && wallCamera == true)
         {
-            
+            hurtImage.SetActive(true);
             distance = 650;
             Enemy_01.GetComponent<NavMeshAgent>().enabled = true;
             Enemy_01.GetComponent<MoveTo>().enabled = true;
@@ -121,6 +127,7 @@ public class CameraFollow1 : MonoBehaviour {
         #region Controll Player
         if (Input.GetKeyDown(KeyCode.Joystick1Button1) && player == true)
         {
+            hurtImage.SetActive(false);
             distance = 10;
             Enemy_01.GetComponent<NavMeshAgent>().enabled = true;
             Enemy_01.GetComponent<MoveTo>().enabled = true;
