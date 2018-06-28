@@ -28,7 +28,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1056895191836472
 GameObject:
@@ -41,12 +41,13 @@ GameObject:
   - component: {fileID: 95368108188364414}
   - component: {fileID: 114498183226738542}
   - component: {fileID: 114838807756489940}
+  - component: {fileID: 65684244623527826}
   m_Layer: 0
   m_Name: Schublade_Unten
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1085313895363748
 GameObject:
@@ -59,11 +60,11 @@ GameObject:
   - component: {fileID: 33922152418194380}
   - component: {fileID: 23478159981963638}
   m_Layer: 0
-  m_Name: Object003
+  m_Name: Griff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1086073302004118
 GameObject:
@@ -76,12 +77,13 @@ GameObject:
   - component: {fileID: 95386541816379658}
   - component: {fileID: 114066483420239382}
   - component: {fileID: 114536737853468336}
+  - component: {fileID: 65351237023643130}
   m_Layer: 0
   m_Name: Schublade_Oben
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1094178164273792
 GameObject:
@@ -97,10 +99,10 @@ GameObject:
   - component: {fileID: 65621388189813934}
   m_Layer: 0
   m_Name: Schreibtisch_Platte
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1124566227684624
 GameObject:
@@ -113,11 +115,11 @@ GameObject:
   - component: {fileID: 33747524296564320}
   - component: {fileID: 23861824727171266}
   m_Layer: 0
-  m_Name: Object003
+  m_Name: Griff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1154549966935858
 GameObject:
@@ -134,7 +136,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1171132154721962
 GameObject:
@@ -146,13 +148,12 @@ GameObject:
   - component: {fileID: 4793449330149536}
   - component: {fileID: 33672694583742746}
   - component: {fileID: 23680521776214664}
-  - component: {fileID: 65596771873772486}
   m_Layer: 0
-  m_Name: Object002
+  m_Name: Schublade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1181689878150578
 GameObject:
@@ -164,13 +165,12 @@ GameObject:
   - component: {fileID: 4685334902365102}
   - component: {fileID: 33477263311553202}
   - component: {fileID: 23205424995794282}
-  - component: {fileID: 65146590613384884}
   m_Layer: 0
-  m_Name: Object002
+  m_Name: Schublade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1264821857272248
 GameObject:
@@ -182,13 +182,12 @@ GameObject:
   - component: {fileID: 4168842340777524}
   - component: {fileID: 33408406984700210}
   - component: {fileID: 23760775932619818}
-  - component: {fileID: 65559414380030084}
   m_Layer: 0
-  m_Name: Object002
+  m_Name: Schublade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1289075326927794
 GameObject:
@@ -200,13 +199,12 @@ GameObject:
   - component: {fileID: 4322525309381400}
   - component: {fileID: 33414069197889966}
   - component: {fileID: 23723458038067884}
-  - component: {fileID: 65894868309088468}
   m_Layer: 0
-  m_Name: Object002
+  m_Name: Schublade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1367389919601434
 GameObject:
@@ -219,11 +217,11 @@ GameObject:
   - component: {fileID: 33877649426808842}
   - component: {fileID: 23609900755815254}
   m_Layer: 0
-  m_Name: Object003
+  m_Name: Griff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1428530008485144
 GameObject:
@@ -236,11 +234,11 @@ GameObject:
   - component: {fileID: 33549070916677888}
   - component: {fileID: 23425350380077330}
   m_Layer: 0
-  m_Name: Object003
+  m_Name: Griff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1551618627181986
 GameObject:
@@ -259,7 +257,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1577775806639726
 GameObject:
@@ -272,12 +270,13 @@ GameObject:
   - component: {fileID: 95901364684164904}
   - component: {fileID: 114574506864858106}
   - component: {fileID: 114259599156511216}
+  - component: {fileID: 65090907125997430}
   m_Layer: 0
   m_Name: Schublade_Oben
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1609787204739676
 GameObject:
@@ -289,13 +288,12 @@ GameObject:
   - component: {fileID: 4677788494605202}
   - component: {fileID: 33094214809290264}
   - component: {fileID: 23882128848505904}
-  - component: {fileID: 65477273879985088}
   m_Layer: 0
   m_Name: Schublade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1675860857787138
 GameObject:
@@ -307,13 +305,12 @@ GameObject:
   - component: {fileID: 4177387512647432}
   - component: {fileID: 33739238816174722}
   - component: {fileID: 23971601841394514}
-  - component: {fileID: 65824964842804200}
   m_Layer: 0
-  m_Name: Object002
+  m_Name: Schublade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1677285696268078
 GameObject:
@@ -323,12 +320,12 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4242344255434534}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Schreibtisch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1792881819252754
 GameObject:
@@ -341,12 +338,13 @@ GameObject:
   - component: {fileID: 95181339082364320}
   - component: {fileID: 114415979979025480}
   - component: {fileID: 114275061071138488}
+  - component: {fileID: 65147569576686152}
   m_Layer: 0
   m_Name: Schublade_Mitte
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1825488502465740
 GameObject:
@@ -359,12 +357,13 @@ GameObject:
   - component: {fileID: 95008595739204202}
   - component: {fileID: 114447371140096008}
   - component: {fileID: 114833016866305654}
+  - component: {fileID: 65518761799798936}
   m_Layer: 0
   m_Name: Schublade_Mitte
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1971595077675256
 GameObject:
@@ -377,12 +376,13 @@ GameObject:
   - component: {fileID: 95801816206191234}
   - component: {fileID: 114089493512088060}
   - component: {fileID: 114630318862344400}
+  - component: {fileID: 65285235027247408}
   m_Layer: 0
   m_Name: Schublade_Unten
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1999676694873476
 GameObject:
@@ -395,11 +395,11 @@ GameObject:
   - component: {fileID: 33596010627683836}
   - component: {fileID: 23774015917402076}
   m_Layer: 0
-  m_Name: Object003
+  m_Name: Griff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4002539445728644
 Transform:
@@ -523,8 +523,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1677285696268078}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 5.829, y: 4.9014147e-17, z: 1.256}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0.8, y: 0, z: 7.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4878381181851008}
@@ -532,7 +532,7 @@ Transform:
   - {fileID: 4236177371869170}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!4 &4322525309381400
 Transform:
   m_ObjectHideFlags: 1
@@ -1323,18 +1323,30 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1094178164273792}
   m_Mesh: {fileID: 4300000, guid: 7128367236020a34ba3202ead07d4885, type: 3}
---- !u!65 &65146590613384884
+--- !u!65 &65090907125997430
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1181689878150578}
+  m_GameObject: {fileID: 1577775806639726}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.35000044, y: 0.575, z: 0.20000008}
-  m_Center: {x: -0.00000011863384, y: 0.009654432, z: 0.0000002682209}
+  m_Size: {x: 0.5600786, y: 0.19440651, z: 0.3439889}
+  m_Center: {x: 0.01857543, y: 0.5284282, z: -0.0007312298}
+--- !u!65 &65147569576686152
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1792881819252754}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5600786, y: 0.19440651, z: 0.3439889}
+  m_Center: {x: 0.01857543, y: 0.5284282, z: -0.0007312298}
 --- !u!65 &65211328217385244
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1359,42 +1371,42 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.59999996, y: 0.40000007, z: 0.65000266}
   m_Center: {x: 0, y: 0, z: 0.32500133}
---- !u!65 &65477273879985088
+--- !u!65 &65285235027247408
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1609787204739676}
+  m_GameObject: {fileID: 1971595077675256}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.35000044, y: 0.575, z: 0.20000008}
-  m_Center: {x: -0.00000011863384, y: 0.009654432, z: 0.0000002682209}
---- !u!65 &65559414380030084
+  m_Size: {x: 0.5600786, y: 0.19440651, z: 0.3439889}
+  m_Center: {x: 0.01857543, y: 0.5284282, z: -0.0007312298}
+--- !u!65 &65351237023643130
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1264821857272248}
+  m_GameObject: {fileID: 1086073302004118}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.35000044, y: 0.575, z: 0.20000008}
-  m_Center: {x: -0.00000011863384, y: 0.009654432, z: 0.0000002682209}
---- !u!65 &65596771873772486
+  m_Size: {x: 0.5600786, y: 0.19440651, z: 0.3439889}
+  m_Center: {x: 0.01857543, y: 0.5284282, z: -0.0007312298}
+--- !u!65 &65518761799798936
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1171132154721962}
+  m_GameObject: {fileID: 1825488502465740}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.35000044, y: 0.575, z: 0.20000008}
-  m_Center: {x: -0.00000011863384, y: 0.009654432, z: 0.0000002682209}
+  m_Size: {x: 0.5600786, y: 0.19440651, z: 0.3439889}
+  m_Center: {x: 0.01857543, y: 0.5284282, z: -0.0007312298}
 --- !u!65 &65621388189813934
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1407,30 +1419,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.59999996, y: 1.2000002, z: 0.10000002}
   m_Center: {x: 0, y: 0, z: 0.05000001}
---- !u!65 &65824964842804200
+--- !u!65 &65684244623527826
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1675860857787138}
+  m_GameObject: {fileID: 1056895191836472}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.35000044, y: 0.575, z: 0.20000008}
-  m_Center: {x: -0.00000011863384, y: 0.009654432, z: 0.0000002682209}
---- !u!65 &65894868309088468
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1289075326927794}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.35000044, y: 0.575, z: 0.20000008}
-  m_Center: {x: -0.00000011863384, y: 0.009654432, z: 0.0000002682209}
+  m_Size: {x: 0.5600786, y: 0.19440651, z: 0.3439889}
+  m_Center: {x: 0.01857543, y: 0.5284282, z: -0.0007312298}
 --- !u!95 &95008595739204202
 Animator:
   serializedVersion: 3
@@ -1618,12 +1618,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1577775806639726}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineMode: 1
+  outlineMode: 0
   outlineColor: {r: 0.16430017, g: 0.75, b: 0.14338236, a: 0.597}
   outlineWidth: 3.5
   precomputeOutline: 0
@@ -1635,12 +1635,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1792881819252754}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineMode: 1
+  outlineMode: 0
   outlineColor: {r: 0.16430017, g: 0.75, b: 0.14338236, a: 0.597}
   outlineWidth: 3.5
   precomputeOutline: 0
@@ -1694,12 +1694,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1086073302004118}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineMode: 1
+  outlineMode: 0
   outlineColor: {r: 0.16430017, g: 0.75, b: 0.14338236, a: 0.597}
   outlineWidth: 3.5
   precomputeOutline: 0
@@ -1725,12 +1725,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1971595077675256}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineMode: 1
+  outlineMode: 0
   outlineColor: {r: 0.16430017, g: 0.75, b: 0.14338236, a: 0.597}
   outlineWidth: 3.5
   precomputeOutline: 0
@@ -1742,12 +1742,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1825488502465740}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineMode: 1
+  outlineMode: 0
   outlineColor: {r: 0.16430017, g: 0.75, b: 0.14338236, a: 0.597}
   outlineWidth: 3.5
   precomputeOutline: 0
@@ -1759,12 +1759,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1056895191836472}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineMode: 1
+  outlineMode: 0
   outlineColor: {r: 0.16430017, g: 0.75, b: 0.14338236, a: 0.597}
   outlineWidth: 3.5
   precomputeOutline: 0
