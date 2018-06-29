@@ -38,7 +38,7 @@ public class ControlledEnemy : MonoBehaviour {
        //
        // }
 
-        if (collision.gameObject == detectingRadius && Input.GetKeyUp(KeyCode.Joystick1Button2))
+        if (collision.gameObject == detectingRadius)
             nearToFetish = true;
     }
 
