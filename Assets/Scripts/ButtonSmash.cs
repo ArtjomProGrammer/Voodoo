@@ -9,6 +9,8 @@ public class ButtonSmash : MonoBehaviour {
     public GameObject right;
     public GameObject mid;
 
+    public GameObject buttonSmash;
+
     public float curPosLeft; 
     public float curPosRight;
     public float strenght;
@@ -19,7 +21,7 @@ public class ButtonSmash : MonoBehaviour {
 
     public bool controllGuard = false;
 
-    public float coolingDown = 10f;
+    public float _timer = 10f;
     private float coolingTime = 1f;
 
     private float maxPosLeft = -100f;
@@ -36,11 +38,11 @@ public class ButtonSmash : MonoBehaviour {
         strenght = .75f;
         
     }
-	
-	// Update is called once per frame
-	void Update () {
 
-        
+    // Update is called once per frame
+    void Update() {
+
+
 
         // left triangle
         if (Input.GetKeyDown(KeyCode.Joystick1Button2) && isDone == true)
@@ -54,34 +56,42 @@ public class ButtonSmash : MonoBehaviour {
         {
             if (curPosRight > 0)
                 curPosRight *= strenght;
+        }
 
-            // Smash done
-            if (curPosRight < destination)
+        // if not done within the time
+        if (_timer <= 0)
+        {
+            recoveryTime = 0;
+            tempStrenght = strenght;
+            isDone = false;
+            tempStrenght -= .025f;              // lower dynamic difficulty
+            Invoke("ControllGuardFailed", 1.5f);
+        }
+
+        // Smash done
+        if (curPosRight < destination)
+        {
+            recoveryTime = 0;
+            tempStrenght = strenght;
+            Invoke("ControllGuardReset", 1.5f);
+
+            if (_timer > 0f)
             {
-                recoveryTime = 0;
-                tempStrenght = strenght;
-                Invoke("ControllGuard", 1.5f);
-
-                if (coolingDown > 0f)
-                {
-                    smashDone = true;
-                    tempStrenght += .0125f;      // higher dynamic difficulty
-                }
-                else if (coolingDown <= 0f)
-                {
-                    tempStrenght -= .025f;      // lower dynamic difficulty
-                }
-                isDone = false;
+                smashDone = true;
+                controllGuard = true;
+                tempStrenght += .0125f;         // higher dynamic difficulty
             }
+            isDone = false;
         }
 
 
 
 
+
         //Reduce amount over time
-        if (coolingDown > 0f)
+        if (_timer > 0f)
         {            
-            coolingDown -= Time.deltaTime;
+            _timer -= Time.deltaTime;
         }
         
         // moving the left triangle to the mid
@@ -93,16 +103,30 @@ public class ButtonSmash : MonoBehaviour {
         right.transform.localPosition = new Vector3(curPosRight, 0, 0);
     }
 
-    // ability to controll the guard after 1.5 seconds when smashing done
-    void ControllGuard()
+
+    // reset values
+    void ControllGuardReset()
     {
-        controllGuard = true;
         curPosLeft  = -100f;
         curPosRight = 100f;
         strenght = tempStrenght;
-        this.enabled = false;
+        //this.enabled = false;
         isDone = true;
         recoveryTime = 40;
-        coolingDown = 5f;
+        _timer = 5f;
+        buttonSmash.SetActive(false);
+    }
+
+    // if smash failed, u have to repeat smash
+    void ControllGuardFailed()
+    {
+        curPosLeft = -100f;
+        curPosRight = 100f;
+        strenght = tempStrenght;
+        //this.enabled = false;
+        isDone = true;
+        recoveryTime = 40;
+        _timer = 5f;
+        buttonSmash.SetActive(false);
     }
 }

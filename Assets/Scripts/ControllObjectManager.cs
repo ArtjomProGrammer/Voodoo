@@ -29,8 +29,10 @@ public class ControllObjectManager : MonoBehaviour
             controllGuard = true;
         }
 
-        if (collision.gameObject == fetish02 && controllGuard == true)
+        if (collision.gameObject == fetish02 && controllGuard == true && ButtonSmash.GetComponent<ButtonSmash>().smashDone == false)
+        {
+            //ButtonSmash.GetComponent<ButtonSmash>().enabled = true;
             ButtonSmash.SetActive(true);
-
+        }
     }   
 }

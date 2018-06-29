@@ -24,6 +24,8 @@ public class CameraFollow1 : MonoBehaviour {
     private float rotY = 0.0f;
 	private float rotX = 0.0f;
 
+    public GameObject buttonSmash;
+
     #region inits    
     public Transform lookAt;
     public Transform camTransform;
@@ -81,7 +83,10 @@ public class CameraFollow1 : MonoBehaviour {
 
 
         //--------------------
-        controllGuard = GameObject.Find("ButtonSmash").GetComponent<ButtonSmash>().controllGuard;
+        if (buttonSmash.active == true)
+        {
+            controllGuard = GameObject.Find("ButtonSmash").GetComponent<ButtonSmash>().controllGuard;
+        }
         bool nearToFetish = GameObject.Find("Interact_with_Objects").GetComponent<ControlledEnemy>().nearToFetish;
         
         transitionTime += Time.deltaTime;
