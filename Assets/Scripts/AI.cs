@@ -69,7 +69,8 @@ public class AI : MonoBehaviour {
 
         // Alert
         if (Vector3.Distance(player.position, transform.position) < alertDistance && 
-            Vector3.Distance(player.position, transform.position) > walkingDistance && alarmed == true && moving == false && playerVisible == true)
+            Vector3.Distance(player.position, transform.position) > walkingDistance && 
+            alarmed == true && moving == false && playerVisible == true)
         {
             agent.enabled = false;
 
@@ -93,7 +94,8 @@ public class AI : MonoBehaviour {
 
         // Moving
         else if (Vector3.Distance(player.position, transform.position) <= walkingDistance &&
-                 Vector3.Distance(player.position, transform.position) > attackingDistance && alarmed == true && playerVisible == true || moving == true)
+                 Vector3.Distance(player.position, transform.position) > attackingDistance && 
+                 alarmed == true && playerVisible == true || moving == true)
         {
             agent.enabled = true;
 
@@ -107,8 +109,10 @@ public class AI : MonoBehaviour {
         } 
 
         // Attacking
-        else if (Vector3.Distance(player.position, transform.position) <= attackingDistance && alarmed == true && playerVisible == true)
+        else if (Vector3.Distance(player.position, transform.position) <= attackingDistance && 
+                 alarmed == true && playerVisible == true)
         {
+            agent.enabled = false;
             anim.SetBool("isAttacking", true);
             anim.SetBool("isWalking", false);
             Debug.Log("ATTACKING");
