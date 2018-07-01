@@ -9908,7 +9908,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 802e2208531cab24684827af2eab2ea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy_01: {fileID: 2029255551}
+  Enemy_01: {fileID: 217862038}
   Mask: {fileID: 567491091}
   fetishRadius: {fileID: 1297110651}
   player: {fileID: 592740113}
@@ -9929,6 +9929,7 @@ GameObject:
   - component: {fileID: 217862039}
   - component: {fileID: 217862046}
   - component: {fileID: 217862047}
+  - component: {fileID: 217862048}
   m_Layer: 2
   m_Name: Enemy_Temp
   m_TagString: Untagged
@@ -10068,6 +10069,7 @@ Transform:
   m_Children:
   - {fileID: 1188095471}
   - {fileID: 419903939}
+  - {fileID: 1895888353}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -10100,6 +10102,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.75, y: 1, z: 6.1764455}
   m_Center: {x: 7.106884e-15, y: 0, z: 3.37}
+--- !u!114 &217862048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 217862038}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e4a8087d2d26944295597318e8e8278, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  rotationSpeed: 300
+  rayOffset: {x: 0, y: 0.05, z: 0}
 --- !u!1 &218622199
 GameObject:
   m_ObjectHideFlags: 0
@@ -28449,7 +28465,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 592740113}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.229, y: 0.13, z: -3.095}
+  m_LocalPosition: {x: 1.859, y: 0.13, z: -3.071}
   m_LocalScale: {x: 0.4002212, y: 0.41486415, z: 0.3929468}
   m_Children:
   - {fileID: 1614144342}
@@ -86633,12 +86649,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1895888352}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.0068283207, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2029255556}
-  m_RootOrder: 3
+  m_Father: {fileID: 217862045}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1895888354
 MonoBehaviour:
@@ -93462,7 +93478,6 @@ Transform:
   - {fileID: 506117921}
   - {fileID: 2045090657}
   - {fileID: 1648684942}
-  - {fileID: 1895888353}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -97429,7 +97444,7 @@ MonoBehaviour:
   lookAt: {fileID: 592740118}
   camTransform: {fileID: 0}
   Player: {fileID: 592740113}
-  Enemy_01: {fileID: 2029255551}
+  Enemy_01: {fileID: 217862038}
   Mask: {fileID: 567491091}
   cam: {fileID: 1299391137}
   enemy: 1

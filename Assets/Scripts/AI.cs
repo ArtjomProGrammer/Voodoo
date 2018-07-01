@@ -37,7 +37,8 @@ public class AI : MonoBehaviour {
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         agent.enabled = false;
-	}
+        StartCoroutine(RandomMovement());
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -163,8 +164,7 @@ public class AI : MonoBehaviour {
                 anim.SetBool("isWalking", true);
                 anim.SetBool("isAttacking", false);
                 anim.SetBool("isAlert", false);
-                anim.SetBool("isIdle", false);
-    
+                anim.SetBool("isIdle", false);    
                 break;
         }   
     }
