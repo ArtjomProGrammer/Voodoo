@@ -41,9 +41,7 @@ public class ButtonSmash : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-
-
-
+        
         // left triangle
         if (Input.GetKeyDown(KeyCode.Joystick1Button2) && isDone == true)
         {
@@ -64,7 +62,7 @@ public class ButtonSmash : MonoBehaviour {
             recoveryTime = 0;
             tempStrenght = strenght;
             isDone = false;
-            tempStrenght -= .025f;              // lower dynamic difficulty
+            tempStrenght -= .0375f;              // lower dynamic difficulty
             Invoke("ControllGuardFailed", 1.5f);
         }
 
@@ -85,10 +83,7 @@ public class ButtonSmash : MonoBehaviour {
         }
 
 
-
-
-
-        //Reduce amount over time
+        // Reduce amount over time
         if (_timer > 0f)
         {            
             _timer -= Time.deltaTime;
@@ -110,7 +105,6 @@ public class ButtonSmash : MonoBehaviour {
         curPosLeft  = -100f;
         curPosRight = 100f;
         strenght = tempStrenght;
-        //this.enabled = false;
         isDone = true;
         recoveryTime = 40;
         _timer = 5f;
@@ -123,7 +117,6 @@ public class ButtonSmash : MonoBehaviour {
         curPosLeft = -100f;
         curPosRight = 100f;
         strenght = tempStrenght;
-        //this.enabled = false;
         isDone = true;
         recoveryTime = 40;
         _timer = 5f;

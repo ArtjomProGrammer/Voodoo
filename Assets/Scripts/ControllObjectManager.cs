@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class ControllObjectManager : MonoBehaviour
 {
-
     public bool controllObject02 = false;
     public bool controllGuard = false;
     public GameObject Object02;
     public GameObject fetish02;
-    public GameObject door02;
 
     public GameObject ButtonSmash;
 
@@ -31,8 +29,16 @@ public class ControllObjectManager : MonoBehaviour
 
         if (collision.gameObject == fetish02 && controllGuard == true && ButtonSmash.GetComponent<ButtonSmash>().smashDone == false)
         {
-            //ButtonSmash.GetComponent<ButtonSmash>().enabled = true;
             ButtonSmash.SetActive(true);
         }
-    }   
+    }
+
+    void OnTriggerExit(Collider collision)
+    {
+
+        if (collision.gameObject == fetish02 && controllGuard == true && ButtonSmash.GetComponent<ButtonSmash>().smashDone == false)
+        {
+            ButtonSmash.SetActive(false);
+        }
+    }
 }

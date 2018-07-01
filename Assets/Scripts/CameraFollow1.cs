@@ -33,14 +33,11 @@ public class CameraFollow1 : MonoBehaviour {
     public GameObject Player;
     public GameObject Enemy_01;
     public GameObject Mask;
-    public GameObject cam;
-    
-    
+    public GameObject cam;  
     
     private bool player = false;
     public  bool enemy = true;
     private bool wallCamera = true;
-    private bool mask = false;
     
     public float transitionTime = 1.0f;
     private Vector3 lastPosition;
@@ -59,7 +56,6 @@ public class CameraFollow1 : MonoBehaviour {
         
         camTransform = transform;
         
-        //cameraDistance = .01f;
         lookAt = Player.transform;
         SetLookAt();
         Player.GetComponent<Movement>().enabled = true;
@@ -102,7 +98,6 @@ public class CameraFollow1 : MonoBehaviour {
             Player.GetComponent<PlayerJump>().enabled = false;
             Enemy_01.GetComponent<Movement>().enabled = true;
             Enemy_01.GetComponent<Rigidbody>().isKinematic = false;
-            mask = false;
             enemy = false;
             player = true;
             wallCamera = true;
@@ -120,7 +115,6 @@ public class CameraFollow1 : MonoBehaviour {
             Enemy_01.GetComponent<MoveTo>().enabled = true;
             Enemy_01.GetComponent<Movement>().enabled = false;
             Enemy_01.GetComponent<Rigidbody>().isKinematic = true;
-            mask = true;
             enemy = true;
             player = true;
             wallCamera = false;
@@ -137,7 +131,6 @@ public class CameraFollow1 : MonoBehaviour {
             Enemy_01.GetComponent<NavMeshAgent>().enabled = true;
             Enemy_01.GetComponent<MoveTo>().enabled = true;
             Enemy_01.GetComponent<Rigidbody>().isKinematic = true;
-            mask = false;
             player = false;
             enemy = true;
             wallCamera = true;
@@ -146,7 +139,7 @@ public class CameraFollow1 : MonoBehaviour {
         }
         #endregion
 
-        if (mask == true)
+        if (wallCamera != true)
         {
             rotY = Mathf.Clamp (rotY, 5, clampAngle2);
             rotX = Mathf.Clamp(rotX, clampAngle3, clampAngle4);
