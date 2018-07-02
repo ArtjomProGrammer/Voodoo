@@ -11,8 +11,7 @@ public class Movement : MonoBehaviour
     private float currentY = 0f;
 
     public Vector3 rayOffset = new Vector3(0,.05f,0);
-
-    private float deadzone = 0.1f;
+    
     private ThirdPersonCamera cameraInput;
 
     private void Start()

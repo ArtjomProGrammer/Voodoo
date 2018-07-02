@@ -4,32 +4,77 @@ using UnityEngine;
 
 public class Schublade : MonoBehaviour {
 
-    private bool isOpen = false;
+    private float curPositionX_01;
+    private float curPositionX_02;
+    private float curPositionX_03;
+    private float maxPositionX_01;
+    private float maxPositionX_02;
+    private float maxPositionX_03;
 
-    public GameObject Schublade1;
-    public GameObject Schublade2;
-    
+    private float localPosition_02;
+    private float localPosition_03;
 
+    public GameObject schublade_02;
+    public GameObject schublade_03;
 
-	// Use this for initialization
-	void Start () {
-        
-	}
+    public bool test = false;
+
+    // Use this for initialization
+    void Start () {
+        maxPositionX_01 = transform.localPosition.x + .34f;
+        maxPositionX_02 = schublade_02.transform.localPosition.x - .34f;
+        maxPositionX_03 = schublade_03.transform.localPosition.x - .34f;
+
+        localPosition_02 = schublade_02.transform.localPosition.x;
+        localPosition_03 = schublade_03.transform.localPosition.x;
+    }
 	
 	// Update is called once per frame
 	void Update () {
 
- 
+		if (test == true)
+        {
+            curPositionX_01 = Mathf.MoveTowards(transform.localPosition.x, maxPositionX_01, .5f * Time.deltaTime);
+            transform.localPosition = new Vector3(curPositionX_01, transform.localPosition.y, transform.localPosition.z);
 
+            if (schublade_02.transform.localPosition.x > localPosition_02)
+            {
+                curPositionX_02 = Mathf.MoveTowards(schublade_02.transform.localPosition.x, maxPositionX_02, .5f * Time.deltaTime);
+                schublade_02.transform.localPosition = new Vector3(curPositionX_02, schublade_02.transform.localPosition.y, schublade_02.transform.localPosition.z);
+            }
+
+            if (schublade_03.transform.localPosition.x > localPosition_03)
+            {
+                curPositionX_03 = Mathf.MoveTowards(schublade_03.transform.localPosition.x, maxPositionX_03, .5f * Time.deltaTime);
+                schublade_03.transform.localPosition = new Vector3(curPositionX_03, schublade_03.transform.localPosition.y, schublade_03.transform.localPosition.z);
+            }
+
+            Invoke("waiting", 1f);
+        }
+	}
+
+    void OnTriggerStay(Collider col)
+    {
+        if (col.gameObject.tag == "Player" && Input.GetKeyDown(KeyCode.Joystick1Button1))
+        {
+            test = true;
+        }
     }
 
-    void OnTriggerStay(Collider collision)
+    private void OnTriggerEnter(Collider col)
     {
-        if(collision.gameObject.tag == "Player" && Input.GetKeyDown(KeyCode.Joystick1Button1))
-        {
-            Schublade1.GetComponent<Animator>().SetBool("isOpen", false);
-            Schublade2.GetComponent<Animator>().SetBool("isOpen", false);
-            GetComponent<Animator>().SetBool("isOpen", true);
-        }
+        if(col.gameObject.tag == "outline")
+            GetComponent<Outline>().enabled = true;
+    }
+
+    private void OnTriggerExit(Collider col)
+    {
+        if (col.gameObject.tag == "outline")
+            GetComponent<Outline>().enabled = false;
+    }
+
+    void waiting()
+    {
+        test = false;
     }
 }

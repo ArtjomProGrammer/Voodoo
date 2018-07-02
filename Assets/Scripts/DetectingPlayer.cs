@@ -22,7 +22,7 @@ public class DetectingPlayer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        detectingPlayer = GameObject.Find("Main Camera").GetComponent<ThirdPersonCamera>().enemy;
+        detectingPlayer = GameObject.Find("CameraBase").GetComponent<CameraFollow1>().enemy;
 
         if (watchingAtPlayer == true)
         {
@@ -43,12 +43,10 @@ public class DetectingPlayer : MonoBehaviour {
     IEnumerator EnemySeesPlayer()
     {
         detectorRadius.SetActive(false);
-        //GetComponentInParent<AI_Enemy_01>().enabled = false;
         watchingAtPlayer = true;
         yield return new WaitForSeconds(3f);
         detectorRadius.SetActive(true);
         watchingAtPlayer = false;
-        //GetComponentInParent<AI_Enemy_01>().enabled = true;
         Enemy_01.transform.rotation = Quaternion.Euler(0, 90, 0);
     }
 }

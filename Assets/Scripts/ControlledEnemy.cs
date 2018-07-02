@@ -6,7 +6,7 @@ public class ControlledEnemy : MonoBehaviour {
 
     public GameObject Enemy_01;
     public GameObject Mask;
-    public GameObject detectingRadius;
+    public GameObject fetishRadius;
     public GameObject player;
     public bool nearToFetish = false;
 
@@ -33,18 +33,13 @@ public class ControlledEnemy : MonoBehaviour {
 
     public void OnTriggerStay(Collider collision)
     {
-       // if(collision.gameObject == detectingRadius && Input.GetKeyDown(KeyCode.Joystick1Button2) && controllGuard == true)
-       // {
-       //
-       // }
-
-        if (collision.gameObject == detectingRadius && Input.GetKeyUp(KeyCode.Joystick1Button2))
+        if (collision.gameObject == fetishRadius)
             nearToFetish = true;
     }
 
     public void OnTriggerExit(Collider collision)
     {
-        if (collision.gameObject == detectingRadius)
+        if (collision.gameObject == fetishRadius)
             nearToFetish = false;
     }
 }
