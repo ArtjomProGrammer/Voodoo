@@ -49,7 +49,7 @@ public class Schublade : MonoBehaviour {
                 schublade_03.transform.localPosition = new Vector3(curPositionX_03, schublade_03.transform.localPosition.y, schublade_03.transform.localPosition.z);
             }
 
-            Invoke("waiting", 1f);
+            Invoke("waiting", .7f);
         }
 	}
 

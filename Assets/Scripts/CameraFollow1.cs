@@ -8,12 +8,20 @@ public class CameraFollow1 : MonoBehaviour {
 
 	public float CameraMoveSpeed = 120.0f;
 	public GameObject CameraFollowObj;
-	public float clampAngle = 80.0f;
-    public float clampAngle2 = 80.0f;
-    public float clampAngle3 = 90.0f;
-    public float clampAngle4 = 180.0f;
+	public float clampAngle   = 80.0f;
+    public float clampAngle2  = 80.0f;
+    public float clampAngle3  = 90.0f;
+    public float clampAngle4  = 180.0f;
+    public float clampAngle5  = 0f;
+    public float clampAngle6  = 180.0f;
+    public float clampAngle7  = 90.0f;
+    public float clampAngle8  = 180.0f;
+    public float clampAngle9  = 90.0f;
+    public float clampAngle10 = 180.0f;
     public float inputSensitivity = 150.0f;
     public GameObject cameraObject;
+    public bool isRoom_02 = true;
+    public bool isRoom_03 = true;
 
     private float timerAlpha;
 
@@ -26,19 +34,31 @@ public class CameraFollow1 : MonoBehaviour {
 
     public GameObject buttonSmash;
 
+    private Animator FadeInOut;
+
+
     #region inits    
     public Transform lookAt;
     public Transform camTransform;
     
     public GameObject Player;
     public GameObject Enemy_01;
-    public GameObject Mask;
-    public GameObject cam;  
+    public GameObject Enemy_02;
+    public GameObject Enemy_03;
+    public GameObject Mask_01;
+    public GameObject Mask_02;
+    public GameObject Mask_03;
+    public GameObject Mask_04;
+    public GameObject cam;
+    public int fieldOfView = 85;
     
     private bool player = false;
     public  bool enemy = true;
-    private bool wallCamera = true;
-    
+    public bool wallCamera_01 = false;
+    public bool wallCamera_02 = true;
+    public bool wallCamera_03 = false;
+    public bool wallCamera_04 = false;
+
     public float transitionTime = 1.0f;
     private Vector3 lastPosition;
     
@@ -49,7 +69,8 @@ public class CameraFollow1 : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        
+
+        FadeInOut = GameObject.Find("FadeInOut").GetComponent<Animator>();
         Vector3 rot = transform.localRotation.eulerAngles;
 		rotY = rot.y;
 		rotX = rot.x;
@@ -78,7 +99,7 @@ public class CameraFollow1 : MonoBehaviour {
 		transform.rotation = localRotation;
 
 
-        //--------------------
+        // If Button-Smash is != null
         if (buttonSmash.active == true)
         {
             controllGuard = GameObject.Find("ButtonSmash").GetComponent<ButtonSmash>().controllGuard;
@@ -86,10 +107,14 @@ public class CameraFollow1 : MonoBehaviour {
         bool nearToFetish = GameObject.Find("Interact_with_Objects").GetComponent<ControlledEnemy>().nearToFetish;
         
         transitionTime += Time.deltaTime;
-        
+
+        isRoom_02 = GameObject.Find("Player").GetComponent<RoomTrigger>().isRoom_02;
+        isRoom_03 = GameObject.Find("Player").GetComponent<RoomTrigger>().isRoom_03;
+
         #region Controll Enemy
         if (Input.GetKeyDown(KeyCode.Joystick1Button2) && enemy == true && controllGuard == true && nearToFetish == true)
         {
+            FadeInOut.SetBool("isFading", true);
             Camera.main.GetComponent<Camera>().fieldOfView = 60;
             hurtImage.SetActive(false);
             distance = -800;
@@ -100,16 +125,18 @@ public class CameraFollow1 : MonoBehaviour {
             Enemy_01.GetComponent<Movement>().enabled = true;
             enemy = false;
             player = true;
-            wallCamera = true;
+            wallCamera_01 = true;
+            StartCoroutine(Enemy01());
             lookAt = Enemy_01.transform;
             SetLookAt();
         }
         #endregion
         
-        #region Controll Mask
-        if (Input.GetKeyDown(KeyCode.Joystick1Button3) && wallCamera == true)
+        #region Controll Mask_01
+        if (Input.GetKeyDown(KeyCode.Joystick1Button3) && wallCamera_01 == true && isRoom_02 == true)
         {
-            Camera.main.GetComponent<Camera>().fieldOfView = 80;
+            FadeInOut.SetBool("isFading", true);
+            Camera.main.GetComponent<Camera>().fieldOfView = fieldOfView;
             hurtImage.SetActive(true);
             distance = 650;
             Enemy_01.GetComponent<NavMeshAgent>().enabled = true;
@@ -117,15 +144,83 @@ public class CameraFollow1 : MonoBehaviour {
             Enemy_01.GetComponent<Movement>().enabled = false;
             enemy = true;
             player = true;
-            wallCamera = false;
-            lookAt = Mask.transform;
+            wallCamera_01 = false;
+            StartCoroutine(Mask01());
+            lookAt = Mask_01.transform;
             SetLookAt();            
+        }
+        #endregion
+
+        #region Controll Mask_02
+        if (Input.GetKeyDown(KeyCode.Joystick1Button3) && wallCamera_02 == true && isRoom_03 == true)
+        {
+            FadeInOut.SetBool("isFading", true);
+            Camera.main.GetComponent<Camera>().fieldOfView = fieldOfView;
+            //hurtImage.SetActive(true);
+            distance = 650;
+            //Enemy_02.GetComponent<NavMeshAgent>().enabled = true;
+            //Enemy_02.GetComponent<AI>().enabled = true;
+            //Enemy_02.GetComponent<Movement>().enabled = false;
+            //Enemy_03.GetComponent<NavMeshAgent>().enabled = true;
+            //Enemy_03.GetComponent<AI>().enabled = true;
+            //Enemy_03.GetComponent<Movement>().enabled = false;
+            //enemy = true;
+            player = true;
+            wallCamera_02 = false;
+            StartCoroutine(Mask02());
+            lookAt = Mask_02.transform;
+            SetLookAt();
+        }
+        #endregion
+       
+        #region Controll Mask_03
+        if (Input.GetKeyDown(KeyCode.Joystick1Button3) && wallCamera_03 == true && isRoom_03 == true)
+        {
+            FadeInOut.SetBool("isFading", true);
+            Camera.main.GetComponent<Camera>().fieldOfView = fieldOfView;
+            hurtImage.SetActive(true);
+            distance = 650;
+            //Enemy_02.GetComponent<NavMeshAgent>().enabled = true;
+            //Enemy_02.GetComponent<AI>().enabled = true;
+            //Enemy_02.GetComponent<Movement>().enabled = false;
+            //Enemy_03.GetComponent<NavMeshAgent>().enabled = true;
+            //Enemy_03.GetComponent<AI>().enabled = true;
+            //Enemy_03.GetComponent<Movement>().enabled = false;
+            //enemy = true;
+            player = true;
+            wallCamera_03 = false;
+            StartCoroutine(Mask03());
+            lookAt = Mask_03.transform;
+            SetLookAt();
+        }
+        #endregion
+       
+        #region Controll Mask_04
+        if (Input.GetKeyDown(KeyCode.Joystick1Button3) && wallCamera_04 == true && isRoom_03 == true)
+        {
+            FadeInOut.SetBool("isFading", true);
+            Camera.main.GetComponent<Camera>().fieldOfView = fieldOfView;
+            hurtImage.SetActive(true);
+            distance = 650;
+            //Enemy_02.GetComponent<NavMeshAgent>().enabled = true;
+            //Enemy_02.GetComponent<AI>().enabled = true;
+            //Enemy_02.GetComponent<Movement>().enabled = false;
+            //Enemy_03.GetComponent<NavMeshAgent>().enabled = true;
+            //Enemy_03.GetComponent<AI>().enabled = true;
+            //Enemy_03.GetComponent<Movement>().enabled = false;
+            //enemy = true;
+            player = true;
+            wallCamera_04 = false;
+            StartCoroutine(Mask04());
+            lookAt = Mask_04.transform;
+            SetLookAt();
         }
         #endregion
 
         #region Controll Player
         if (Input.GetKeyDown(KeyCode.Joystick1Button1) && player == true)
         {
+            FadeInOut.SetBool("isFading", true);
             Camera.main.GetComponent<Camera>().fieldOfView = 60;
             hurtImage.SetActive(false);
             distance = 10;
@@ -133,18 +228,92 @@ public class CameraFollow1 : MonoBehaviour {
             Enemy_01.GetComponent<AI>().enabled = true;
             player = false;
             enemy = true;
-            wallCamera = true;
+            wallCamera_01 = true;
+            StartCoroutine(_Player());
             lookAt = Player.transform;
             SetLookAt();
         }
         #endregion
 
-        if (wallCamera != true)
+        #region Camera Clamp
+        if (wallCamera_01 == false && isRoom_02 == true && player == true && enemy == true)
         {
-            rotY = Mathf.Clamp (rotY, 5, clampAngle2);
+            rotY = Mathf.Clamp(rotY, 5, clampAngle2);
             rotX = Mathf.Clamp(rotX, clampAngle3, clampAngle4);
         }
+
+        if (wallCamera_02 == false && wallCamera_04 == false && player == true && enemy == true)
+        {
+            rotY = Mathf.Clamp(rotY, 5, clampAngle2);
+            rotX = Mathf.Clamp(rotX, clampAngle5, clampAngle6);
+        }
+
+        if (wallCamera_03 == false && wallCamera_02 == false && player == true && enemy == true)
+        {
+            rotY = Mathf.Clamp(rotY, 5, clampAngle2);
+            rotX = Mathf.Clamp(rotX, clampAngle7, clampAngle8);
+        }
+        
+        if (wallCamera_04 == false && wallCamera_03 == false && player == true && enemy == true)
+        {
+            rotY = Mathf.Clamp(rotY, 5, clampAngle2);
+            rotX = Mathf.Clamp(rotX, clampAngle9, clampAngle10);
+        }
+        #endregion
     }
+
+    #region Mask WaitForSeconds
+    public IEnumerator _Player()
+    {
+        yield return new WaitForSeconds(1f);
+        FadeInOut.SetBool("isFading", false);
+    }
+
+    public IEnumerator Enemy01()
+    {
+        yield return new WaitForSeconds(1f);
+        FadeInOut.SetBool("isFading", false);
+    }
+
+    public IEnumerator Enemy02()
+    {
+        yield return new WaitForSeconds(1f);
+        FadeInOut.SetBool("isFading", false);
+    }
+
+    public IEnumerator Enemy03()
+    {
+        yield return new WaitForSeconds(1f);
+        FadeInOut.SetBool("isFading", false);
+    }
+
+    public IEnumerator Mask01()
+    {
+        yield return new WaitForSeconds(1f);
+        FadeInOut.SetBool("isFading", false);
+    }
+
+    public IEnumerator Mask02()
+    {
+        yield return new WaitForSeconds(1f);
+        FadeInOut.SetBool("isFading", false);
+        wallCamera_03 = true;
+    }
+
+    public IEnumerator Mask03()
+    {
+        yield return new WaitForSeconds(1f);
+        wallCamera_04 = true;
+        FadeInOut.SetBool("isFading", false);
+    }
+
+    public IEnumerator Mask04()
+    {
+        yield return new WaitForSeconds(1f);
+        wallCamera_02 = true;
+        FadeInOut.SetBool("isFading", false);
+    }
+    #endregion
 
     private void SetLookAt()
     {
