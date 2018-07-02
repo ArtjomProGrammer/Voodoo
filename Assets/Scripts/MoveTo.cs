@@ -9,9 +9,6 @@ public class MoveTo : MonoBehaviour {
     private int destPoint = 0;
     private NavMeshAgent agent;
 
-    public GameObject exit;
-    public GameObject exitTrigger;
-
 
     void Start()
     {
@@ -65,11 +62,5 @@ public class MoveTo : MonoBehaviour {
     //    GetComponent<NavMeshAgent>().speed = .5f;
     //}
 
-    void OnTriggerStay(Collider collision)
-    {
-        if(collision.gameObject == exitTrigger && Input.GetKeyDown(KeyCode.Joystick1Button2))
-        {
-            Destroy(exit);
-        }
-    }
+
 }
