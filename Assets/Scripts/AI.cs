@@ -96,8 +96,9 @@ public class AI : MonoBehaviour {
         else if (Vector3.Distance(player.position, transform.position) <= walkingDistance &&
                  Vector3.Distance(player.position, transform.position) > attackingDistance && 
                  alarmed == true && playerVisible == true || moving == true)
-        {
+        {            
             agent.enabled = true;
+            GetComponent<NavMeshAgent>().speed = 1f;
 
             agent.SetDestination(player.transform.position);
 
@@ -152,6 +153,7 @@ public class AI : MonoBehaviour {
                 // picks a random destination and moves
                 Debug.Log("move...");
                 agent.enabled = true;
+                GetComponent<NavMeshAgent>().speed = .3f;
 
                 lastDestination = selectedDestination;
                 
