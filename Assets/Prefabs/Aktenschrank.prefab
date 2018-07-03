@@ -90,9 +90,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1348598692320314}
-  m_LocalRotation: {x: 0.00000030204743, y: -0.00000011415254, z: -1, w: 0.0000013113021}
-  m_LocalPosition: {x: -4.0590453, y: -0.16922306, z: -0.5708361}
-  m_LocalScale: {x: 1.0390733, y: 1.0390737, z: 1.0390744}
+  m_LocalRotation: {x: 0.00000028097398, y: -0.000000093079144, z: -1, w: 0.0000013113021}
+  m_LocalPosition: {x: -1.8868134, y: -0.16615927, z: -0.570836}
+  m_LocalScale: {x: 1.0390736, y: 1.0390742, z: 1.0390747}
   m_Children:
   - {fileID: 4549785912234220}
   - {fileID: 4046966779356912}
@@ -326,8 +326,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 1
-  outlineColor: {r: 0.94482756, g: 1, b: 0, a: 1}
-  outlineWidth: 3.5
+  outlineColor: {r: 1, g: 0.53676474, b: 0.7955374, a: 1}
+  outlineWidth: 7
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
@@ -343,8 +343,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 1
-  outlineColor: {r: 0.94482756, g: 1, b: 0, a: 1}
-  outlineWidth: 3.5
+  outlineColor: {r: 1, g: 0.53676474, b: 0.7955374, a: 1}
+  outlineWidth: 7
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []

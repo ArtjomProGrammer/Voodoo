@@ -61,9 +61,14 @@ public class Schublade : MonoBehaviour {
         }
     }
 
+    void waiting()
+    {
+        test = false;
+    }
+
     private void OnTriggerEnter(Collider col)
     {
-        if(col.gameObject.tag == "outline")
+        if (col.gameObject.tag == "outline")
             GetComponent<Outline>().enabled = true;
     }
 
@@ -71,10 +76,5 @@ public class Schublade : MonoBehaviour {
     {
         if (col.gameObject.tag == "outline")
             GetComponent<Outline>().enabled = false;
-    }
-
-    void waiting()
-    {
-        test = false;
     }
 }

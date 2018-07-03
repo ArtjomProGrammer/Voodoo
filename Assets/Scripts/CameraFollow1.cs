@@ -111,7 +111,8 @@ public class CameraFollow1 : MonoBehaviour {
         isRoom_02 = GameObject.Find("Player").GetComponent<RoomTrigger>().isRoom_02;
         isRoom_03 = GameObject.Find("Player").GetComponent<RoomTrigger>().isRoom_03;
 
-        #region Controll Enemy
+
+        #region Controll Enemy01
         if (Input.GetKeyDown(KeyCode.Joystick1Button2) && enemy == true && controllGuard == true && nearToFetish == true)
         {
             FadeInOut.SetBool("isFading", true);
@@ -131,7 +132,49 @@ public class CameraFollow1 : MonoBehaviour {
             SetLookAt();
         }
         #endregion
-        
+
+        #region Controll Enemy02
+        if (Input.GetKeyDown(KeyCode.Joystick1Button2) && enemy == true && controllGuard == true && nearToFetish == true)
+        {
+            FadeInOut.SetBool("isFading", true);
+            Camera.main.GetComponent<Camera>().fieldOfView = 60;
+            hurtImage.SetActive(false);
+            distance = -800;
+            Enemy_01.GetComponent<NavMeshAgent>().enabled = false;
+            Enemy_01.GetComponent<AI>().enabled = false;
+            Player.GetComponent<Movement>().enabled = false;
+            Player.GetComponent<PlayerJump>().enabled = false;
+            Enemy_01.GetComponent<Movement>().enabled = true;
+            enemy = false;
+            player = true;
+            wallCamera_01 = true;
+            StartCoroutine(Enemy01());
+            lookAt = Enemy_01.transform;
+            SetLookAt();
+        }
+        #endregion
+
+        #region Controll Enemy03
+        if (Input.GetKeyDown(KeyCode.Joystick1Button2) && enemy == true && controllGuard == true && nearToFetish == true)
+        {
+            FadeInOut.SetBool("isFading", true);
+            Camera.main.GetComponent<Camera>().fieldOfView = 60;
+            hurtImage.SetActive(false);
+            distance = -800;
+            Enemy_01.GetComponent<NavMeshAgent>().enabled = false;
+            Enemy_01.GetComponent<AI>().enabled = false;
+            Player.GetComponent<Movement>().enabled = false;
+            Player.GetComponent<PlayerJump>().enabled = false;
+            Enemy_01.GetComponent<Movement>().enabled = true;
+            enemy = false;
+            player = true;
+            wallCamera_01 = true;
+            StartCoroutine(Enemy01());
+            lookAt = Enemy_01.transform;
+            SetLookAt();
+        }
+        #endregion
+
         #region Controll Mask_01
         if (Input.GetKeyDown(KeyCode.Joystick1Button3) && wallCamera_01 == true && isRoom_02 == true)
         {
