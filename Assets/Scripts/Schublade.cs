@@ -55,7 +55,7 @@ public class Schublade : MonoBehaviour {
 
     void OnTriggerStay(Collider col)
     {
-        if (col.gameObject.tag == "Player" && Input.GetKeyDown(KeyCode.Joystick1Button1))
+        if (Input.GetKeyDown(KeyCode.Joystick1Button1) && col.gameObject.tag == "Player")
         {
             test = true;
         }
