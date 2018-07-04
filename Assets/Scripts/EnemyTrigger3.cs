@@ -12,6 +12,9 @@ public class EnemyTrigger3 : MonoBehaviour {
     public float timeToOpen = 5f;
     public GameObject exit;
     public GameObject exitTrigger;
+    public GameObject Trigger_Exit;
+
+    public bool guardLeavesRoom = false;
 
 
     void OnTriggerStay(Collider collision)
@@ -41,5 +44,14 @@ public class EnemyTrigger3 : MonoBehaviour {
     {
         if (other.gameObject == exitTrigger)
             opened4 = false;
+
+        if (other.gameObject == Trigger_Exit)
+            guardLeavesRoom = false;
+    }
+
+    void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject == Trigger_Exit)
+            guardLeavesRoom = true;
     }
 }

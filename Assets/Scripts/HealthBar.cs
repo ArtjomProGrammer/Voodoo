@@ -20,7 +20,7 @@ public class HealthBar : MonoBehaviour {
             healthBar.fillAmount -= 1.0f / lifeSeconds * Time.deltaTime;
         }
 
-        healthBar.color = Color.Lerp(Color.red, Color.green, healthBar.fillAmount);
+        healthBar.color = Color.Lerp(Color.red, Color.blue, healthBar.fillAmount);
 
         // healthbar PingPong
         if(healthBar.fillAmount < .3f)

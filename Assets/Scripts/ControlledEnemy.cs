@@ -21,15 +21,15 @@ public class ControlledEnemy : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         
-        if (Input.GetKeyDown(KeyCode.Joystick1Button1))
-        {
-            player.GetComponent<Movement>().enabled = true;
-            player.GetComponent<PlayerJump>().enabled = true;
-
-            Enemy_01.GetComponent<Movement>().enabled = false;
-            Enemy_02.GetComponent<Movement>().enabled = false;
-            Enemy_03.GetComponent<Movement>().enabled = false;
-        }
+        //if (Input.GetKeyDown(KeyCode.Joystick1Button1))
+        //{
+        //    player.GetComponent<Movement>().enabled = true;
+        //    player.GetComponent<PlayerJump>().enabled = true;
+        //
+        //    Enemy_01.GetComponent<Movement>().enabled = false;
+        //    Enemy_02.GetComponent<Movement>().enabled = false;
+        //    Enemy_03.GetComponent<Movement>().enabled = false;
+        //}
     }
 
     public void OnTriggerStay(Collider collision)
