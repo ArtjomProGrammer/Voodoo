@@ -31,8 +31,6 @@ public class EnemyTrigger2 : MonoBehaviour {
         {
             doorClosed = Mathf.MoveTowards(doorClosed, doorOpened, timeToOpen * Time.deltaTime);
             exit.transform.localEulerAngles = new Vector3(0f, doorClosed, -180f);
-
-            GameObject.Find("TRIGGER_GUARD_02 2").GetComponent<BoxCollider>().enabled = true;
         }
     }
 

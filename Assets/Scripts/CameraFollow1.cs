@@ -197,7 +197,8 @@ public class CameraFollow1 : MonoBehaviour {
         #endregion
 
         #region Controll Enemy03
-        if (Input.GetKeyDown(KeyCode.Joystick1Button2) && enemy03 == true && controllGuard03 == true && nearToFetish02 == true)
+        if (Input.GetKeyDown(KeyCode.Joystick1Button2) && enemy03 == true && 
+            controllGuard03 == true && nearToFetish02 == true)
         {
             FadeInOut.SetBool("isFading", true);
             Camera.main.GetComponent<Camera>().fieldOfView = 60;
@@ -384,6 +385,7 @@ public class CameraFollow1 : MonoBehaviour {
             distance = 10;
             Enemy_01.GetComponent<NavMeshAgent>().enabled = true;
             Enemy_01.GetComponent<AI>().enabled = true;
+            Enemy_01.GetComponent<Movement>().enabled = false;
             player = false;
             enemy = true;
             wallCamera_01 = true;
@@ -405,6 +407,7 @@ public class CameraFollow1 : MonoBehaviour {
             distance = 10;
             Enemy_02.GetComponent<NavMeshAgent>().enabled = true;
             Enemy_02.GetComponent<AI>().enabled = true;
+            Enemy_02.GetComponent<Movement>().enabled = false;
             player = false;
             enemy02 = true;
             wallCamera_01 = true;
@@ -426,6 +429,7 @@ public class CameraFollow1 : MonoBehaviour {
             distance = 10;
             Enemy_03.GetComponent<NavMeshAgent>().enabled = true;
             Enemy_03.GetComponent<AI>().enabled = true;
+            Enemy_03.GetComponent<Movement>().enabled = false;
             player = false;
             enemy03 = true;
             wallCamera_01 = true;
@@ -473,6 +477,7 @@ public class CameraFollow1 : MonoBehaviour {
         FadeInOut.SetBool("isFading", false);
         enemy02 = true;
         Enemy_03.GetComponent<Movement>().enabled = true;
+        enemy03 = false;
     }
 
     public IEnumerator Mask01()
