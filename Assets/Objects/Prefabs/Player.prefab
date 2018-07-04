@@ -131,8 +131,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1237713637870832}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 2.5, y: 0, z: 6}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalPosition: {x: 3.9578042, y: -0.007450655, z: 19.796824}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children:
   - {fileID: 4099775841028732}
   - {fileID: 4792361297472900}
@@ -271,10 +271,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemy_01: {fileID: 0}
-  Mask: {fileID: 0}
-  detectingRadius: {fileID: 0}
+  Enemy_02: {fileID: 0}
+  Enemy_03: {fileID: 0}
+  fetishRadius: {fileID: 0}
+  fetishRadius02: {fileID: 0}
   player: {fileID: 1237713637870832}
   nearToFetish: 0
+  nearToFetish02: 0
 --- !u!114 &114099307663118404
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -300,12 +303,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ee60508d82ae9d42a62d3b1c11fa6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controllObject01: 0
   controllObject02: 0
+  controllObject03: 0
   controllGuard: 0
+  controllGuard02: 0
+  controllGuard03: 0
+  Object01: {fileID: 0}
   Object02: {fileID: 0}
+  Object03: {fileID: 0}
+  fetish01: {fileID: 0}
   fetish02: {fileID: 0}
-  door02: {fileID: 0}
   ButtonSmash: {fileID: 0}
+  ButtonSmash02: {fileID: 0}
+  ButtonSmash03: {fileID: 0}
 --- !u!114 &114891363138526020
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -334,8 +345,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  rotationSpeed: 300
-  rayOffset: {x: 0, y: 1, z: 0}
 --- !u!136 &136472396330517114
 CapsuleCollider:
   m_ObjectHideFlags: 1
