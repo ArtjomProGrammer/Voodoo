@@ -33,6 +33,8 @@ public class CameraFollow1 : MonoBehaviour {
 	private float rotX = 0.0f;
 
     public GameObject buttonSmash;
+    public GameObject buttonSmash02;
+    public GameObject buttonSmash03;
 
     private Animator FadeInOut;
 
@@ -53,7 +55,9 @@ public class CameraFollow1 : MonoBehaviour {
     public int fieldOfView = 85;
     
     private bool player = false;
-    public  bool enemy = true;
+    public bool enemy = true;
+    public bool enemy02 = true;
+    public bool enemy03 = true;
     public bool wallCamera_01 = false;
     public bool wallCamera_02 = true;
     public bool wallCamera_03 = false;
@@ -63,6 +67,8 @@ public class CameraFollow1 : MonoBehaviour {
     private Vector3 lastPosition;
     
     private bool controllGuard = false;
+    private bool controllGuard02 = false;
+    private bool controllGuard03 = false;
     Quaternion localRotation;
     #endregion
 
@@ -104,25 +110,40 @@ public class CameraFollow1 : MonoBehaviour {
         {
             controllGuard = GameObject.Find("ButtonSmash").GetComponent<ButtonSmash>().controllGuard;
         }
-        bool nearToFetish = GameObject.Find("Interact_with_Objects").GetComponent<ControlledEnemy>().nearToFetish;
+
+        if (buttonSmash02.active == true)
+        {
+            controllGuard02 = GameObject.Find("ButtonSmash_02").GetComponent<ButtonSmash2>().controllGuard;
+        }
         
+        if (buttonSmash03.active == true)
+        {
+            controllGuard03 = GameObject.Find("ButtonSmash_03").GetComponent<ButtonSmash3>().controllGuard;
+        }
+
+
+        bool nearToFetish = GameObject.Find("Interact_with_Objects").GetComponent<ControlledEnemy>().nearToFetish;
+        bool nearToFetish02 = GameObject.Find("Interact_with_Objects").GetComponent<ControlledEnemy>().nearToFetish02;
+
         transitionTime += Time.deltaTime;
 
         isRoom_02 = GameObject.Find("Player").GetComponent<RoomTrigger>().isRoom_02;
         isRoom_03 = GameObject.Find("Player").GetComponent<RoomTrigger>().isRoom_03;
 
-        #region Controll Enemy
+
+
+        #region Controll Enemy01
         if (Input.GetKeyDown(KeyCode.Joystick1Button2) && enemy == true && controllGuard == true && nearToFetish == true)
         {
             FadeInOut.SetBool("isFading", true);
             Camera.main.GetComponent<Camera>().fieldOfView = 60;
             hurtImage.SetActive(false);
             distance = -800;
-            Enemy_01.GetComponent<NavMeshAgent>().enabled = false;
-            Enemy_01.GetComponent<AI>().enabled = false;
-            Player.GetComponent<Movement>().enabled = false;
-            Player.GetComponent<PlayerJump>().enabled = false;
-            Enemy_01.GetComponent<Movement>().enabled = true;
+            Enemy_01.GetComponent<NavMeshAgent>     ().enabled = false;
+            Enemy_01.GetComponent<AI>               ().enabled = false;
+            Player.GetComponent<Movement>           ().enabled = false;
+            Player.GetComponent<PlayerJump>         ().enabled = false;
+            Enemy_01.GetComponent<Movement>         ().enabled = true;
             enemy = false;
             player = true;
             wallCamera_01 = true;
@@ -131,7 +152,62 @@ public class CameraFollow1 : MonoBehaviour {
             SetLookAt();
         }
         #endregion
-        
+
+        #region Controll Enemy02
+        if (Input.GetKeyDown(KeyCode.Joystick1Button2) && enemy02 == true && 
+            controllGuard02 == true && nearToFetish02 == true &&
+            GameObject.Find("Trigger3").GetComponent<EnemyTrigger3>().opened4 == false &&
+            buttonSmash03.active == false)
+        {
+            FadeInOut.SetBool("isFading", true);
+            Camera.main.GetComponent<Camera>().fieldOfView = 60;
+            hurtImage.SetActive(false);
+            distance = -800;
+            Enemy_02.GetComponent<NavMeshAgent> ().enabled = false;
+            Enemy_02.GetComponent<AI>           ().enabled = false;
+            Enemy_02.GetComponent<Movement>     ().enabled = true;
+            Enemy_03.GetComponent<NavMeshAgent> ().enabled = true;
+            Enemy_03.GetComponent<AI>           ().enabled = true;
+            Enemy_03.GetComponent<Movement>     ().enabled = false;
+            Player.GetComponent<Movement>       ().enabled = false;
+            Player.GetComponent<PlayerJump>     ().enabled = false;
+            enemy02 = false;
+            player  = true;
+            wallCamera_02 = true;
+            wallCamera_03 = true;
+            wallCamera_04 = true;
+            StartCoroutine(Enemy02());
+            lookAt = Enemy_02.transform;
+            SetLookAt();
+        }
+        #endregion
+
+        #region Controll Enemy03
+        if (Input.GetKeyDown(KeyCode.Joystick1Button2) && enemy03 == true && controllGuard03 == true && nearToFetish02 == true)
+        {
+            FadeInOut.SetBool("isFading", true);
+            Camera.main.GetComponent<Camera>().fieldOfView = 60;
+            hurtImage.SetActive(false);
+            distance = -800;
+            Enemy_03.GetComponent<NavMeshAgent>     ().enabled = false;
+            Enemy_03.GetComponent<AI>               ().enabled = false;
+            Enemy_03.GetComponent<Movement>         ().enabled = true;
+            Enemy_02.GetComponent<NavMeshAgent>     ().enabled = true;
+            Enemy_02.GetComponent<AI>               ().enabled = true;
+            Enemy_02.GetComponent<Movement>         ().enabled = false;
+            Player.GetComponent<Movement>           ().enabled = false;
+            Player.GetComponent<PlayerJump>         ().enabled = false;
+            enemy03 = false;
+            player = true;
+            wallCamera_02 = true;
+            wallCamera_03 = true;
+            wallCamera_04 = true;
+            StartCoroutine(Enemy03());
+            lookAt = Enemy_03.transform;
+            SetLookAt();
+        }
+        #endregion
+
         #region Controll Mask_01
         if (Input.GetKeyDown(KeyCode.Joystick1Button3) && wallCamera_01 == true && isRoom_02 == true)
         {
@@ -158,15 +234,17 @@ public class CameraFollow1 : MonoBehaviour {
             Camera.main.GetComponent<Camera>().fieldOfView = fieldOfView;
             //hurtImage.SetActive(true);
             distance = 650;
-            //Enemy_02.GetComponent<NavMeshAgent>().enabled = true;
-            //Enemy_02.GetComponent<AI>().enabled = true;
-            //Enemy_02.GetComponent<Movement>().enabled = false;
-            //Enemy_03.GetComponent<NavMeshAgent>().enabled = true;
-            //Enemy_03.GetComponent<AI>().enabled = true;
-            //Enemy_03.GetComponent<Movement>().enabled = false;
-            //enemy = true;
+            Enemy_02.GetComponent<NavMeshAgent>().enabled = true;
+            Enemy_02.GetComponent<AI>().enabled = true;
+            Enemy_02.GetComponent<Movement>().enabled = false;
+            Enemy_03.GetComponent<NavMeshAgent>().enabled = true;
+            Enemy_03.GetComponent<AI>().enabled = true;
+            Enemy_03.GetComponent<Movement>().enabled = false;
+            enemy02 = true;
+            enemy03 = false;
             player = true;
             wallCamera_02 = false;
+            wallCamera_04 = false;
             StartCoroutine(Mask02());
             lookAt = Mask_02.transform;
             SetLookAt();
@@ -180,15 +258,17 @@ public class CameraFollow1 : MonoBehaviour {
             Camera.main.GetComponent<Camera>().fieldOfView = fieldOfView;
             hurtImage.SetActive(true);
             distance = 650;
-            //Enemy_02.GetComponent<NavMeshAgent>().enabled = true;
-            //Enemy_02.GetComponent<AI>().enabled = true;
-            //Enemy_02.GetComponent<Movement>().enabled = false;
-            //Enemy_03.GetComponent<NavMeshAgent>().enabled = true;
-            //Enemy_03.GetComponent<AI>().enabled = true;
-            //Enemy_03.GetComponent<Movement>().enabled = false;
-            //enemy = true;
+            Enemy_02.GetComponent<NavMeshAgent>().enabled = true;
+            Enemy_02.GetComponent<AI>().enabled = true;
+            Enemy_02.GetComponent<Movement>().enabled = false;
+            Enemy_03.GetComponent<NavMeshAgent>().enabled = true;
+            Enemy_03.GetComponent<AI>().enabled = true;
+            Enemy_03.GetComponent<Movement>().enabled = false;
+            enemy02 = true;
+            enemy03 = false;
             player = true;
             wallCamera_03 = false;
+            wallCamera_02 = false;
             StartCoroutine(Mask03());
             lookAt = Mask_03.transform;
             SetLookAt();
@@ -202,15 +282,17 @@ public class CameraFollow1 : MonoBehaviour {
             Camera.main.GetComponent<Camera>().fieldOfView = fieldOfView;
             hurtImage.SetActive(true);
             distance = 650;
-            //Enemy_02.GetComponent<NavMeshAgent>().enabled = true;
-            //Enemy_02.GetComponent<AI>().enabled = true;
-            //Enemy_02.GetComponent<Movement>().enabled = false;
-            //Enemy_03.GetComponent<NavMeshAgent>().enabled = true;
-            //Enemy_03.GetComponent<AI>().enabled = true;
-            //Enemy_03.GetComponent<Movement>().enabled = false;
-            //enemy = true;
+            Enemy_02.GetComponent<NavMeshAgent>().enabled = true;
+            Enemy_02.GetComponent<AI>().enabled = true;
+            Enemy_02.GetComponent<Movement>().enabled = false;
+            Enemy_03.GetComponent<NavMeshAgent>().enabled = true;
+            Enemy_03.GetComponent<AI>().enabled = true;
+            Enemy_03.GetComponent<Movement>().enabled = false;
+            enemy02 = true;
+            enemy03 = false;
             player = true;
             wallCamera_04 = false;
+            wallCamera_03 = false;
             StartCoroutine(Mask04());
             lookAt = Mask_04.transform;
             SetLookAt();
@@ -226,9 +308,18 @@ public class CameraFollow1 : MonoBehaviour {
             distance = 10;
             Enemy_01.GetComponent<NavMeshAgent>().enabled = true;
             Enemy_01.GetComponent<AI>().enabled = true;
+            Enemy_02.GetComponent<NavMeshAgent>().enabled = true;
+            Enemy_02.GetComponent<AI>().enabled = true;
+            Enemy_03.GetComponent<NavMeshAgent>().enabled = true;
+            Enemy_03.GetComponent<AI>().enabled = true;
             player = false;
             enemy = true;
+            enemy02 = true;
+            enemy03 = false;
             wallCamera_01 = true;
+            wallCamera_02 = true;
+            wallCamera_03 = false;
+            wallCamera_04 = false;
             StartCoroutine(_Player());
             lookAt = Player.transform;
             SetLookAt();
@@ -262,7 +353,7 @@ public class CameraFollow1 : MonoBehaviour {
         #endregion
     }
 
-    #region Mask WaitForSeconds
+    #region Coroutine FadingInOut
     public IEnumerator _Player()
     {
         yield return new WaitForSeconds(1f);
@@ -279,12 +370,14 @@ public class CameraFollow1 : MonoBehaviour {
     {
         yield return new WaitForSeconds(1f);
         FadeInOut.SetBool("isFading", false);
+        enemy03 = true;
     }
 
     public IEnumerator Enemy03()
     {
         yield return new WaitForSeconds(1f);
         FadeInOut.SetBool("isFading", false);
+        enemy02 = true;
     }
 
     public IEnumerator Mask01()
@@ -303,15 +396,15 @@ public class CameraFollow1 : MonoBehaviour {
     public IEnumerator Mask03()
     {
         yield return new WaitForSeconds(1f);
-        wallCamera_04 = true;
         FadeInOut.SetBool("isFading", false);
+        wallCamera_04 = true;
     }
 
     public IEnumerator Mask04()
     {
         yield return new WaitForSeconds(1f);
-        wallCamera_02 = true;
         FadeInOut.SetBool("isFading", false);
+        wallCamera_02 = true;
     }
     #endregion
 

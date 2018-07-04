@@ -35,21 +35,20 @@ public class ButtonSmash : MonoBehaviour {
         curPosLeft  = maxPosLeft;
         curPosRight = maxPosRight;
 
-        strenght = .75f;
-        
+        strenght = .75f;        
     }
 
     // Update is called once per frame
     void Update() {
         
-        // left triangle
+        // left triangle strenght
         if (Input.GetKeyDown(KeyCode.Joystick1Button2) && isDone == true)
         {
             if (curPosLeft < 0)
                 curPosLeft *= strenght;
         }
 
-        // right triangle
+        // right triangle strenght
         if (Input.GetKeyDown(KeyCode.Joystick1Button2) && isDone == true)
         {
             if (curPosRight > 0)
@@ -62,7 +61,7 @@ public class ButtonSmash : MonoBehaviour {
             recoveryTime = 0;
             tempStrenght = strenght;
             isDone = false;
-            tempStrenght -= .0375f;              // lower dynamic difficulty
+            tempStrenght -= .025f;              // lower dynamic difficulty
             Invoke("ControllGuardFailed", 1.5f);
         }
 
@@ -82,13 +81,13 @@ public class ButtonSmash : MonoBehaviour {
             isDone = false;
         }
 
-
         // Reduce amount over time
         if (_timer > 0f)
         {            
             _timer -= Time.deltaTime;
         }
-        
+
+        #region moving triangles
         // moving the left triangle to the mid
         curPosLeft = Mathf.MoveTowards(curPosLeft, maxPosLeft, recoveryTime * Time.deltaTime);
         left.transform.localPosition = new Vector3(curPosLeft, 0, 0);
@@ -96,6 +95,7 @@ public class ButtonSmash : MonoBehaviour {
         // moving the right triangle to the mid
         curPosRight = Mathf.MoveTowards(curPosRight, maxPosRight, recoveryTime * Time.deltaTime);
         right.transform.localPosition = new Vector3(curPosRight, 0, 0);
+        #endregion
     }
 
 

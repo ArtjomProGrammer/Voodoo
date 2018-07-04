@@ -55,15 +55,20 @@ public class Schublade : MonoBehaviour {
 
     void OnTriggerStay(Collider col)
     {
-        if (col.gameObject.tag == "Player" && Input.GetKeyDown(KeyCode.Joystick1Button1))
+        if (Input.GetKeyDown(KeyCode.Joystick1Button1) && col.gameObject.tag == "Player")
         {
             test = true;
         }
     }
 
+    void waiting()
+    {
+        test = false;
+    }
+
     private void OnTriggerEnter(Collider col)
     {
-        if(col.gameObject.tag == "outline")
+        if (col.gameObject.tag == "outline")
             GetComponent<Outline>().enabled = true;
     }
 
@@ -71,10 +76,5 @@ public class Schublade : MonoBehaviour {
     {
         if (col.gameObject.tag == "outline")
             GetComponent<Outline>().enabled = false;
-    }
-
-    void waiting()
-    {
-        test = false;
     }
 }
