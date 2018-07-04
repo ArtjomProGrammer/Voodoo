@@ -11,6 +11,9 @@ public class EnemyTrigger : MonoBehaviour {
     public float timeToOpen = 5f;
     public GameObject exit;
     public GameObject exitTrigger;
+    public GameObject Trigger_Exit;
+
+    public bool guardLeavesRoom = false;
 
 
     void OnTriggerStay(Collider collision)
@@ -29,5 +32,17 @@ public class EnemyTrigger : MonoBehaviour {
             doorClosed = Mathf.MoveTowards(doorClosed, doorOpened, timeToOpen * Time.deltaTime);
             exit.transform.localEulerAngles = new Vector3(0, doorClosed, -180);
         }
+    }
+
+    void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject == Trigger_Exit)
+            guardLeavesRoom = true;
+    }
+
+    void OnTriggerExit(Collider collision)
+    {
+        if (collision.gameObject == Trigger_Exit)
+            guardLeavesRoom = false;
     }
 }

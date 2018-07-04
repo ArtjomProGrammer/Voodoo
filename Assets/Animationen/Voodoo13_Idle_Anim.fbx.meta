@@ -1,0 +1,203 @@
+fileFormatVersion: 2
+guid: b621e2fabb0e24a4bb6ee5212c2b2f47
+timeCreated: 1530722329
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: base_cntrl
+    100002: Controls
+    100004: head
+    100006: head_cntrl
+    100008: If_you_touch_I_kill_you
+    100010: Joints
+    100012: L_ankle
+    100014: L_arm_IK_cntrl
+    100016: L_clavicle
+    100018: L_clavicle_cntrl
+    100020: L_elbow
+    100022: L_elbow_cntrl
+    100024: L_elbow_cntrl 1
+    100026: L_hip
+    100028: L_knee
+    100030: L_knee_cntrl
+    100032: L_knee_cntrl 1
+    100034: L_leg_IK_cntrl
+    100036: L_shoulder
+    100038: L_wrist
+    100040: neck
+    100042: nurbsCircle11
+    100044: nurbsCircle12
+    100046: nurbsCircle13
+    100048: nurbsCircle2
+    100050: nurbsCircle3
+    100052: nurbsCircle4
+    100054: nurbsCircle5
+    100056: nurbsCircle6
+    100058: nurbsCircle7
+    100060: nurbsCircle9
+    100062: pelvis
+    100064: pelvis_cntrl
+    100066: R_ankle
+    100068: R_arm_IK_cntrl
+    100070: R_clavicle
+    100072: R_clavicle_cntrl
+    100074: R_elbow
+    100076: R_elbow_cntrl
+    100078: R_elbow_cntrl 1
+    100080: R_hip
+    100082: R_knee
+    100084: R_knee_cntrl
+    100086: R_knee_cntrl 1
+    100088: R_leg_IK_cntrl
+    100090: R_shoulder
+    100092: R_wrist
+    100094: Rig
+    100096: root
+    100098: spine1
+    100100: spine1_cntrl
+    100102: spine2
+    100104: Voodoo
+    100106: //RootNode
+    100108: Voodoo14
+    400000: base_cntrl
+    400002: Controls
+    400004: head
+    400006: head_cntrl
+    400008: If_you_touch_I_kill_you
+    400010: Joints
+    400012: L_ankle
+    400014: L_arm_IK_cntrl
+    400016: L_clavicle
+    400018: L_clavicle_cntrl
+    400020: L_elbow
+    400022: L_elbow_cntrl
+    400024: L_elbow_cntrl 1
+    400026: L_hip
+    400028: L_knee
+    400030: L_knee_cntrl
+    400032: L_knee_cntrl 1
+    400034: L_leg_IK_cntrl
+    400036: L_shoulder
+    400038: L_wrist
+    400040: neck
+    400042: nurbsCircle11
+    400044: nurbsCircle12
+    400046: nurbsCircle13
+    400048: nurbsCircle2
+    400050: nurbsCircle3
+    400052: nurbsCircle4
+    400054: nurbsCircle5
+    400056: nurbsCircle6
+    400058: nurbsCircle7
+    400060: nurbsCircle9
+    400062: pelvis
+    400064: pelvis_cntrl
+    400066: R_ankle
+    400068: R_arm_IK_cntrl
+    400070: R_clavicle
+    400072: R_clavicle_cntrl
+    400074: R_elbow
+    400076: R_elbow_cntrl
+    400078: R_elbow_cntrl 1
+    400080: R_hip
+    400082: R_knee
+    400084: R_knee_cntrl
+    400086: R_knee_cntrl 1
+    400088: R_leg_IK_cntrl
+    400090: R_shoulder
+    400092: R_wrist
+    400094: Rig
+    400096: root
+    400098: spine1
+    400100: spine1_cntrl
+    400102: spine2
+    400104: Voodoo
+    400106: //RootNode
+    400108: Voodoo14
+    2100000: 01 - Default
+    2300000: Voodoo14
+    3300000: Voodoo14
+    4300000: Voodoo14
+    7400000: Take 001
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
