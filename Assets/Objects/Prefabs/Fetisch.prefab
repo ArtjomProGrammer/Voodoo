@@ -34,6 +34,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4560278612074298}
+  - component: {fileID: 114077998079486854}
   m_Layer: 0
   m_Name: Fetisch
   m_TagString: Untagged
@@ -68,6 +69,7 @@ GameObject:
   - component: {fileID: 4278275787095698}
   - component: {fileID: 33933262952636520}
   - component: {fileID: 23426021130268980}
+  - component: {fileID: 65763093915920654}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -152,7 +154,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1285235567110310}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.000000104308114}
-  m_LocalPosition: {x: 1.9652739, y: 2.2884473e-17, z: -1.030625}
+  m_LocalPosition: {x: 5.8884196, y: 0.7519107, z: 1.0075912}
   m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
   m_Children:
   - {fileID: 4219288892397520}
@@ -284,3 +286,32 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1351876222550110}
   m_Mesh: {fileID: 4300002, guid: dbc81d6113aa66249a173748daf0ba40, type: 3}
+--- !u!65 &65763093915920654
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1351876222550110}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1264053, y: 0.24322483, z: 0.05418433}
+  m_Center: {x: 0.00076335546, y: 3.700743e-16, z: -0.0000000020696058}
+--- !u!114 &114077998079486854
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1285235567110310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []

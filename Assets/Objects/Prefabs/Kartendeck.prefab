@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4410913449787694}
   - component: {fileID: 33484249068257124}
   - component: {fileID: 23788993053103898}
+  - component: {fileID: 114751916931358484}
   m_Layer: 0
   m_Name: Kartendeck
   m_TagString: Untagged
@@ -35,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1925931985681562}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 1.6752534, y: -0.007449195, z: 18.8719}
+  m_LocalPosition: {x: 5.714117, y: 0.74999994, z: 1.3982016}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -82,3 +83,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1925931985681562}
   m_Mesh: {fileID: 4300000, guid: cec582bb08d5f894e992b2578811f0b1, type: 3}
+--- !u!114 &114751916931358484
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1925931985681562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0.7294118, g: 0.8901961, b: 0.47843137, a: 1}
+  outlineWidth: 4
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
