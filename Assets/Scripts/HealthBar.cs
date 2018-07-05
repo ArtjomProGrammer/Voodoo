@@ -11,6 +11,15 @@ public class HealthBar : MonoBehaviour {
     public float lifeSeconds = 30.0f;
     public float resetLifeBar = 2.0f;
 
+    private Animator FadeInOut;
+    public GameObject respawn_01;
+    public GameObject respawn_02;
+
+    public void Start()
+    {
+        FadeInOut = GameObject.Find("FadeInOut").GetComponent<Animator>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -27,6 +36,18 @@ public class HealthBar : MonoBehaviour {
         {
             healthBar.color = Color.Lerp(Color.white, Color.red, Mathf.PingPong(Time.time, .8f));
         }
+
+        if(healthBar.fillAmount == 0f)
+        {
+            FadeInOut.SetBool("isFading", true);
+            StartCoroutine(respawn());
+        }
+    }
+
+    IEnumerator respawn()
+    {
+        yield return new WaitForSeconds(.5f);
+        transform.position = respawn_01.transform.position;
     }
 
 

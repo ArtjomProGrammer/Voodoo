@@ -30,6 +30,8 @@ public class AI : MonoBehaviour {
     private float _timer = 3f;
     public bool playerVisible = false;
 
+    public bool dead = false;
+
 
 
     // Use this for initialization
@@ -79,6 +81,7 @@ public class AI : MonoBehaviour {
             anim.SetBool("isAttacking", false);
             anim.SetBool("isWalking", false);
             Debug.Log("ALERT");
+            dead = false;
 
             // Looking at Player for maximum time until chasing the Player
             if (_timer > 0f)
@@ -106,7 +109,8 @@ public class AI : MonoBehaviour {
             anim.SetBool("isAttacking", false);
             anim.SetBool("isAlert", false);
             anim.SetBool("isIdle", false);
-            Debug.Log("MOVING");          
+            Debug.Log("MOVING");
+            dead = false;
         } 
 
         // Attacking
@@ -117,6 +121,7 @@ public class AI : MonoBehaviour {
             anim.SetBool("isAttacking", true);
             anim.SetBool("isWalking", false);
             Debug.Log("ATTACKING");
+            dead = true;
         }
 
         // Idle
@@ -129,6 +134,7 @@ public class AI : MonoBehaviour {
             anim.SetBool("isIdle", true);
             anim.SetBool("isWalking", false);
             Debug.Log("IDLE");
+            dead = false;
         }
 	}
 
