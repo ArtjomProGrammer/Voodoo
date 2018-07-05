@@ -9,7 +9,7 @@ public class RenderControl : MonoBehaviour {
     public GameObject Room_2; // RoomNumber = 2
     public GameObject Room_Hallway; // RoomNumber = 3
     public int RoomNumber = 0;
-
+    public bool Variante1 = false;
 
 	// Use this for initialization
 	void Start () {
@@ -21,36 +21,78 @@ public class RenderControl : MonoBehaviour {
 		
 	}
 
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    try {
+    //        other.gameObject.GetComponent<MeshRenderer>().enabled = true;
+    //    }
+    //    catch (System.Exception e)
+    //    {
+
+    //    }
+
+
+    //}
+
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    try
+    //    {
+    //        other.gameObject.GetComponent<MeshRenderer>().enabled = false;
+    //    }
+    //    catch (System.Exception e)
+    //    {
+
+    //    }
+    //}
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag.Equals("Player"))
+        if (this.Variante1)
         {
-            switch (this.RoomNumber) {
-                case 0:
-                    this.Room_0.SetActive(true);
-                    //this.Room_1.SetActive(true);
-                    //this.Room_2.SetActive(false);
-                    //this.Room_Hallway.SetActive(false);
-                    break;
-                case 1:
-                    //this.Room_0.SetActive(true);
-                    this.Room_1.SetActive(true);
-                    //this.Room_2.SetActive(false);
-                    //this.Room_Hallway.SetActive(true);
-                    break;
-                case 2:
-                    //this.Room_0.SetActive(false);
-                    //this.Room_1.SetActive(false);
-                    this.Room_2.SetActive(true);
-                    //this.Room_Hallway.SetActive(true);
-                    break;
-                case 3:
-                    //this.Room_0.SetActive(false);
-                    //this.Room_1.SetActive(true);
-                    //this.Room_2.SetActive(true);
-                    this.Room_Hallway.SetActive(true);
-                    break;
-                default: break;
+            try
+            {
+                other.gameObject.GetComponent<MeshRenderer>().enabled = true;
+            }
+            catch (System.Exception e)
+            {
+
+            }
+        }
+        else
+        {
+
+
+            if (other.gameObject.tag.Equals("Player"))
+            {
+                switch (this.RoomNumber)
+                {
+                    case 0:
+                        this.Room_0.SetActive(true);
+                        //this.Room_1.SetActive(true);
+                        //this.Room_2.SetActive(false);
+                        //this.Room_Hallway.SetActive(false);
+                        break;
+                    case 1:
+                        //this.Room_0.SetActive(true);
+                        this.Room_1.SetActive(true);
+                        //this.Room_2.SetActive(false);
+                        //this.Room_Hallway.SetActive(true);
+                        break;
+                    case 2:
+                        //this.Room_0.SetActive(false);
+                        //this.Room_1.SetActive(false);
+                        this.Room_2.SetActive(true);
+                        //this.Room_Hallway.SetActive(true);
+                        break;
+                    case 3:
+                        //this.Room_0.SetActive(false);
+                        //this.Room_1.SetActive(true);
+                        //this.Room_2.SetActive(true);
+                        this.Room_Hallway.SetActive(true);
+                        break;
+                    default: break;
+                }
             }
         }
     }
@@ -80,23 +122,37 @@ public class RenderControl : MonoBehaviour {
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag.Equals("Player"))
+        if (this.Variante1)
         {
-            switch (this.RoomNumber)
+            try
             {
-                case 0:
-                    this.Room_0.SetActive(false);                    
-                    break;
-                case 1:
-                    this.Room_1.SetActive(false);                    
-                    break;
-                case 2:
-                    this.Room_2.SetActive(false);
-                    break;
-                case 3:
-                    this.Room_Hallway.SetActive(false);
-                    break;
-                default: break;
+                other.gameObject.GetComponent<MeshRenderer>().enabled = false;
+            }
+            catch (System.Exception e)
+            {
+
+            }
+        }
+        else
+        {
+            if (other.gameObject.tag.Equals("Player"))
+            {
+                switch (this.RoomNumber)
+                {
+                    case 0:
+                        this.Room_0.SetActive(false);
+                        break;
+                    case 1:
+                        this.Room_1.SetActive(false);
+                        break;
+                    case 2:
+                        this.Room_2.SetActive(false);
+                        break;
+                    case 3:
+                        this.Room_Hallway.SetActive(false);
+                        break;
+                    default: break;
+                }
             }
         }
     }

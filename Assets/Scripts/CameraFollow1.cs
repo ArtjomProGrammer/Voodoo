@@ -129,8 +129,7 @@ public class CameraFollow1 : MonoBehaviour {
 
         isRoom_02 = GameObject.Find("Player").GetComponent<RoomTrigger>().isRoom_02;
         isRoom_03 = GameObject.Find("Player").GetComponent<RoomTrigger>().isRoom_03;
-
-
+        
 
         #region Controll Enemy01
         if (Input.GetKeyDown(KeyCode.Joystick1Button2) && enemy == true && controllGuard == true && nearToFetish == true)
@@ -187,7 +186,7 @@ public class CameraFollow1 : MonoBehaviour {
             SetLookAt();
         }
 
-        if (enemy02 == false)
+        if (enemy02 == false && player == true)
         {
             if (Enemy_02.GetComponent<NavMeshAgent>().enabled == true)
             {
@@ -219,13 +218,13 @@ public class CameraFollow1 : MonoBehaviour {
             StartCoroutine(Enemy03());
             lookAt = Enemy_03.transform;
             SetLookAt();
+        }
 
-            if (enemy03 == false)
+        if (enemy03 == false && player == true)
+        {
+            if (Enemy_03.GetComponent<NavMeshAgent>().enabled == true)
             {
-                if (Enemy_03.GetComponent<NavMeshAgent>().enabled == true)
-                {
-                    Enemy_03.GetComponent<NavMeshAgent>().enabled = false;
-                }
+                Enemy_03.GetComponent<NavMeshAgent>().enabled = false;
             }
         }
 
@@ -263,9 +262,8 @@ public class CameraFollow1 : MonoBehaviour {
             Enemy_02.GetComponent<Movement>().enabled = false;
             Enemy_03.GetComponent<NavMeshAgent>().enabled = true;
             Enemy_03.GetComponent<AI>().enabled = true;
-            Enemy_03.GetComponent<Movement>().enabled = false;
-            enemy02 = true;
-            enemy03 = false;
+            enemy02 = false;
+            enemy03 = true;
             player = true;
             wallCamera_02 = false;
             wallCamera_04 = false;
@@ -288,8 +286,8 @@ public class CameraFollow1 : MonoBehaviour {
             Enemy_03.GetComponent<NavMeshAgent>().enabled = true;
             Enemy_03.GetComponent<AI>().enabled = true;
             Enemy_03.GetComponent<Movement>().enabled = false;
-            enemy02 = true;
-            enemy03 = false;
+            enemy02 = false;
+            enemy03 = true;
             player = true;
             wallCamera_03 = false;
             wallCamera_02 = false;
@@ -312,8 +310,8 @@ public class CameraFollow1 : MonoBehaviour {
             Enemy_03.GetComponent<NavMeshAgent>().enabled = true;
             Enemy_03.GetComponent<AI>().enabled = true;
             Enemy_03.GetComponent<Movement>().enabled = false;
-            enemy02 = true;
-            enemy03 = false;
+            enemy02 = false;
+            enemy03 = true;
             player = true;
             wallCamera_04 = false;
             wallCamera_03 = false;
@@ -338,8 +336,16 @@ public class CameraFollow1 : MonoBehaviour {
             Enemy_03.GetComponent<AI>().enabled = true;
             player = false;
             enemy = true;
-            enemy02 = true;
-            enemy03 = false;
+            if(controllGuard03 == false)
+            {
+                enemy02 = true;
+                enemy03 = false;
+            }
+            else if (controllGuard03 == true)
+            {
+                enemy02 = false;
+                enemy03 = true;
+            }
             wallCamera_01 = true;
             wallCamera_02 = true;
             wallCamera_03 = false;
@@ -409,7 +415,14 @@ public class CameraFollow1 : MonoBehaviour {
             Enemy_02.GetComponent<AI>().enabled = true;
             Enemy_02.GetComponent<Movement>().enabled = false;
             player = false;
-            enemy02 = true;
+            if (controllGuard03 == false)
+            {
+                enemy02 = true;
+            }
+            else if (controllGuard03 == true)
+            {
+                enemy02 = false;
+            }
             wallCamera_01 = true;
             wallCamera_02 = true;
             wallCamera_03 = false;
@@ -467,13 +480,16 @@ public class CameraFollow1 : MonoBehaviour {
     {
         yield return new WaitForSeconds(1f);
         FadeInOut.SetBool("isFading", false);
-        enemy03 = true;
+        if(controllGuard03 == true)
+        {
+            enemy03 = true;
+        }
         Enemy_02.GetComponent<Movement>().enabled = true;
     }
 
     public IEnumerator Enemy03()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.3f);
         FadeInOut.SetBool("isFading", false);
         enemy02 = true;
         Enemy_03.GetComponent<Movement>().enabled = true;

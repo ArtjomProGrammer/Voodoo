@@ -68,6 +68,8 @@ public class ButtonSmash3 : MonoBehaviour {
         // Smash done
         if (curPosRight < destination)
         {
+            GameObject.Find("CameraBase").GetComponent<CameraFollow1>().enemy02 = false;
+            GameObject.Find("CameraBase").GetComponent<CameraFollow1>().enemy03 = true;
             recoveryTime = 0;
             tempStrenght = strenght;
             Invoke("ControllGuardReset", 1.5f);

@@ -11,7 +11,9 @@ public class EnemyTrigger2 : MonoBehaviour {
     public float timeToOpen = 5f;
     public GameObject exit;
     public GameObject exitTrigger;
-    public List<GameObject> Trigger_Exit;
+    public GameObject Trigger_Exit;
+    public GameObject Trigger_Exit2;
+
 
     public bool guardLeavesRoom = false;
 
@@ -36,20 +38,23 @@ public class EnemyTrigger2 : MonoBehaviour {
 
     void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject == Trigger_Exit[1])
+        if (collision.gameObject == Trigger_Exit)
             guardLeavesRoom = true;
 
-        foreach (GameObject go in Trigger_Exit)
-        {
-            if (collision.gameObject == go)
-            {
-                guardLeavesRoom = true;
-            }
-        }
+        if (collision.gameObject == Trigger_Exit2)
+            guardLeavesRoom = true;
     }
 
     void OnTriggerExit(Collider collision)
     {
-        if (collision.gameObject == Trigger_Exit[1]) { guardLeavesRoom = false; }
+        if (collision.gameObject == Trigger_Exit)
+        {
+            guardLeavesRoom = false;
+        }
+
+        if (collision.gameObject == Trigger_Exit2)
+        {
+            guardLeavesRoom = false;
+        }
     }
 }
