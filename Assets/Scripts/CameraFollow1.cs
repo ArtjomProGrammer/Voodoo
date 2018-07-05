@@ -23,6 +23,13 @@ public class CameraFollow1 : MonoBehaviour {
     public bool isRoom_02 = true;
     public bool isRoom_03 = true;
 
+    public GameObject object01;
+    public GameObject object02;
+    public GameObject object03;
+    public GameObject VFX_01;
+    public GameObject VFX_02;
+    public GameObject VFX_03;
+
     private float timerAlpha;
 
     public GameObject hurtImage;
@@ -134,6 +141,11 @@ public class CameraFollow1 : MonoBehaviour {
         #region Controll Enemy01
         if (Input.GetKeyDown(KeyCode.Joystick1Button2) && enemy == true && controllGuard == true && nearToFetish == true)
         {
+            if(object03 != null)
+            {
+                object03.GetComponent<Outline>().enabled = false;
+            }
+            VFX_03.SetActive(false);
             FadeInOut.SetBool("isFading", true);
             Camera.main.GetComponent<Camera>().fieldOfView = 60;
             hurtImage.SetActive(false);
@@ -165,6 +177,16 @@ public class CameraFollow1 : MonoBehaviour {
             GameObject.Find("Trigger3").GetComponent<EnemyTrigger3>().opened4 == false &&
             buttonSmash03.active == false)
         {
+            if (object01 != null)
+            {
+                object01.GetComponent<Outline>().enabled = false;
+            }
+            if (object02 != null)
+            {
+                object02.GetComponent<Outline>().enabled = false;
+            }
+            VFX_01.SetActive(false);
+            VFX_02.SetActive(false);
             FadeInOut.SetBool("isFading", true);
             Camera.main.GetComponent<Camera>().fieldOfView = 60;
             hurtImage.SetActive(false);
@@ -199,6 +221,16 @@ public class CameraFollow1 : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Joystick1Button2) && enemy03 == true && 
             controllGuard03 == true && nearToFetish02 == true)
         {
+            if (object01 != null)
+            {
+                object01.GetComponent<Outline>().enabled = false;
+            }
+            if (object02 != null)
+            {
+                object02.GetComponent<Outline>().enabled = false;
+            }
+            VFX_01.SetActive(false);
+            VFX_02.SetActive(false);
             FadeInOut.SetBool("isFading", true);
             Camera.main.GetComponent<Camera>().fieldOfView = 60;
             hurtImage.SetActive(false);
@@ -324,6 +356,21 @@ public class CameraFollow1 : MonoBehaviour {
         #region Controll Player
         if (Input.GetKeyDown(KeyCode.Joystick1Button1) && player == true)
         {
+            if (object01 != null)
+            {
+                object01.GetComponent<Outline>().enabled = false;
+            }
+            if (object02 != null)
+            {
+                object02.GetComponent<Outline>().enabled = false;
+            }
+            if (object03 != null)
+            {
+                object03.GetComponent<Outline>().enabled = false;
+            }
+            VFX_01.SetActive(false);
+            VFX_02.SetActive(false);
+            VFX_03.SetActive(false);
             FadeInOut.SetBool("isFading", true);
             Camera.main.GetComponent<Camera>().fieldOfView = 60;
             hurtImage.SetActive(false);
@@ -500,6 +547,11 @@ public class CameraFollow1 : MonoBehaviour {
     {
         yield return new WaitForSeconds(1f);
         FadeInOut.SetBool("isFading", false);
+        if(object03 != null)
+        {
+            object03.GetComponent<Outline>().enabled = true;
+        }
+        VFX_03.SetActive(true);
     }
 
     public IEnumerator Mask02()
@@ -507,6 +559,16 @@ public class CameraFollow1 : MonoBehaviour {
         yield return new WaitForSeconds(1f);
         FadeInOut.SetBool("isFading", false);
         wallCamera_03 = true;
+        if (object01 != null)
+        {
+            object01.GetComponent<Outline>().enabled = true;
+        }
+        if (object02 != null)
+        {
+            object02.GetComponent<Outline>().enabled = true;
+        }
+        VFX_01.SetActive(true);
+        VFX_02.SetActive(true);
     }
 
     public IEnumerator Mask03()
@@ -514,6 +576,16 @@ public class CameraFollow1 : MonoBehaviour {
         yield return new WaitForSeconds(1f);
         FadeInOut.SetBool("isFading", false);
         wallCamera_04 = true;
+        if (object01 != null)
+        {
+            object01.GetComponent<Outline>().enabled = true;
+        }
+        if (object02 != null)
+        {
+            object02.GetComponent<Outline>().enabled = true;
+        }
+        VFX_01.SetActive(true);
+        VFX_02.SetActive(true);
     }
 
     public IEnumerator Mask04()
@@ -521,6 +593,16 @@ public class CameraFollow1 : MonoBehaviour {
         yield return new WaitForSeconds(1f);
         FadeInOut.SetBool("isFading", false);
         wallCamera_02 = true;
+        if (object01 != null)
+        {
+            object01.GetComponent<Outline>().enabled = true;
+        }
+        if (object02 != null)
+        {
+            object02.GetComponent<Outline>().enabled = true;
+        }
+        VFX_01.SetActive(true);
+        VFX_02.SetActive(true);
     }
     #endregion
 

@@ -6,18 +6,27 @@ using UnityEngine.UI;
 public class temp : MonoBehaviour {
 
     public GameObject test;
+    private bool test2 = false;
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Joystick1Button5))
         {
-            test.SetActive(true);
+            test.GetComponent<Image>().fillAmount = 1f;
+            test.GetComponent<Image>().enabled = false;
+            test2 = true;
+        }
+
+        if (test2 == true)
+        {
             test.GetComponent<Image>().fillAmount = 1f;
         }
 
+
         if (Input.GetKeyDown(KeyCode.Joystick1Button4))
         {
-            test.SetActive(false);
+            test.GetComponent<Image>().enabled = true;
+            test2 = false;
         }
     }
 }
