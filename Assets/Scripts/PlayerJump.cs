@@ -7,7 +7,6 @@ public class PlayerJump : MonoBehaviour
 {
     public Vector3 jump;
     public float jumpForce = 2.0f;
-    public GameObject Player;
     private Animator anim;
 
     public bool isGrounded;
