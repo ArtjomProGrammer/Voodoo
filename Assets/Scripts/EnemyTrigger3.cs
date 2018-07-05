@@ -13,6 +13,7 @@ public class EnemyTrigger3 : MonoBehaviour {
     public GameObject exit;
     public GameObject exitTrigger;
     public GameObject Trigger_Exit;
+    public GameObject otherGuard;
 
     public bool guardLeavesRoom = false;
 
@@ -53,5 +54,10 @@ public class EnemyTrigger3 : MonoBehaviour {
     {
         if (collision.gameObject == Trigger_Exit)
             guardLeavesRoom = true;
+
+        if (collision.gameObject == exitTrigger && GameObject.Find("CameraBase").GetComponent<CameraFollow1>().enemy03 == false)
+        {
+            opened4 = true;
+        }
     }
 }
