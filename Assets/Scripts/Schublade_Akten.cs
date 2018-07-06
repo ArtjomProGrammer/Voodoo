@@ -16,6 +16,8 @@ public class Schublade_Akten : MonoBehaviour
 
     public bool test = false;
 
+    private AudioSource audioSource;
+
     // Use this for initialization
     void Start()
     {
@@ -23,6 +25,7 @@ public class Schublade_Akten : MonoBehaviour
         maxPositionX_02 = schublade_02.transform.localPosition.x + .34f;
 
         localPosition_02 = schublade_02.transform.localPosition.x;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -48,6 +51,7 @@ public class Schublade_Akten : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Joystick1Button1) && col.gameObject.tag == "Player")
         {
+            audioSource.Play(0);
             test = true;
         }
     }

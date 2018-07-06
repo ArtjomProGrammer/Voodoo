@@ -5,7 +5,6 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     public float speed;
-    public GameObject Player;
     private Animator anim;
 
     public void Start()
@@ -28,7 +27,8 @@ public class Movement : MonoBehaviour
             anim.SetBool("isJumping", false);
         }
 
-        if (Input.GetAxis("Horizontal") == 0f && Input.GetAxis("Vertical") == 0f)
+        if (Input.GetAxis("Horizontal") == 0f && Input.GetAxis("Vertical") == 0f &&
+            Input.GetKeyDown(KeyCode.Joystick1Button0) == false)
         {
             anim.SetBool("isWalking", false);
             anim.SetBool("isIdle", true);

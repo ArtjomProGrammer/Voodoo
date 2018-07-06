@@ -22,6 +22,7 @@ public class AI : MonoBehaviour {
     private Animator anim;
     private Vector3 direction;
     private NavMeshAgent agent;
+    private Animator FadeInOut;
     private int selectedDestination;
 
     private int lastDestination;
@@ -32,14 +33,28 @@ public class AI : MonoBehaviour {
 
     public bool dead = false;
 
+    public GameObject respawn_01;
+    public GameObject respawn_guard;
+    public float distance_01;
+    public GameObject guard;
+    private bool seesPlayer = false;
+    private AudioSource audioSource;
 
+    public bool audioTrue = false;
+
+    public AudioClip hmm;
+
+    public bool enemy_01;
 
     // Use this for initialization
     void Start () {
-        anim = GetComponent<Animator>();
+        anim = guard.GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         agent.enabled = false;
         StartCoroutine(RandomMovement());
+        FadeInOut = GameObject.Find("FadeInOut").GetComponent<Animator>();
+        enemy_01 = GameObject.Find("CameraBase").GetComponent<CameraFollow1>().enemy;
+        audioSource = GetComponent<AudioSource>();
     }
 	
 	// Update is called once per frame
@@ -50,11 +65,13 @@ public class AI : MonoBehaviour {
         {
             alarmed = false;
             moving = false;
+            seesPlayer = false;
             _timer = timeUntilAttack;
         }
         else
         {
             alarmed = true;
+            seesPlayer = true;
         }
 
         Debug.DrawLine(transform.position, player.position + _player);
@@ -75,13 +92,20 @@ public class AI : MonoBehaviour {
             alarmed == true && moving == false && playerVisible == true)
         {
             agent.enabled = false;
-
+            
             anim.SetBool("isAlert", true);
             anim.SetBool("isIdle", false);
             anim.SetBool("isAttacking", false);
             anim.SetBool("isWalking", false);
+            anim.SetBool("isPlayerInGuard", false);
             Debug.Log("ALERT");
             dead = false;
+
+            if (_timer == 3f)
+            {
+                audioTrue = false;
+                audioSource.Play();
+            }
 
             // Looking at Player for maximum time until chasing the Player
             if (_timer > 0f)
@@ -95,13 +119,26 @@ public class AI : MonoBehaviour {
             }
         }
 
+        // Attacking
+        else if (Vector3.Distance(player.position, transform.position) < attackingDistance &&
+                 playerVisible == true && dead == false && seesPlayer == true)
+        {
+            agent.enabled = false;
+            anim.SetBool("isAttacking", true);
+            anim.SetBool("isWalking", false);
+            anim.SetBool("isPlayerInGuard", false);
+            Debug.Log("ATTACKING");
+            dead = true;
+        }
+
         // Moving
-        else if (Vector3.Distance(player.position, transform.position) <= walkingDistance &&
+        else if ((Vector3.Distance(player.position, transform.position) <= walkingDistance &&
                  Vector3.Distance(player.position, transform.position) > attackingDistance && 
-                 alarmed == true && playerVisible == true || moving == true)
+                 alarmed == true && playerVisible == true && dead == false && seesPlayer == true) 
+                 || moving == true)
         {            
             agent.enabled = true;
-            GetComponent<NavMeshAgent>().speed = 1f;
+            GetComponent<NavMeshAgent>().speed = .8f;
 
             agent.SetDestination(player.transform.position);
 
@@ -109,20 +146,10 @@ public class AI : MonoBehaviour {
             anim.SetBool("isAttacking", false);
             anim.SetBool("isAlert", false);
             anim.SetBool("isIdle", false);
-            Debug.Log("MOVING");
-            dead = false;
+            anim.SetBool("isPlayerInGuard", false);
+            Debug.Log("FOLLOWING");
         } 
 
-        // Attacking
-        else if (Vector3.Distance(player.position, transform.position) <= attackingDistance && 
-                 alarmed == true && playerVisible == true)
-        {
-            agent.enabled = false;
-            anim.SetBool("isAttacking", true);
-            anim.SetBool("isWalking", false);
-            Debug.Log("ATTACKING");
-            dead = true;
-        }
 
         // Idle
         else if (anim.GetBool ("isIdle") == false && agent.enabled == false)
@@ -133,10 +160,29 @@ public class AI : MonoBehaviour {
             anim.SetBool("isAlert", false);
             anim.SetBool("isIdle", true);
             anim.SetBool("isWalking", false);
+            anim.SetBool("isPlayerInGuard", false);
             Debug.Log("IDLE");
             dead = false;
         }
-	}
+
+        // Respawn Player && reset enemy
+        if (dead == true)
+        {
+            FadeInOut.SetBool("isFading", true);
+            StartCoroutine(respawn());
+            dead = false;
+        }
+
+        distance_01 = Vector3.Distance(player.position, transform.position);
+    }
+
+    IEnumerator respawn()
+    {
+        yield return new WaitForSeconds(.5f);
+        playerObject.transform.position = respawn_01.transform.position;
+        FadeInOut.SetBool("isFading", false);
+        transform.position = respawn_guard.transform.position;
+    }
 
     // Enemy chooses between staying on Point or move to the next Destination
     public IEnumerator RandomMovement()
@@ -159,7 +205,7 @@ public class AI : MonoBehaviour {
                 // picks a random destination and moves
                 Debug.Log("move...");
                 agent.enabled = true;
-                GetComponent<NavMeshAgent>().speed = .3f;
+                GetComponent<NavMeshAgent>().speed = .6f;
 
                 lastDestination = selectedDestination;
                 

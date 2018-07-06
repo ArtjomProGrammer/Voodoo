@@ -44,6 +44,8 @@ public class CameraFollow1 : MonoBehaviour {
     public GameObject buttonSmash03;
 
     private Animator FadeInOut;
+    private Animator Guard;
+    public GameObject guard;
 
 
     #region inits    
@@ -252,7 +254,7 @@ public class CameraFollow1 : MonoBehaviour {
             SetLookAt();
         }
 
-        if (enemy03 == false && player == true)
+        if ((enemy03 == false && player == true))
         {
             if (Enemy_03.GetComponent<NavMeshAgent>().enabled == true)
             {

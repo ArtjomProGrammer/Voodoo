@@ -16,11 +16,13 @@ public class Schublade : MonoBehaviour {
 
     public GameObject schublade_02;
     public GameObject schublade_03;
+    private AudioSource audioSource;
 
     public bool test = false;
 
     // Use this for initialization
     void Start () {
+        audioSource = GetComponent<AudioSource>();
         maxPositionX_01 = transform.localPosition.x + .34f;
         maxPositionX_02 = schublade_02.transform.localPosition.x - .34f;
         maxPositionX_03 = schublade_03.transform.localPosition.x - .34f;
@@ -57,6 +59,7 @@ public class Schublade : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.Joystick1Button1) && col.gameObject.tag == "Player")
         {
+            audioSource.Play(0);
             test = true;
         }
     }

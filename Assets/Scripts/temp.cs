@@ -10,7 +10,7 @@ public class temp : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Joystick1Button5))
+        if (Input.GetKeyDown(KeyCode.Joystick1Button4))
         {
             test.GetComponent<Image>().fillAmount = 1f;
             test.GetComponent<Image>().enabled = false;
@@ -23,7 +23,7 @@ public class temp : MonoBehaviour {
         }
 
 
-        if (Input.GetKeyDown(KeyCode.Joystick1Button4))
+        if (Input.GetKeyDown(KeyCode.Joystick1Button5))
         {
             test.GetComponent<Image>().enabled = true;
             test2 = false;
