@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class CameraFollow1 : MonoBehaviour {
 
-	public float CameraMoveSpeed = 120.0f;
+    #region inits   
+    public float CameraMoveSpeed = 120.0f;
 	public GameObject CameraFollowObj;
 	public float clampAngle   = 80.0f;
     public float clampAngle2  = 80.0f;
@@ -31,6 +32,7 @@ public class CameraFollow1 : MonoBehaviour {
     public GameObject VFX_03;
 
     private float timerAlpha;
+    private bool depthsCamera = false;
 
     public GameObject hurtImage;
 
@@ -47,8 +49,8 @@ public class CameraFollow1 : MonoBehaviour {
     private Animator Guard;
     public GameObject guard;
 
-
-    #region inits    
+    public GameObject _shader;
+ 
     public Transform lookAt;
     public Transform camTransform;
     
@@ -80,7 +82,6 @@ public class CameraFollow1 : MonoBehaviour {
     private bool controllGuard03 = false;
     Quaternion localRotation;
     #endregion
-
 
     // Use this for initialization
     void Start () {
@@ -147,6 +148,8 @@ public class CameraFollow1 : MonoBehaviour {
             {
                 object03.GetComponent<Outline>().enabled = false;
             }
+            depthsCamera = false;
+            _shader.SetActive(false);
             VFX_03.SetActive(false);
             FadeInOut.SetBool("isFading", true);
             Camera.main.GetComponent<Camera>().fieldOfView = 60;
@@ -187,6 +190,8 @@ public class CameraFollow1 : MonoBehaviour {
             {
                 object02.GetComponent<Outline>().enabled = false;
             }
+            depthsCamera = false;
+            _shader.SetActive(false);
             VFX_01.SetActive(false);
             VFX_02.SetActive(false);
             FadeInOut.SetBool("isFading", true);
@@ -218,7 +223,7 @@ public class CameraFollow1 : MonoBehaviour {
             }
         }
         #endregion
-
+        
         #region Controll Enemy03
         if (Input.GetKeyDown(KeyCode.Joystick1Button2) && enemy03 == true && 
             controllGuard03 == true && nearToFetish02 == true)
@@ -231,6 +236,8 @@ public class CameraFollow1 : MonoBehaviour {
             {
                 object02.GetComponent<Outline>().enabled = false;
             }
+            depthsCamera = false;
+            _shader.SetActive(false);
             VFX_01.SetActive(false);
             VFX_02.SetActive(false);
             FadeInOut.SetBool("isFading", true);
@@ -268,6 +275,8 @@ public class CameraFollow1 : MonoBehaviour {
         #region Controll Mask_01
         if (Input.GetKeyDown(KeyCode.Joystick1Button3) && wallCamera_01 == true && isRoom_02 == true)
         {
+            depthsCamera = true;
+            _shader.SetActive(true);
             FadeInOut.SetBool("isFading", true);
             Camera.main.GetComponent<Camera>().fieldOfView = fieldOfView;
             hurtImage.SetActive(true);
@@ -287,6 +296,8 @@ public class CameraFollow1 : MonoBehaviour {
         #region Controll Mask_02
         if (Input.GetKeyDown(KeyCode.Joystick1Button3) && wallCamera_02 == true && isRoom_03 == true)
         {
+            depthsCamera = true;
+            _shader.SetActive(true);
             FadeInOut.SetBool("isFading", true);
             Camera.main.GetComponent<Camera>().fieldOfView = fieldOfView;
             //hurtImage.SetActive(true);
@@ -310,6 +321,8 @@ public class CameraFollow1 : MonoBehaviour {
         #region Controll Mask_03
         if (Input.GetKeyDown(KeyCode.Joystick1Button3) && wallCamera_03 == true && isRoom_03 == true)
         {
+            depthsCamera = true;
+            _shader.SetActive(true);
             FadeInOut.SetBool("isFading", true);
             Camera.main.GetComponent<Camera>().fieldOfView = fieldOfView;
             hurtImage.SetActive(true);
@@ -334,6 +347,8 @@ public class CameraFollow1 : MonoBehaviour {
         #region Controll Mask_04
         if (Input.GetKeyDown(KeyCode.Joystick1Button3) && wallCamera_04 == true && isRoom_03 == true)
         {
+            depthsCamera = true;
+            _shader.SetActive(true);
             FadeInOut.SetBool("isFading", true);
             Camera.main.GetComponent<Camera>().fieldOfView = fieldOfView;
             hurtImage.SetActive(true);
@@ -370,6 +385,8 @@ public class CameraFollow1 : MonoBehaviour {
             {
                 object03.GetComponent<Outline>().enabled = false;
             }
+            depthsCamera = false;
+            _shader.SetActive(false);
             VFX_01.SetActive(false);
             VFX_02.SetActive(false);
             VFX_03.SetActive(false);
@@ -503,6 +520,15 @@ public class CameraFollow1 : MonoBehaviour {
             SetLookAt();
         }
         #endregion
+
+        if (depthsCamera == true)
+        {
+            if (Input.GetKey(KeyCode.Joystick1Button8) && cam.GetComponent<Camera>().fieldOfView < 85f)
+                cam.GetComponent<Camera>().fieldOfView += Time.deltaTime * 20;
+
+            if (Input.GetKey(KeyCode.Joystick1Button9) && cam.GetComponent<Camera>().fieldOfView > 30f)
+                cam.GetComponent<Camera>().fieldOfView -= Time.deltaTime * 20;
+        }
     }
 
     #region Coroutine FadingInOut
