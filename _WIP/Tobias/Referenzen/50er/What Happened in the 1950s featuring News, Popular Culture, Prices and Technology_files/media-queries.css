@@ -1,0 +1,274 @@
+/* WARNING: USE CAUTION WHEN EDITING THIS FILE */
+
+/* NOTE: THIS FILE INCLUDES 4 STAGES OF MEDIA QUERIES - SEE help.html */
+
+/* NOTE: TO EDIT COLORS - SEE style.css */
+
+
+
+
+
+
+/***************
+START Media Queries #1 -  UNHIDE MENU ON RESIZE - SEE ALSO 740 WIDTH IN javascripts.js
+***************/
+@media only screen and (min-width: 741px) and (max-width: 10000px)
+	{
+
+
+#menusub	{ display: block !important; }
+
+
+	}
+/***************
+END Media Queries #1
+***************/
+
+
+
+
+
+
+/***************
+START Media Queries #2 WHEN PAGE WIDTH LESS THAN 996 IS ACTIVE (FOR DESKTOP)
+***************/
+@media handheld and (max-width: 996px),
+   screen and (max-device-width: 996px),
+   screen and (max-width: 996px) 
+	{
+
+
+#contentbox	 { max-width: 820px; }
+
+#left-content 	 { max-width: 515px; }
+
+#sidebar-content { max-width: 270px; }
+
+
+	}
+/***************
+END Media Queries #2
+***************/
+
+
+
+
+
+
+/***************
+START Media Queries #3 WHEN PAGE WIDTH LESS THAN 890 IS ACTIVE (FOR TABLET)
+***************/
+@media handheld and (max-width: 890px),
+   screen and (max-device-width: 890px),
+   screen and (max-width: 890px) 
+	{
+
+
+.logo-respond	 { width: 100%; height: auto; }
+
+#contentbox	 { max-width: 720px; }
+
+#left-content 	 { max-width: 400px; }
+
+.floatlist	 { width: 100%; }
+
+
+	}
+/***************
+END Media Queries #3
+***************/
+
+
+
+
+
+
+/***************
+START Media Queries #4 WHEN PAGE WIDTH LESS THAN 740 IS ACTIVE
+***************/
+@media handheld and (max-width: 740px),
+   screen and (max-device-width: 740px),
+   screen and (max-width: 740px) 
+	{
+
+
+#contentbox		{ padding: 15px 0px 10px 0px; }
+
+.content-pad 		{ padding: 0px 15px 10px 15px; }
+
+.sidebar-pad		{ padding: 0px 15px 10px 15px; }
+
+#left-content 		{ width: 100%; min-width: 100%; }
+
+#sidebar-content	{ display: none; border-left: #999999 0px solid; }
+
+.footerhide		{ display: none; }
+
+.mobile-social		{ display: block; padding: 10px 0px 10px 0px; }
+
+.mobile-social table	{ margin: 0 auto; }
+
+.contact-page #sidebar-content	{ display: block; }
+
+.contact-page .content-pad	{ display: none; }
+
+
+/* MOBILE MENU */
+
+#mobile-menu-icon	{ display: block; }
+
+#menusub	{
+		background-color: #8F6D45;
+		width: 200px;
+		padding-top: 0px;
+		display: none;
+		position: absolute;
+		top: 39px;
+		left: 5px;
+		z-index: 1050;
+	/* DROP SHADOW */
+		-moz-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.20);
+		-webkit-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.20);
+		box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.20);
+		}
+
+#menusub a	{
+		background-color: #8F6D45;
+		font-size: 14px;
+		text-align: left;
+		padding: 6px 10px 6px 10px;
+		display: block;
+		}
+
+/* SUB MENU CORNER ROUNDING */
+
+#menusub, #menusub a:first-child {
+		-moz-border-radius-topleft: 0px;
+		-moz-border-radius-topright: 0px;
+		border-top-left-radius: 0px;
+		border-top-right-radius: 0px;
+		}
+
+#menusub, #menusub a:last-child {
+		-moz-border-radius-bottomright: 4px;
+		-moz-border-radius-bottomleft: 4px;
+		border-bottom-right-radius: 4px;
+		border-bottom-left-radius: 4px;
+		}
+
+
+	}
+/***************
+END Media Queries #4
+***************/
+
+
+
+
+
+
+/***************
+START Media Queries #5 -  WHEN PAGE WIDTH LESS THAN 482 IS ACTIVE
+                      CLASSES HERE CAN ALSO BE FOUND IN THE style.css
+***************/
+@media handheld and (max-width: 482px),
+   screen and (max-device-width: 482px),
+   screen and (max-width: 482px) 
+	{
+
+
+
+
+/* MQS FONTS - NEXT LINE IS DEFAULT MOBILE FONT ALL PAGES */
+
+body, div, table { font-size: 14px; line-height: 150%; }
+
+.title  	{ font-size: 30px; }
+
+.subtitle  	{ font-size: 23px; }
+
+.smalltext 	{ font-size: 12px; }
+
+.just 		{ text-align: left; }
+
+
+
+
+/* MQS GENERAL */
+
+.hidemobile	   { display: none; }
+
+.splits-xtramargin { margin-top: 12px; margin-bottom: 12px; }
+
+
+
+
+/* MQS PAGE & CONTENT HEIGHTS, PADDING & WIDTHS */
+
+.pageheight		{ min-height: 50px; }
+
+.pagebox		{ padding: 0px 1px 0px 1px; }
+
+#contentbox		{ padding: 5px 0px 10px 0px; }
+
+.content-pad		{ padding: 10px 5px 10px 5px; }
+
+#contentbox-home	{ padding: 10px 0px 10px 0px; }
+
+.content-pad-home	{ padding: 10px 5px 10px 5px; }
+
+
+
+
+/* MQS LOGO GRAPHIC, AND TEXT */
+
+#headerdiv	{ padding: 8px 0px 8px 0px; }
+
+.textlogo	{ font-size: 22px; }
+
+
+
+
+/* MQS FOOTER */
+
+.footer-copyright { font-size: 11px; }
+
+
+
+
+/* MQS SIDEBAR - NOT USED WHEN SIDEBAR IS HIDDEN IN MQs ABOVE */
+
+.sidebar-text	{ font-size: 13px; line-height: normal; }
+
+.side-links a	{ font-size: 13px; line-height: normal; }
+
+#sidebar-content { max-width: 260px; }
+
+.sidebar-pad	 { padding: 5px 5px 10px 5px; }
+
+
+
+
+/* CONTACT PAGE */
+
+.contactform-table		  { margin: 10px 0px 10px 0px; }
+
+.shadeform, .textarea, .dropdown  { font-size: 12px; }
+
+
+
+
+/* LINKS PAGE */
+
+.searchform, .searchbutton  { font-size: 12px; }
+
+
+
+
+	}
+/***************
+END Media Queries #5
+***************/
+
+
+

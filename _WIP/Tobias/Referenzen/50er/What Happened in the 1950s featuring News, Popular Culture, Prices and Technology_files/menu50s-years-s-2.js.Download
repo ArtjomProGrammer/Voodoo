@@ -1,0 +1,57 @@
+// Begin
+
+// NOTE: If you use a ' add a slash before it like this \'
+
+
+
+var menuside	 = "center"		  // MENU SIDE | left | right | center |
+
+
+
+document.write('<div id="menudiv" class="td-'+menuside+' printhide">');
+document.write('<div id="mobile-menu-icon" onclick="javascript:toggleMenu(\'menusub\');">');
+
+// MOBILE 3 BAR MENU
+
+document.write('<img src="picts/mobile-menu-icon-white.png" width="100" height="29" class="menu-icon-img" alt="Open Menu">');
+
+document.write('</div>');
+document.write('<div id="menusub">');
+
+
+// START MENU LINKS - COPY ANY LINE TO ADD A NEW LINK
+
+
+document.write('<a href="http://www.thepeoplehistory.com/">Home</a>');
+
+document.write('<a href="1950s.html">1950s</a>');
+
+document.write('<a href="1950.html">1950</a>');
+
+document.write('<a href="1951.html">1951</a>');
+
+
+document.write('<a href="1952.html">1952</a>');
+
+
+document.write('<a href="1953.html">1953</a>');
+
+
+document.write('<a href="1954.html">1954</a>');
+
+
+document.write('<a href="1955.html">1955</a>');
+
+
+document.write('<a href="1956.html">1956</a>');
+
+document.write('<a href="1957.html">1957</a>');
+document.write('<a href="1958.html">1958</a>');
+document.write('<a href="1959.html">1959</a>');
+document.write('<a href="http://www.thepeoplehistory.com/customsearchpage.html">Search</a>');
+document.write('<a href="https://www.backintimegifts.com/">Back In Time Gifts</a>');
+// END MENU LINKS
+
+
+document.write('</div>');
+document.write('</div>');

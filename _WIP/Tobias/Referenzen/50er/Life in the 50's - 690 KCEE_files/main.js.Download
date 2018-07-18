@@ -1,0 +1,21 @@
+// Custom scripts
+jQuery(document).ready(function ($) {
+
+	// Maintain Equal Height
+	(function($) {
+		$.fn.equalHeight = function() {
+			var maxHeight = 0;
+			this.each(function() {
+				$(this).each(function() {
+					maxHeight = Math.max(maxHeight, $(this).height());
+				});
+			});
+			return maxHeight;
+		};
+	})(jQuery);
+
+	$('.col3  p').css('height', $('.col3 p').equalHeight() );
+	$('.music-artist li').css('height', $('.music-artist li').equalHeight() );
+	$('.artise-des p').css('height', $('.artise-des p').equalHeight() );
+
+});

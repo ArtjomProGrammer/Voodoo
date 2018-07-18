@@ -1,0 +1,18 @@
+// Begin SIDEBAR
+
+// NOTE: If you use a ' add a slash before it like this \'
+
+// IMAGE
+
+// START SIDEBAR TEXT & LINKS
+
+document.write('<div class="newhighlight">');
+
+
+document.write('<div class="side-links">');
+
+document.write('<a href="https://www.backintimegifts.com/collections/frontpage/products/newspaper-print" rel="nofollow"><img src="newspaper-ad-200x630-2.jpg"  class="sidebar-image" alt=""></a>');
+
+
+document.write('</div>');
+document.write('</div>');
