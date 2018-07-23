@@ -138,7 +138,7 @@ public class AI : MonoBehaviour {
                  || moving == true)
         {            
             agent.enabled = true;
-            GetComponent<NavMeshAgent>().speed = .8f;
+            GetComponent<NavMeshAgent>().speed = 1f;
 
             agent.SetDestination(player.transform.position);
 

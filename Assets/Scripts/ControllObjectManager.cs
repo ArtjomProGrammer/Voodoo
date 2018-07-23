@@ -15,6 +15,9 @@ public class ControllObjectManager : MonoBehaviour
     public GameObject Object03;
     public GameObject fetish01;
     public GameObject fetish02;
+    public GameObject key_01;
+    public GameObject key_02;
+    public GameObject key_03;
 
     public GameObject ButtonSmash;
     public GameObject ButtonSmash02;
@@ -26,6 +29,7 @@ public class ControllObjectManager : MonoBehaviour
         // collect Keys of guard01
         if (collision.gameObject == Object01 && Input.GetKeyDown(KeyCode.Joystick1Button2))
         {
+            key_01.SetActive(true);
             Destroy(collision.gameObject);
             controllObject01 = true;
         }
@@ -33,6 +37,7 @@ public class ControllObjectManager : MonoBehaviour
         // collect Keys of guard02
         if (collision.gameObject == Object02 && Input.GetKeyDown(KeyCode.Joystick1Button2))
         {
+            key_02.SetActive(true);
             Destroy(collision.gameObject);
             controllObject02 = true;
         }
@@ -40,6 +45,7 @@ public class ControllObjectManager : MonoBehaviour
         // collect Keys of guard03
         if (collision.gameObject == Object03 && Input.GetKeyDown(KeyCode.Joystick1Button2))
         {
+            key_03.SetActive(true);
             Destroy(collision.gameObject);
             controllObject03 = true;
         }

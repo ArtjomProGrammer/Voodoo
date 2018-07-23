@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DetectingPlayer : MonoBehaviour {
-
-    private float moveForce;
+    
     public Transform player;
     public GameObject Player;
     public GameObject Enemy_01;

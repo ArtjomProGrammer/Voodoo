@@ -57,7 +57,7 @@ public class Schublade : MonoBehaviour {
 
     void OnTriggerStay(Collider col)
     {
-        if (Input.GetKeyDown(KeyCode.Joystick1Button1) && col.gameObject.tag == "Player")
+        if (Input.GetKeyDown(KeyCode.Joystick1Button2) && col.gameObject.tag == "Player")
         {
             audioSource.Play(0);
             test = true;

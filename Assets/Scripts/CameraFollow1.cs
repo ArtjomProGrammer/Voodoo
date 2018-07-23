@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class CameraFollow1 : MonoBehaviour {
 
-    #region inits   
+    #region inits
     public float CameraMoveSpeed = 120.0f;
 	public GameObject CameraFollowObj;
 	public float clampAngle   = 80.0f;
@@ -81,11 +81,14 @@ public class CameraFollow1 : MonoBehaviour {
     private bool controllGuard02 = false;
     private bool controllGuard03 = false;
     Quaternion localRotation;
+
+    private Animator anim;
     #endregion
 
     // Use this for initialization
     void Start () {
 
+        anim = Player.GetComponent<Animator>();
         FadeInOut = GameObject.Find("FadeInOut").GetComponent<Animator>();
         Vector3 rot = transform.localRotation.eulerAngles;
 		rotY = rot.y;
@@ -275,6 +278,8 @@ public class CameraFollow1 : MonoBehaviour {
         #region Controll Mask_01
         if (Input.GetKeyDown(KeyCode.Joystick1Button3) && wallCamera_01 == true && isRoom_02 == true)
         {
+            anim.SetBool("isIdle", true);
+            anim.SetBool("isWalking", false);
             depthsCamera = true;
             _shader.SetActive(true);
             FadeInOut.SetBool("isFading", true);
@@ -284,6 +289,7 @@ public class CameraFollow1 : MonoBehaviour {
             Enemy_01.GetComponent<NavMeshAgent>().enabled = true;
             Enemy_01.GetComponent<AI>().enabled = true;
             Enemy_01.GetComponent<Movement>().enabled = false;
+            Player.GetComponent<Movement>().enabled = false;
             enemy = true;
             player = true;
             wallCamera_01 = false;
@@ -296,6 +302,8 @@ public class CameraFollow1 : MonoBehaviour {
         #region Controll Mask_02
         if (Input.GetKeyDown(KeyCode.Joystick1Button3) && wallCamera_02 == true && isRoom_03 == true)
         {
+            anim.SetBool("isWalking", false);
+            anim.SetBool("isIdle", true);
             depthsCamera = true;
             _shader.SetActive(true);
             FadeInOut.SetBool("isFading", true);
@@ -307,6 +315,7 @@ public class CameraFollow1 : MonoBehaviour {
             Enemy_02.GetComponent<Movement>().enabled = false;
             Enemy_03.GetComponent<NavMeshAgent>().enabled = true;
             Enemy_03.GetComponent<AI>().enabled = true;
+            Player.GetComponent<Movement>().enabled = false;
             enemy02 = false;
             enemy03 = true;
             player = true;
@@ -321,6 +330,8 @@ public class CameraFollow1 : MonoBehaviour {
         #region Controll Mask_03
         if (Input.GetKeyDown(KeyCode.Joystick1Button3) && wallCamera_03 == true && isRoom_03 == true)
         {
+            anim.SetBool("isWalking", false);
+            anim.SetBool("isIdle", true);
             depthsCamera = true;
             _shader.SetActive(true);
             FadeInOut.SetBool("isFading", true);
@@ -333,6 +344,7 @@ public class CameraFollow1 : MonoBehaviour {
             Enemy_03.GetComponent<NavMeshAgent>().enabled = true;
             Enemy_03.GetComponent<AI>().enabled = true;
             Enemy_03.GetComponent<Movement>().enabled = false;
+            Player.GetComponent<Movement>().enabled = false;
             enemy02 = false;
             enemy03 = true;
             player = true;
@@ -347,6 +359,8 @@ public class CameraFollow1 : MonoBehaviour {
         #region Controll Mask_04
         if (Input.GetKeyDown(KeyCode.Joystick1Button3) && wallCamera_04 == true && isRoom_03 == true)
         {
+            anim.SetBool("isWalking", false);
+            anim.SetBool("isIdle", true);
             depthsCamera = true;
             _shader.SetActive(true);
             FadeInOut.SetBool("isFading", true);
@@ -359,6 +373,7 @@ public class CameraFollow1 : MonoBehaviour {
             Enemy_03.GetComponent<NavMeshAgent>().enabled = true;
             Enemy_03.GetComponent<AI>().enabled = true;
             Enemy_03.GetComponent<Movement>().enabled = false;
+            Player.GetComponent<Movement>().enabled = false;
             enemy02 = false;
             enemy03 = true;
             player = true;
@@ -524,10 +539,10 @@ public class CameraFollow1 : MonoBehaviour {
         if (depthsCamera == true)
         {
             if (Input.GetKey(KeyCode.Joystick1Button8) && cam.GetComponent<Camera>().fieldOfView < 85f)
-                cam.GetComponent<Camera>().fieldOfView += Time.deltaTime * 20;
+                cam.GetComponent<Camera>().fieldOfView += Time.deltaTime * 25;
 
             if (Input.GetKey(KeyCode.Joystick1Button9) && cam.GetComponent<Camera>().fieldOfView > 30f)
-                cam.GetComponent<Camera>().fieldOfView -= Time.deltaTime * 20;
+                cam.GetComponent<Camera>().fieldOfView -= Time.deltaTime * 25;
         }
     }
 
