@@ -124,7 +124,11 @@ MonoBehaviour:
         temperature: 0
         tint: 0
         hueShift: 0
+<<<<<<< HEAD
         saturation: 0.5
+=======
+        saturation: 0.4
+>>>>>>> f18f4435da0048ec5ac877b2ff1f198b47ed624f
         contrast: 0.86
       channelMixer:
         red: {x: 1, y: 0, z: 0}
