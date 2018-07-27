@@ -145,7 +145,8 @@ public class CameraFollow1 : MonoBehaviour {
         
 
         #region Controll Enemy01
-        if (Input.GetKeyDown(KeyCode.Joystick1Button2) && enemy == true && controllGuard == true && nearToFetish == true)
+        if (Input.GetKeyDown(KeyCode.Joystick1Button2) && enemy == true 
+            && controllGuard == true && nearToFetish == true)
         {
             if(object03 != null)
             {
@@ -300,7 +301,8 @@ public class CameraFollow1 : MonoBehaviour {
         #endregion
 
         #region Controll Mask_02
-        if (Input.GetKeyDown(KeyCode.Joystick1Button3) && wallCamera_02 == true && isRoom_03 == true)
+        if (Input.GetKeyDown(KeyCode.Joystick1Button3) 
+            && wallCamera_02 == true && isRoom_03 == true)
         {
             anim.SetBool("isWalking", false);
             anim.SetBool("isIdle", true);

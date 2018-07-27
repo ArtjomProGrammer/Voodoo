@@ -47,7 +47,7 @@ public class AnimCamera : MonoBehaviour {
 
     public IEnumerator BackToMainCamera()
     {
-        yield return new WaitForSeconds(23.5f);
+        yield return new WaitForSeconds(19f);
         animCamera01.SetActive(false);
         cameraBase.GetComponent<CameraFollow1>().enabled = true;
         cameraCollision.GetComponent<CameraCollision1>().enabled = true;
