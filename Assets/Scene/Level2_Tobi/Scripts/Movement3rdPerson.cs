@@ -5,11 +5,19 @@ using UnityEngine;
 public class Movement3rdPerson : MonoBehaviour {
 
     public float speed;
+    public float aimX;
+    public float aimY;
+    public float angle;
+    public float CameraRot;
     private Animator anim;
+
+    public Quaternion localRot;
+    
 
     public void Start( )
     {
-        anim = GetComponent<Animator>();
+        this.CameraRot = Camera.main.GetComponentInParent<Transform>().rotation.y;
+        this.anim = GetComponent<Animator>();
     }
 
     void FixedUpdate( )
@@ -39,20 +47,30 @@ public class Movement3rdPerson : MonoBehaviour {
 
        
 
-        float aimX = Input.GetAxisRaw("Horizontal");
-        float aimY = Input.GetAxisRaw("Vertical");
-        float angle = 0.0f;
+        aimX = Input.GetAxisRaw("Horizontal");
+        aimY = Input.GetAxisRaw("Vertical");
+        angle = 0.0f;
 
         if (!(aimX == 0 && aimY == 0))
         {
             angle = Mathf.Atan2(aimX, aimY) * Mathf.Rad2Deg;
-            transform.localRotation = Quaternion.Euler(new Vector3(0, angle, 0));
+            transform.localRotation = Quaternion.Euler(new Vector3(0, angle + this.CameraRot, 0));
         }
+
+        //var CharacterRotation = Camera.main.transform.rotation;
+        //CharacterRotation.x = 0;
+        //CharacterRotation.z = 0;
+
+        //CharacterRotation.y += transform.localRotation.y;
+
+        //transform.rotation = CharacterRotation;
 
         this.GetComponent<Rigidbody>().velocity = new Vector3(Input.GetAxis("Horizontal") * speed, 0,
                             Input.GetAxis("Vertical") * speed);
         //transform.Translate(Input.GetAxis("Horizontal") * Time.deltaTime * speed, 0,
         //                    Input.GetAxis("Vertical") * Time.deltaTime * speed);
+
+        this.localRot = transform.localRotation;
 
     }
 

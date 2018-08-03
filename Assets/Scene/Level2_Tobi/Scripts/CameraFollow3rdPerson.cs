@@ -28,17 +28,17 @@ public class CameraFollow3rdPerson : MonoBehaviour {
         Vector3 rot = transform.localRotation.eulerAngles;
         this.rotX = rot.x;
         this.rotY = rot.y;
-        //Cursor.lockState = CursorLockMode.Locked;
-        //Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
         float inputX = Input.GetAxis("RightStickHorizontal");
         float inputZ = Input.GetAxis("RightStickVertical");
-        //this.mouseX = Input.GetAxis("Mouse X");
-        //this.mouseY = Input.GetAxis("Mouse Y");
+        this.mouseX = Input.GetAxis("Mouse X");
+        this.mouseY = Input.GetAxis("Mouse Y");
         this.finalInputX = inputX + this.mouseX;
         this.finalInputZ = inputZ + this.mouseY;
 
