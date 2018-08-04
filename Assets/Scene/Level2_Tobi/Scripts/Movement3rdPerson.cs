@@ -8,7 +8,7 @@ public class Movement3rdPerson : MonoBehaviour {
     public float aimX;
     public float aimY;
     public float angle;
-    public float CameraRot;
+    public Vector3 CameraRot;
     private Animator anim;
 
     public Quaternion localRot;
@@ -16,7 +16,7 @@ public class Movement3rdPerson : MonoBehaviour {
 
     public void Start( )
     {
-        this.CameraRot = Camera.main.GetComponentInParent<Transform>().rotation.y;
+        this.CameraRot = Camera.main.GetComponentInParent<Transform>().eulerAngles;
         this.anim = GetComponent<Animator>();
     }
 
@@ -45,16 +45,21 @@ public class Movement3rdPerson : MonoBehaviour {
         //    anim.SetBool("isJumping", false);
         //}
 
-       
+
+
+        this.CameraRot = Camera.main.GetComponentInParent<Transform>().eulerAngles;
 
         aimX = Input.GetAxisRaw("Horizontal");
         aimY = Input.GetAxisRaw("Vertical");
         angle = 0.0f;
 
+
         if (!(aimX == 0 && aimY == 0))
         {
             angle = Mathf.Atan2(aimX, aimY) * Mathf.Rad2Deg;
-            transform.localRotation = Quaternion.Euler(new Vector3(0, angle + this.CameraRot, 0));
+            transform.localRotation = Quaternion.Euler(new Vector3(0, angle + this.CameraRot.y, 0));
+            Debug.Log("Angle " + angle + " Camera Rotation " + this.CameraRot.y + " Added " + (this.CameraRot.y + angle));
+
         }
 
         //var CharacterRotation = Camera.main.transform.rotation;
@@ -65,8 +70,8 @@ public class Movement3rdPerson : MonoBehaviour {
 
         //transform.rotation = CharacterRotation;
 
-        this.GetComponent<Rigidbody>().velocity = new Vector3(Input.GetAxis("Horizontal") * speed, 0,
-                            Input.GetAxis("Vertical") * speed);
+        this.GetComponent<Rigidbody>().velocity = new Vector3(transform.forward.x * Input.GetAxis("Horizontal") * speed, transform.forward.y,
+                            transform.forward.z * Input.GetAxis("Vertical") * speed);
         //transform.Translate(Input.GetAxis("Horizontal") * Time.deltaTime * speed, 0,
         //                    Input.GetAxis("Vertical") * Time.deltaTime * speed);
 

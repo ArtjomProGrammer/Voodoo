@@ -1006,6 +1006,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  aimX: 0
+  aimY: 0
+  angle: 0
+  CameraRot: {x: 0, y: 0, z: 0}
+  localRot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!54 &681322672
 Rigidbody:
   m_ObjectHideFlags: 0
