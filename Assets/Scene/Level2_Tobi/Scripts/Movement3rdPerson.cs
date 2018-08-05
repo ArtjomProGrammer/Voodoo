@@ -59,7 +59,12 @@ public class Movement3rdPerson : MonoBehaviour {
             angle = Mathf.Atan2(aimX, aimY) * Mathf.Rad2Deg;
             transform.localRotation = Quaternion.Euler(new Vector3(0, angle + this.CameraRot.y, 0));
             Debug.Log("Angle " + angle + " Camera Rotation " + this.CameraRot.y + " Added " + (this.CameraRot.y + angle));
-
+            this.GetComponent<Rigidbody>().velocity = new Vector3(transform.forward.x * speed, transform.forward.y,
+                           transform.forward.z * speed);
+        }
+        else
+        {
+            this.GetComponent<Rigidbody>().velocity *= 0;
         }
 
         //var CharacterRotation = Camera.main.transform.rotation;
@@ -70,8 +75,7 @@ public class Movement3rdPerson : MonoBehaviour {
 
         //transform.rotation = CharacterRotation;
 
-        this.GetComponent<Rigidbody>().velocity = new Vector3(transform.forward.x * Input.GetAxis("Horizontal") * speed, transform.forward.y,
-                            transform.forward.z * Input.GetAxis("Vertical") * speed);
+       
         //transform.Translate(Input.GetAxis("Horizontal") * Time.deltaTime * speed, 0,
         //                    Input.GetAxis("Vertical") * Time.deltaTime * speed);
 
