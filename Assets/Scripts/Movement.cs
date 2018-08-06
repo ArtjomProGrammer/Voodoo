@@ -26,7 +26,7 @@ public class Movement : MonoBehaviour
             anim.SetBool("isIdle", false);
             anim.SetBool("isJumping", false);
         }
-
+        else
         if (Input.GetAxis("Horizontal") == 0f && Input.GetAxis("Vertical") == 0f &&
             Input.GetKeyDown(KeyCode.Joystick1Button0) == false)
         {

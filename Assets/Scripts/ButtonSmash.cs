@@ -24,8 +24,8 @@ public class ButtonSmash : MonoBehaviour {
     public float _timer = 10f;
     private float coolingTime = 1f;
 
-    private float maxPosLeft = -100f;
-    private float maxPosRight = 100f;
+    private float maxPosLeft = -125f;
+    private float maxPosRight = 125f;
 
     private bool isDone = true;
 

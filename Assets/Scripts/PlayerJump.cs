@@ -31,6 +31,7 @@ public class PlayerJump : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Joystick1Button0) && isGrounded == true)
         {
             audioSource.Play(0);
+            anim.SetBool("isIdle", false);
             anim.SetBool("isJumping", true);
             anim.SetBool("isWalking", false);
             anim.SetBool("isIdle", false);

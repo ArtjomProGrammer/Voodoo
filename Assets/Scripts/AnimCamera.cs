@@ -10,7 +10,7 @@ public class AnimCamera : MonoBehaviour {
     public GameObject cameraBase;
     public GameObject cameraCollision;
     public GameObject trigger01;
-    public GameObject exit;
+    public GameObject trigger02;
 
     private Animator anim;
 
@@ -20,12 +20,10 @@ public class AnimCamera : MonoBehaviour {
     {
         anim = GetComponent<Animator>();
     }
-    // Update is called once per frame
+
+
     void Update () {
-		//if(exit01 == true)
-        //{
-        //    exit.GetComponent<Outline>().OutlineWidth = Mathf.Lerp(1, 10, Mathf.PingPong(Time.time, 1f));
-        //}
+
 	}
 
     void OnTriggerEnter(Collider col)
@@ -37,7 +35,19 @@ public class AnimCamera : MonoBehaviour {
             _mainCamera.SetActive(false);
             animCamera01.SetActive(true);
             StartCoroutine(BackToMainCamera());
-            //StartCoroutine(OutlineExit());
+            GetComponent<Movement>().enabled = false;
+            GetComponent<PlayerJump>().enabled = false;
+            anim.SetBool("isWalking", false);
+            anim.SetBool("isIdle", true);
+        }
+
+        if (col.gameObject == trigger02)
+        {
+            cameraBase.GetComponent<CameraFollow1>().enabled = false;
+            cameraCollision.GetComponent<CameraCollision1>().enabled = false;
+            _mainCamera.SetActive(false);
+            animCamera02.SetActive(true);
+            StartCoroutine(BackToMainCamera02());
             GetComponent<Movement>().enabled = false;
             GetComponent<PlayerJump>().enabled = false;
             anim.SetBool("isWalking", false);
@@ -55,13 +65,17 @@ public class AnimCamera : MonoBehaviour {
         GetComponent<Movement>().enabled = true;
         GetComponent<PlayerJump>().enabled = true;
         Destroy(trigger01);
-        exit.GetComponent<Outline>().enabled = false;
     }
 
-    //public IEnumerator OutlineExit()
-    //{
-    //    yield return new WaitForSeconds(14f);
-    //    exit.GetComponent<Outline>().enabled = true;
-    //    exit01 = true;
-    //}
+    public IEnumerator BackToMainCamera02()
+    {
+        yield return new WaitForSeconds(16.5f);
+        animCamera02.SetActive(false);
+        cameraBase.GetComponent<CameraFollow1>().enabled = true;
+        cameraCollision.GetComponent<CameraCollision1>().enabled = true;
+        _mainCamera.SetActive(true);
+        GetComponent<Movement>().enabled = true;
+        GetComponent<PlayerJump>().enabled = true;
+        Destroy(trigger02);
+    }
 }
