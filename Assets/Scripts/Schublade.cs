@@ -19,6 +19,7 @@ public class Schublade : MonoBehaviour {
     private AudioSource audioSource;
 
     public bool test = false;
+    public GameObject text;
 
     // Use this for initialization
     void Start () {
@@ -72,12 +73,22 @@ public class Schublade : MonoBehaviour {
     private void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.tag == "outline")
+        {
             GetComponent<Outline>().enabled = true;
+
+            if (text != null)
+                text.SetActive(true);
+        }
     }
 
     private void OnTriggerExit(Collider col)
     {
         if (col.gameObject.tag == "outline")
+        {
             GetComponent<Outline>().enabled = false;
+
+            if(text != null)
+                text.SetActive(false);
+        }
     }
 }

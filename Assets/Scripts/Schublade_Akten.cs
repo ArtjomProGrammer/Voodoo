@@ -15,6 +15,7 @@ public class Schublade_Akten : MonoBehaviour
     public GameObject schublade_02;
 
     public bool test = false;
+    public GameObject text;
 
     private AudioSource audioSource;
 
@@ -59,13 +60,23 @@ public class Schublade_Akten : MonoBehaviour
     private void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.tag == "outline")
+        {
             GetComponent<Outline>().enabled = true;
+
+            if (text != null)
+                text.SetActive(true);
+        }
     }
 
     private void OnTriggerExit(Collider col)
     {
         if (col.gameObject.tag == "outline")
+        {
             GetComponent<Outline>().enabled = false;
+
+            if (text != null)
+                text.SetActive(false);
+        }
     }
 
     void waiting()

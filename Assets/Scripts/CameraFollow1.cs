@@ -134,7 +134,6 @@ public class CameraFollow1 : MonoBehaviour {
             controllGuard03 = GameObject.Find("ButtonSmash_03").GetComponent<ButtonSmash3>().controllGuard;
         }
 
-
         bool nearToFetish = GameObject.Find("Interact_with_Objects").GetComponent<ControlledEnemy>().nearToFetish;
         bool nearToFetish02 = GameObject.Find("Interact_with_Objects").GetComponent<ControlledEnemy>().nearToFetish02;
 
@@ -279,8 +278,9 @@ public class CameraFollow1 : MonoBehaviour {
         #region Controll Mask_01
         if (Input.GetKeyDown(KeyCode.Joystick1Button3) && wallCamera_01 == true && isRoom_02 == true)
         {
-            anim.SetBool("isIdle", true);
             anim.SetBool("isWalking", false);
+            anim.SetBool("isIdle", false);
+            anim.SetBool("isDead", true);
             depthsCamera = true;
             _shader.SetActive(true);
             FadeInOut.SetBool("isFading", true);
@@ -305,7 +305,8 @@ public class CameraFollow1 : MonoBehaviour {
             && wallCamera_02 == true && isRoom_03 == true)
         {
             anim.SetBool("isWalking", false);
-            anim.SetBool("isIdle", true);
+            anim.SetBool("isIdle", false);
+            anim.SetBool("isDead", true);
             depthsCamera = true;
             _shader.SetActive(true);
             FadeInOut.SetBool("isFading", true);
@@ -333,7 +334,8 @@ public class CameraFollow1 : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Joystick1Button3) && wallCamera_03 == true && isRoom_03 == true)
         {
             anim.SetBool("isWalking", false);
-            anim.SetBool("isIdle", true);
+            anim.SetBool("isIdle", false);
+            anim.SetBool("isDead", true);
             depthsCamera = true;
             _shader.SetActive(true);
             FadeInOut.SetBool("isFading", true);
@@ -362,7 +364,8 @@ public class CameraFollow1 : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Joystick1Button3) && wallCamera_04 == true && isRoom_03 == true)
         {
             anim.SetBool("isWalking", false);
-            anim.SetBool("isIdle", true);
+            anim.SetBool("isIdle", false);
+            anim.SetBool("isDead", true);
             depthsCamera = true;
             _shader.SetActive(true);
             FadeInOut.SetBool("isFading", true);
@@ -404,10 +407,8 @@ public class CameraFollow1 : MonoBehaviour {
             }
             depthsCamera = false;
             _shader.SetActive(false);
-            VFX_01.SetActive(false);
-            VFX_02.SetActive(false);
-            VFX_03.SetActive(false);
             FadeInOut.SetBool("isFading", true);
+            anim.SetBool("isDead", false);
             Camera.main.GetComponent<Camera>().fieldOfView = 60;
             hurtImage.SetActive(false);
             distance = 10;
@@ -596,7 +597,7 @@ public class CameraFollow1 : MonoBehaviour {
         {
             object03.GetComponent<Outline>().enabled = true;
         }
-        VFX_03.SetActive(true);
+        //VFX_03.SetActive(true);
     }
 
     public IEnumerator Mask02()
@@ -612,8 +613,8 @@ public class CameraFollow1 : MonoBehaviour {
         {
             object02.GetComponent<Outline>().enabled = true;
         }
-        VFX_01.SetActive(true);
-        VFX_02.SetActive(true);
+        //VFX_01.SetActive(true);
+        //VFX_02.SetActive(true);
     }
 
     public IEnumerator Mask03()
@@ -629,8 +630,8 @@ public class CameraFollow1 : MonoBehaviour {
         {
             object02.GetComponent<Outline>().enabled = true;
         }
-        VFX_01.SetActive(true);
-        VFX_02.SetActive(true);
+        //VFX_01.SetActive(true);
+        //VFX_02.SetActive(true);
     }
 
     public IEnumerator Mask04()
@@ -646,8 +647,8 @@ public class CameraFollow1 : MonoBehaviour {
         {
             object02.GetComponent<Outline>().enabled = true;
         }
-        VFX_01.SetActive(true);
-        VFX_02.SetActive(true);
+        //VFX_01.SetActive(true);
+        //VFX_02.SetActive(true);
     }
     #endregion
 
