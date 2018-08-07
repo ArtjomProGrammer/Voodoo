@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class Climb : MonoBehaviour {
 
-    public float jumpTime = 2.05f;
+    public static float ledgeDistance = 0.03f;
+
+    public bool climbAllowed;
+    public bool climbDesk = false;
+    public float xAxisDistance = 0;
+    public float yAxisDistance = 0;
 
     private Animator anim;
     private bool climb;
@@ -17,10 +22,12 @@ public class Climb : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.Joystick1Button1) || Input.GetKeyDown(KeyCode.B))
+		if (climbAllowed && (Input.GetKeyDown(KeyCode.Joystick1Button1) || Input.GetKeyDown(KeyCode.B)))
         {
             anim.SetTrigger("climb");
             time = 0.0f;
+            xAxisDistance = 0;
+            yAxisDistance = 0;
             this.climb = true;
         }
 
@@ -29,13 +36,21 @@ public class Climb : MonoBehaviour {
 
     private void FixedUpdate( )
     {
+        float firstTransform = 0.01f;
+
         if (climb)
         {
+            if (climbDesk)
+            {
+                firstTransform = 0;
+                climbDesk = false;
+            }
+
             GetComponent<Rigidbody>().useGravity = false;
             time += Time.deltaTime;
             if (time >= 1f && time <= 1.2f)
             {
-                transform.Translate(0, 0.01f, 0);   // = 0.1 nach oben
+                transform.Translate(0, firstTransform, 0);   // = 0.1 nach oben
             }
 
             if (time >= 1.5f && time <= 1.7f)
@@ -51,7 +66,6 @@ public class Climb : MonoBehaviour {
             if (time >= 1.8f && time <= 2f)
             {
                 transform.Translate(0, 0.01f, 0.02f);
-                                                // muss je nachdem wie Schublade ausgerichtet ist x oder z Achse sein, + oder -
             }
 
             if (time >= 2.05f)
