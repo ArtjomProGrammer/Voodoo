@@ -16,9 +16,9 @@ public class Movement : MonoBehaviour
     {
         // Player movement
         transform.Translate(Input.GetAxis("Horizontal") * Time.deltaTime * speed, 0,
-                            Input.GetAxis("Vertical") * Time.deltaTime * speed);  
+                            Input.GetAxis("Vertical") * Time.deltaTime * speed);
         
-        if((Input.GetAxis("Horizontal") > 0f || Input.GetAxis("Vertical") > 0f ||
+        if ((Input.GetAxis("Horizontal") > 0f || Input.GetAxis("Vertical") > 0f ||
             Input.GetAxis("Horizontal") < 0f || Input.GetAxis("Vertical") < 0f) && 
             GameObject.Find("Player").GetComponent<PlayerJump>().isGrounded == true)
         {

@@ -31,12 +31,20 @@ public class PlayerJump : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Joystick1Button0) && isGrounded == true)
         {
             audioSource.Play(0);
-            anim.SetBool("isIdle", false);
             anim.SetBool("isJumping", true);
-            anim.SetBool("isWalking", false);
             anim.SetBool("isIdle", false);
+            anim.SetBool("isWalking", false);
+            anim.SetBool("isDead", false);
             rb.AddForce(jump * jumpForce, ForceMode.Impulse);
             isGrounded = false;
+        }
+
+        if(isGrounded == false)
+        {
+            anim.SetBool("isJumping", true);
+            anim.SetBool("isIdle", false);
+            anim.SetBool("isWalking", false);
+            anim.SetBool("isDead", false);
         }
     }
 }

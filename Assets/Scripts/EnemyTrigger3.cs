@@ -14,6 +14,7 @@ public class EnemyTrigger3 : MonoBehaviour {
     public GameObject exitTrigger;
     public GameObject Trigger_Exit;
     public GameObject otherGuard;
+    public GameObject text;
 
     public bool guardLeavesRoom = false;
 
@@ -41,17 +42,16 @@ public class EnemyTrigger3 : MonoBehaviour {
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject == exitTrigger)
-            opened4 = false;
-
-        if (other.gameObject == Trigger_Exit)
-            guardLeavesRoom = false;
-    }
-
     void OnTriggerEnter(Collider collision)
     {
+        if (collision.gameObject == exit)
+        {
+            collision.gameObject.GetComponent<Outline>().enabled = true;
+
+            if (text != null)
+                text.SetActive(true);
+        }
+
         if (collision.gameObject == Trigger_Exit)
             guardLeavesRoom = true;
 
@@ -59,5 +59,22 @@ public class EnemyTrigger3 : MonoBehaviour {
         {
             opened4 = true;
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject == exit)
+        {
+            other.gameObject.GetComponent<Outline>().enabled = false;
+
+            if (text != null)
+                text.SetActive(false);
+        }
+
+        if (other.gameObject == exitTrigger)
+            opened4 = false;
+
+        if (other.gameObject == Trigger_Exit)
+            guardLeavesRoom = false;
     }
 }

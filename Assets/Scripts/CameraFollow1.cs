@@ -27,9 +27,6 @@ public class CameraFollow1 : MonoBehaviour {
     public GameObject object01;
     public GameObject object02;
     public GameObject object03;
-    public GameObject VFX_01;
-    public GameObject VFX_02;
-    public GameObject VFX_03;
 
     private float timerAlpha;
     private bool depthsCamera = false;
@@ -84,6 +81,11 @@ public class CameraFollow1 : MonoBehaviour {
 
     private Animator anim;
     #endregion
+
+    public GameObject buero;
+    public GameObject labor01;
+    public GameObject labor02;
+    public GameObject labor03;
 
     // Use this for initialization
     void Start () {
@@ -151,9 +153,12 @@ public class CameraFollow1 : MonoBehaviour {
             {
                 object03.GetComponent<Outline>().enabled = false;
             }
+            buero.SetActive(false);
+            labor01.SetActive(false);
+            labor02.SetActive(false);
+            labor03.SetActive(false);
             depthsCamera = false;
             _shader.SetActive(false);
-            VFX_03.SetActive(false);
             FadeInOut.SetBool("isFading", true);
             Camera.main.GetComponent<Camera>().fieldOfView = 60;
             hurtImage.SetActive(false);
@@ -193,10 +198,12 @@ public class CameraFollow1 : MonoBehaviour {
             {
                 object02.GetComponent<Outline>().enabled = false;
             }
+            buero.SetActive(false);
+            labor01.SetActive(false);
+            labor02.SetActive(false);
+            labor03.SetActive(false);
             depthsCamera = false;
             _shader.SetActive(false);
-            VFX_01.SetActive(false);
-            VFX_02.SetActive(false);
             FadeInOut.SetBool("isFading", true);
             Camera.main.GetComponent<Camera>().fieldOfView = 60;
             hurtImage.SetActive(false);
@@ -239,10 +246,12 @@ public class CameraFollow1 : MonoBehaviour {
             {
                 object02.GetComponent<Outline>().enabled = false;
             }
+            buero.SetActive(false);
+            labor01.SetActive(false);
+            labor02.SetActive(false);
+            labor03.SetActive(false);
             depthsCamera = false;
             _shader.SetActive(false);
-            VFX_01.SetActive(false);
-            VFX_02.SetActive(false);
             FadeInOut.SetBool("isFading", true);
             Camera.main.GetComponent<Camera>().fieldOfView = 60;
             hurtImage.SetActive(false);
@@ -278,6 +287,10 @@ public class CameraFollow1 : MonoBehaviour {
         #region Controll Mask_01
         if (Input.GetKeyDown(KeyCode.Joystick1Button3) && wallCamera_01 == true && isRoom_02 == true)
         {
+            buero.SetActive(true);
+            labor01.SetActive(false);
+            labor02.SetActive(false);
+            labor03.SetActive(false);
             anim.SetBool("isWalking", false);
             anim.SetBool("isIdle", false);
             anim.SetBool("isDead", true);
@@ -304,6 +317,10 @@ public class CameraFollow1 : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Joystick1Button3) 
             && wallCamera_02 == true && isRoom_03 == true)
         {
+            buero.SetActive(false);
+            labor01.SetActive(true);
+            labor02.SetActive(false);
+            labor03.SetActive(false);
             anim.SetBool("isWalking", false);
             anim.SetBool("isIdle", false);
             anim.SetBool("isDead", true);
@@ -333,6 +350,10 @@ public class CameraFollow1 : MonoBehaviour {
         #region Controll Mask_03
         if (Input.GetKeyDown(KeyCode.Joystick1Button3) && wallCamera_03 == true && isRoom_03 == true)
         {
+            buero.SetActive(false);
+            labor01.SetActive(false);
+            labor02.SetActive(true);
+            labor03.SetActive(false);
             anim.SetBool("isWalking", false);
             anim.SetBool("isIdle", false);
             anim.SetBool("isDead", true);
@@ -363,6 +384,10 @@ public class CameraFollow1 : MonoBehaviour {
         #region Controll Mask_04
         if (Input.GetKeyDown(KeyCode.Joystick1Button3) && wallCamera_04 == true && isRoom_03 == true)
         {
+            buero.SetActive(false);
+            labor01.SetActive(false);
+            labor02.SetActive(false);
+            labor03.SetActive(true);
             anim.SetBool("isWalking", false);
             anim.SetBool("isIdle", false);
             anim.SetBool("isDead", true);
@@ -405,6 +430,10 @@ public class CameraFollow1 : MonoBehaviour {
             {
                 object03.GetComponent<Outline>().enabled = false;
             }
+            buero.SetActive(false);
+            labor01.SetActive(false);
+            labor02.SetActive(false);
+            labor03.SetActive(false);
             depthsCamera = false;
             _shader.SetActive(false);
             FadeInOut.SetBool("isFading", true);
@@ -469,6 +498,10 @@ public class CameraFollow1 : MonoBehaviour {
         #region kicking player our of Guard 01
         if(GameObject.Find("Trigger1").GetComponent<EnemyTrigger>().guardLeavesRoom == true && player == true)
         {
+            buero.SetActive(false);
+            labor01.SetActive(false);
+            labor02.SetActive(false);
+            labor03.SetActive(false);
             FadeInOut.SetBool("isFading", true);
             Camera.main.GetComponent<Camera>().fieldOfView = 60;
             hurtImage.SetActive(false);
@@ -491,6 +524,10 @@ public class CameraFollow1 : MonoBehaviour {
         #region kicking player our of Guard 02
         if (GameObject.Find("Trigger2").GetComponent<EnemyTrigger2>().guardLeavesRoom == true && player == true)
         {
+            buero.SetActive(false);
+            labor01.SetActive(false);
+            labor02.SetActive(false);
+            labor03.SetActive(false);
             FadeInOut.SetBool("isFading", true);
             Camera.main.GetComponent<Camera>().fieldOfView = 60;
             hurtImage.SetActive(false);
@@ -520,6 +557,10 @@ public class CameraFollow1 : MonoBehaviour {
         #region kicking player our of Guard 03
         if (GameObject.Find("Trigger3").GetComponent<EnemyTrigger3>().guardLeavesRoom == true && player == true)
         {
+            buero.SetActive(false);
+            labor01.SetActive(false);
+            labor02.SetActive(false);
+            labor03.SetActive(false);
             FadeInOut.SetBool("isFading", true);
             Camera.main.GetComponent<Camera>().fieldOfView = 60;
             hurtImage.SetActive(false);
