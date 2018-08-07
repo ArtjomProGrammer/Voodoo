@@ -38,7 +38,7 @@ public class EnemyTrigger : MonoBehaviour {
 
     void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject == exit)
+        if (collision.gameObject == exit && opened == false)
         {
             collision.gameObject.GetComponent<Outline>().enabled = true;
 

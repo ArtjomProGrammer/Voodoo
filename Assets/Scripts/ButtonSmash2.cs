@@ -102,8 +102,8 @@ public class ButtonSmash2 : MonoBehaviour {
     // reset values
     void ControllGuardReset()
     {
-        curPosLeft  = -100f;
-        curPosRight = 100f;
+        curPosLeft  = -125;
+        curPosRight = 125;
         strenght = tempStrenght;
         isDone = true;
         recoveryTime = 40;
@@ -114,8 +114,8 @@ public class ButtonSmash2 : MonoBehaviour {
     // if smash failed, u have to repeat smash
     void ControllGuardFailed()
     {
-        curPosLeft = -100f;
-        curPosRight = 100f;
+        curPosLeft = -125;
+        curPosRight = 125;
         strenght = tempStrenght;
         isDone = true;
         recoveryTime = 40;

@@ -15,6 +15,7 @@ public class EnemyTrigger3 : MonoBehaviour {
     public GameObject Trigger_Exit;
     public GameObject otherGuard;
     public GameObject text;
+    public bool nearToDoor = false;
 
     public bool guardLeavesRoom = false;
 
@@ -39,12 +40,14 @@ public class EnemyTrigger3 : MonoBehaviour {
         {
             doorClosed = Mathf.MoveTowards(doorClosed, doorOpened, timeToOpen * Time.deltaTime);
             exit.transform.localEulerAngles = new Vector3(0f, doorClosed, -180f);
+
+            GameObject.Find("MainCamera").GetComponent<Camera>().farClipPlane = 30f;
         }
     }
 
     void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject == exit)
+        if (collision.gameObject == exit && opened3 == false)
         {
             collision.gameObject.GetComponent<Outline>().enabled = true;
 

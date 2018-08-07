@@ -35,11 +35,17 @@ public class ButtonSmash : MonoBehaviour {
         curPosLeft  = maxPosLeft;
         curPosRight = maxPosRight;
 
-        strenght = .75f;        
+        strenght = .75f;      
     }
 
     // Update is called once per frame
     void Update() {
+
+        //if(smashDone == true)
+        //{
+        //    left.transform.position = new Vector3(-37f, 0, 0);
+        //    right.transform.position = new Vector3(25f, 0, 0);
+        //}
         
         // left triangle strenght
         if (Input.GetKeyDown(KeyCode.Joystick1Button2) && isDone == true)
@@ -102,8 +108,8 @@ public class ButtonSmash : MonoBehaviour {
     // reset values
     void ControllGuardReset()
     {
-        curPosLeft  = -100f;
-        curPosRight = 100f;
+        curPosLeft  = -125;
+        curPosRight = 125;
         strenght = tempStrenght;
         isDone = true;
         recoveryTime = 40;
@@ -114,8 +120,8 @@ public class ButtonSmash : MonoBehaviour {
     // if smash failed, u have to repeat smash
     void ControllGuardFailed()
     {
-        curPosLeft = -100f;
-        curPosRight = 100f;
+        curPosLeft = -125;
+        curPosRight = 125;
         strenght = tempStrenght;
         isDone = true;
         recoveryTime = 40;
