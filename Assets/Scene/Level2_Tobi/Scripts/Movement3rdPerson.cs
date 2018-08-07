@@ -5,13 +5,13 @@ using UnityEngine;
 public class Movement3rdPerson : MonoBehaviour {
 
     public float speed;
-    public float aimX;
-    public float aimY;
-    public float angle;
-    public Vector3 CameraRot;
+    private float aimX;
+    private float aimY;
+    private float angle;
+    private Vector3 CameraRot;
     private Animator anim;
 
-    public Quaternion localRot;
+    private Quaternion localRot;
     
 
     public void Start( )
@@ -22,28 +22,22 @@ public class Movement3rdPerson : MonoBehaviour {
 
     void FixedUpdate( )
     {
-        // Player movement
-        //transform.Translate(Input.GetAxis("Horizontal") * Time.deltaTime * speed, 0,
-        //                    Input.GetAxis("Vertical") * Time.deltaTime * speed);
-
-        //if ((Input.GetAxis("Horizontal") > 0f || Input.GetAxis("Vertical") > 0f ||
-        //    Input.GetAxis("Horizontal") < 0f || Input.GetAxis("Vertical") < 0f) &&
-        //    GameObject.Find("Player").GetComponent<PlayerJump>().isGrounded == true)
-        //{
-
-
-        //    anim.SetBool("isWalking", true);
-        //    anim.SetBool("isIdle", false);
-        //    anim.SetBool("isJumping", false);
-        //}
-
-        //if (Input.GetAxis("Horizontal") == 0f && Input.GetAxis("Vertical") == 0f &&
-        //    Input.GetKeyDown(KeyCode.Joystick1Button0) == false)
-        //{
-        //    anim.SetBool("isWalking", false);
-        //    anim.SetBool("isIdle", true);
-        //    anim.SetBool("isJumping", false);
-        //}
+        if ((Input.GetAxis("Horizontal") > 0f || Input.GetAxis("Vertical") > 0f ||
+            Input.GetAxis("Horizontal") < 0f || Input.GetAxis("Vertical") < 0f) &&
+            GameObject.Find("Player").GetComponent<PlayerJump>().isGrounded == true)
+        {
+            anim.SetBool("isWalking", true);
+            anim.SetBool("isIdle", false);
+            anim.SetBool("isJumping", false);
+        }
+        else
+        if (Input.GetAxis("Horizontal") == 0f && Input.GetAxis("Vertical") == 0f &&
+            Input.GetKeyDown(KeyCode.Joystick1Button0) == false)
+        {
+            anim.SetBool("isWalking", false);
+            anim.SetBool("isIdle", true);
+            anim.SetBool("isJumping", false);
+        }
 
 
 
@@ -67,29 +61,9 @@ public class Movement3rdPerson : MonoBehaviour {
             this.GetComponent<Rigidbody>().velocity *= 0;
         }
 
-        //var CharacterRotation = Camera.main.transform.rotation;
-        //CharacterRotation.x = 0;
-        //CharacterRotation.z = 0;
-
-        //CharacterRotation.y += transform.localRotation.y;
-
-        //transform.rotation = CharacterRotation;
-
-       
-        //transform.Translate(Input.GetAxis("Horizontal") * Time.deltaTime * speed, 0,
-        //                    Input.GetAxis("Vertical") * Time.deltaTime * speed);
 
         this.localRot = transform.localRotation;
 
     }
 
-    private void LateUpdate( )
-    {
-        //Player rotating with camera rotation
-        //var CharacterRotation = Camera.main.transform.rotation;
-        //CharacterRotation.x = 0;
-        //CharacterRotation.z = 0;
-
-        //transform.rotation = CharacterRotation;
-    }
 }
