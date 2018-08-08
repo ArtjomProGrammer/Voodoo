@@ -50,7 +50,11 @@ public class CameraFollow1 : MonoBehaviour {
  
     public Transform lookAt;
     public Transform camTransform;
-    
+
+    public GameObject Guard_01;
+    public GameObject Guard_02;
+    public GameObject Guard_03;
+
     public GameObject Player;
     public GameObject Enemy_01;
     public GameObject Enemy_02;
@@ -74,9 +78,9 @@ public class CameraFollow1 : MonoBehaviour {
     public float transitionTime = 1.0f;
     private Vector3 lastPosition;
     
-    private bool controllGuard = false;
-    private bool controllGuard02 = false;
-    private bool controllGuard03 = false;
+    public bool controllGuard = false;
+    public bool controllGuard02 = false;
+    public bool controllGuard03 = false;
     Quaternion localRotation;
 
     private Animator anim;
@@ -171,7 +175,7 @@ public class CameraFollow1 : MonoBehaviour {
             player = true;
             wallCamera_01 = true;
             StartCoroutine(Enemy01());
-            lookAt = Enemy_01.transform;
+            lookAt = Guard_01.transform;
             SetLookAt();
         }
 
@@ -221,7 +225,7 @@ public class CameraFollow1 : MonoBehaviour {
             wallCamera_03 = true;
             wallCamera_04 = true;
             StartCoroutine(Enemy02());
-            lookAt = Enemy_02.transform;
+            lookAt = Guard_02.transform;
             SetLookAt();
         }
 
@@ -269,7 +273,7 @@ public class CameraFollow1 : MonoBehaviour {
             wallCamera_03 = true;
             wallCamera_04 = true;
             StartCoroutine(Enemy03());
-            lookAt = Enemy_03.transform;
+            lookAt = Guard_03.transform;
             SetLookAt();
         }
 
@@ -302,7 +306,7 @@ public class CameraFollow1 : MonoBehaviour {
             distance = 650;
             Enemy_01.GetComponent<NavMeshAgent>().enabled = true;
             Enemy_01.GetComponent<AI>().enabled = true;
-            Enemy_01.GetComponent<Movement>().enabled = false;
+            Enemy_01.GetComponent<GuardMovement>().enabled = false;
             Player.GetComponent<Movement>().enabled = false;
             enemy = true;
             player = true;
@@ -332,7 +336,7 @@ public class CameraFollow1 : MonoBehaviour {
             distance = 650;
             Enemy_02.GetComponent<NavMeshAgent>().enabled = true;
             Enemy_02.GetComponent<AI>().enabled = true;
-            Enemy_02.GetComponent<Movement>().enabled = false;
+            Enemy_02.GetComponent<GuardMovement>().enabled = false;
             Enemy_03.GetComponent<NavMeshAgent>().enabled = true;
             Enemy_03.GetComponent<AI>().enabled = true;
             Player.GetComponent<Movement>().enabled = false;
@@ -365,10 +369,10 @@ public class CameraFollow1 : MonoBehaviour {
             distance = 650;
             Enemy_02.GetComponent<NavMeshAgent>().enabled = true;
             Enemy_02.GetComponent<AI>().enabled = true;
-            Enemy_02.GetComponent<Movement>().enabled = false;
+            Enemy_02.GetComponent<GuardMovement>().enabled = false;
             Enemy_03.GetComponent<NavMeshAgent>().enabled = true;
             Enemy_03.GetComponent<AI>().enabled = true;
-            Enemy_03.GetComponent<Movement>().enabled = false;
+            Enemy_03.GetComponent<GuardMovement>().enabled = false;
             Player.GetComponent<Movement>().enabled = false;
             enemy02 = false;
             enemy03 = true;
@@ -399,10 +403,10 @@ public class CameraFollow1 : MonoBehaviour {
             distance = 650;
             Enemy_02.GetComponent<NavMeshAgent>().enabled = true;
             Enemy_02.GetComponent<AI>().enabled = true;
-            Enemy_02.GetComponent<Movement>().enabled = false;
+            Enemy_02.GetComponent<GuardMovement>().enabled = false;
             Enemy_03.GetComponent<NavMeshAgent>().enabled = true;
             Enemy_03.GetComponent<AI>().enabled = true;
-            Enemy_03.GetComponent<Movement>().enabled = false;
+            Enemy_03.GetComponent<GuardMovement>().enabled = false;
             Player.GetComponent<Movement>().enabled = false;
             enemy02 = false;
             enemy03 = true;
@@ -508,7 +512,7 @@ public class CameraFollow1 : MonoBehaviour {
             distance = 10;
             Enemy_01.GetComponent<NavMeshAgent>().enabled = true;
             Enemy_01.GetComponent<AI>().enabled = true;
-            Enemy_01.GetComponent<Movement>().enabled = false;
+            Enemy_01.GetComponent<GuardMovement>().enabled = false;
             player = false;
             enemy = true;
             wallCamera_01 = true;
@@ -534,7 +538,7 @@ public class CameraFollow1 : MonoBehaviour {
             distance = 10;
             Enemy_02.GetComponent<NavMeshAgent>().enabled = true;
             Enemy_02.GetComponent<AI>().enabled = true;
-            Enemy_02.GetComponent<Movement>().enabled = false;
+            Enemy_02.GetComponent<GuardMovement>().enabled = false;
             player = false;
             if (controllGuard03 == false)
             {
@@ -567,7 +571,7 @@ public class CameraFollow1 : MonoBehaviour {
             distance = 10;
             Enemy_03.GetComponent<NavMeshAgent>().enabled = true;
             Enemy_03.GetComponent<AI>().enabled = true;
-            Enemy_03.GetComponent<Movement>().enabled = false;
+            Enemy_03.GetComponent<GuardMovement>().enabled = false;
             player = false;
             enemy03 = true;
             wallCamera_01 = true;
@@ -598,16 +602,16 @@ public class CameraFollow1 : MonoBehaviour {
         Player.GetComponent<Movement>().enabled = true;
         Player.GetComponent<PlayerJump>().enabled = true;
 
-        Enemy_01.GetComponent<Movement>().enabled = false;
-        Enemy_02.GetComponent<Movement>().enabled = false;
-        Enemy_03.GetComponent<Movement>().enabled = false;
+        Enemy_01.GetComponent<GuardMovement>().enabled = false;
+        Enemy_02.GetComponent<GuardMovement>().enabled = false;
+        Enemy_03.GetComponent<GuardMovement>().enabled = false;
     }
 
     public IEnumerator Enemy01()
     {
         yield return new WaitForSeconds(1f);
         FadeInOut.SetBool("isFading", false);
-        Enemy_01.GetComponent<Movement>().enabled = true;
+        Enemy_01.GetComponent<GuardMovement>().enabled = true;
     }
 
     public IEnumerator Enemy02()
@@ -618,7 +622,7 @@ public class CameraFollow1 : MonoBehaviour {
         {
             enemy03 = true;
         }
-        Enemy_02.GetComponent<Movement>().enabled = true;
+        Enemy_02.GetComponent<GuardMovement>().enabled = true;
     }
 
     public IEnumerator Enemy03()
@@ -626,7 +630,7 @@ public class CameraFollow1 : MonoBehaviour {
         yield return new WaitForSeconds(1.3f);
         FadeInOut.SetBool("isFading", false);
         enemy02 = true;
-        Enemy_03.GetComponent<Movement>().enabled = true;
+        Enemy_03.GetComponent<GuardMovement>().enabled = true;
         enemy03 = false;
     }
 

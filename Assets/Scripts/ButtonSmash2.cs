@@ -8,6 +8,7 @@ public class ButtonSmash2 : MonoBehaviour {
     public GameObject left;
     public GameObject right;
     public GameObject mid;
+    public GameObject image;
 
     public GameObject buttonSmash;
     public GameObject finished;
@@ -28,15 +29,14 @@ public class ButtonSmash2 : MonoBehaviour {
     private float maxPosLeft = -125f;
     private float maxPosRight = 125f;
 
-    private bool isDone = true;
-
+    private bool isDone = true; 
 
     // Use this for initialization
     void Start () {
         curPosLeft  = maxPosLeft;
         curPosRight = maxPosRight;
 
-        strenght = .75f;        
+        strenght = .75f;
     }
 
     // Update is called once per frame
@@ -80,8 +80,11 @@ public class ButtonSmash2 : MonoBehaviour {
                 tempStrenght += .0125f;         // higher dynamic difficulty
             }
             isDone = false;
-            finished.GetComponent<Animator>().enabled = true;
-            buttonSmash.SetActive(false);
+            left.SetActive(false);
+            right.SetActive(false);
+            mid.SetActive(false);
+            image.SetActive(false);
+            finished.SetActive(true);
         }
 
         // Reduce amount over time
@@ -111,6 +114,7 @@ public class ButtonSmash2 : MonoBehaviour {
         isDone = true;
         recoveryTime = 40;
         _timer = 5f;
+        finished.SetActive(false);
         buttonSmash.SetActive(false);
     }
 

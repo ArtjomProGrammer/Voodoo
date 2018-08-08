@@ -97,7 +97,6 @@ public class AI : MonoBehaviour {
             alarmed == true && moving == false && playerVisible == true)
         {
             agent.enabled = false;
-            
             anim.SetBool("isAlert", true);
             anim.SetBool("isIdle", false);
             anim.SetBool("isAttacking", false);
