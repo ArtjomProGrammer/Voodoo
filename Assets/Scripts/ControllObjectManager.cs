@@ -23,6 +23,14 @@ public class ControllObjectManager : MonoBehaviour
     public GameObject _Object03;
     public GameObject text;
 
+    public GameObject vfx01;
+    public GameObject vfx02;
+    public GameObject vfx03;
+
+    public GameObject vfxOff01;
+    public GameObject vfxOff02;
+    public GameObject vfxOff03;
+
     public GameObject ButtonSmash;
     public GameObject ButtonSmash02;
     public GameObject ButtonSmash03;
@@ -53,6 +61,7 @@ public class ControllObjectManager : MonoBehaviour
             key_01.SetActive(true);
             Destroy(collision.gameObject);
             controllObject01 = true;
+            Destroy(vfx01);
         }
 
         // collect Keys of guard02
@@ -69,6 +78,7 @@ public class ControllObjectManager : MonoBehaviour
             key_02.SetActive(true);
             Destroy(collision.gameObject);
             controllObject02 = true;
+            Destroy(vfx02);
         }
 
         // collect Keys of guard03
@@ -85,6 +95,7 @@ public class ControllObjectManager : MonoBehaviour
             key_03.SetActive(true);
             Destroy(collision.gameObject);
             controllObject03 = true;
+            Destroy(vfx03);
         }
         #endregion
 
@@ -94,6 +105,8 @@ public class ControllObjectManager : MonoBehaviour
             Input.GetKeyDown(KeyCode.Joystick1Button2))
         {
             controllGuard = true;
+            vfxOff01.SetActive(true);
+            Invoke("deactivateVFX", 3f);
         }
 
         // offer Keys of guard02 to the fetish02
@@ -101,6 +114,8 @@ public class ControllObjectManager : MonoBehaviour
             Input.GetKeyDown(KeyCode.Joystick1Button2))
         {
             controllGuard02 = true;
+            vfxOff02.SetActive(true);
+            Invoke("deactivateVFX", 3f);
         }
 
         // offer Keys of guard03 to the fetish03
@@ -108,6 +123,8 @@ public class ControllObjectManager : MonoBehaviour
             Input.GetKeyDown(KeyCode.Joystick1Button2))
         {
             controllGuard03 = true;
+            vfxOff02.SetActive(true);
+            Invoke("deactivateVFX", 3f);
         }
         #endregion
 
@@ -133,6 +150,13 @@ public class ControllObjectManager : MonoBehaviour
             ButtonSmash03.SetActive(true);
         }
         #endregion
+    }
+
+    void deactivateVFX()
+    {
+        vfxOff01.SetActive(false);
+        vfxOff02.SetActive(false);
+        vfxOff03.SetActive(false);
     }
 
     void OnTriggerExit(Collider collision)
