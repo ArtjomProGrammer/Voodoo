@@ -18,15 +18,36 @@ public class ControllObjectManager : MonoBehaviour
     public GameObject key_01;
     public GameObject key_02;
     public GameObject key_03;
+    public GameObject _Object01;
+    public GameObject _Object02;
+    public GameObject _Object03;
+    public GameObject text;
 
     public GameObject ButtonSmash;
     public GameObject ButtonSmash02;
     public GameObject ButtonSmash03;
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Joystick1Button2))
+        {
+            text.SetActive(false);
+        }
+    }
+
     void OnTriggerStay(Collider collision)
     {
         #region collect Keys of Guards
+
         // collect Keys of guard01
+        if (collision.gameObject == _Object01)
+        {
+            collision.gameObject.GetComponent<Outline>().enabled = true;
+
+            if (text != null)
+                text.SetActive(true);
+        }
+
         if (collision.gameObject == Object01 && Input.GetKeyDown(KeyCode.Joystick1Button2))
         {
             key_01.SetActive(true);
@@ -35,6 +56,14 @@ public class ControllObjectManager : MonoBehaviour
         }
 
         // collect Keys of guard02
+        if (collision.gameObject == _Object02)
+        {
+            collision.gameObject.GetComponent<Outline>().enabled = true;
+
+            if (text != null)
+                text.SetActive(true);
+        }
+
         if (collision.gameObject == Object02 && Input.GetKeyDown(KeyCode.Joystick1Button2))
         {
             key_02.SetActive(true);
@@ -43,6 +72,14 @@ public class ControllObjectManager : MonoBehaviour
         }
 
         // collect Keys of guard03
+        if (collision.gameObject == _Object03)
+        {
+            collision.gameObject.GetComponent<Outline>().enabled = true;
+
+            if (text != null)
+                text.SetActive(true);
+        }
+
         if (collision.gameObject == Object03 && Input.GetKeyDown(KeyCode.Joystick1Button2))
         {
             key_03.SetActive(true);
@@ -119,5 +156,29 @@ public class ControllObjectManager : MonoBehaviour
             ButtonSmash03.SetActive(false);
         }
         #endregion
+
+        if (collision.gameObject == _Object01)
+        {
+            collision.gameObject.GetComponent<Outline>().enabled = false;
+
+            if (text != null)
+                text.SetActive(false);
+        }
+
+        if (collision.gameObject == _Object02)
+        {
+            collision.gameObject.GetComponent<Outline>().enabled = false;
+
+            if (text != null)
+                text.SetActive(false);
+        }
+
+        if (collision.gameObject == _Object03)
+        {
+            collision.gameObject.GetComponent<Outline>().enabled = false;
+
+            if (text != null)
+                text.SetActive(false);
+        }
     }
 }

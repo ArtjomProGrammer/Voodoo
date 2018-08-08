@@ -102,7 +102,6 @@ public class AI : MonoBehaviour {
             anim.SetBool("isIdle", false);
             anim.SetBool("isAttacking", false);
             anim.SetBool("isWalking", false);
-            anim.SetBool("isPlayerInGuard", false);
             Debug.Log("ALERT");
             dead = false;
 
@@ -131,7 +130,6 @@ public class AI : MonoBehaviour {
             agent.enabled = false;
             anim.SetBool("isAttacking", true);
             anim.SetBool("isWalking", false);
-            anim.SetBool("isPlayerInGuard", false);
             Debug.Log("ATTACKING");
             dead = true;
         }
@@ -151,7 +149,6 @@ public class AI : MonoBehaviour {
             anim.SetBool("isAttacking", false);
             anim.SetBool("isAlert", false);
             anim.SetBool("isIdle", false);
-            anim.SetBool("isPlayerInGuard", false);
             Debug.Log("FOLLOWING");
         } 
 
@@ -165,7 +162,6 @@ public class AI : MonoBehaviour {
             anim.SetBool("isAlert", false);
             anim.SetBool("isIdle", true);
             anim.SetBool("isWalking", false);
-            anim.SetBool("isPlayerInGuard", false);
             Debug.Log("IDLE");
             dead = false;
         }
