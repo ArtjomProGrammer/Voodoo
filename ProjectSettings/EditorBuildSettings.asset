@@ -5,6 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scene/Voodoo_Main.unity
     guid: 575ddeaef90b15e4eb26dbb0c77d4c3f
+  - enabled: 1
+    path: Assets/Scene/Level2_Tobi/Teaser/TEASER.unity
+    guid: d73b8cf4f5188b142bc989e3ef7e85da
