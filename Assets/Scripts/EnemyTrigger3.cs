@@ -28,7 +28,8 @@ public class EnemyTrigger3 : MonoBehaviour {
             opened3 = true;
         }
 
-        if (collision.gameObject == exitTrigger && GameObject.Find("CameraBase").GetComponent<CameraFollow1>().enemy03 == false)
+        if (collision.gameObject == exitTrigger && 
+            GameObject.Find("CameraBase").GetComponent<CameraFollow1>().enemy03 == false)
         {
             opened4 = true;
         }
@@ -40,8 +41,6 @@ public class EnemyTrigger3 : MonoBehaviour {
         {
             doorClosed = Mathf.MoveTowards(doorClosed, doorOpened, timeToOpen * Time.deltaTime);
             exit.transform.localEulerAngles = new Vector3(0f, doorClosed, -180f);
-
-            GameObject.Find("MainCamera").GetComponent<Camera>().farClipPlane = 30f;
         }
     }
 
