@@ -14,6 +14,8 @@ public class EnemyTrigger3 : MonoBehaviour {
     public GameObject exitTrigger;
     public GameObject Trigger_Exit;
     public GameObject otherGuard;
+    public GameObject text;
+    public bool nearToDoor = false;
 
     public bool guardLeavesRoom = false;
 
@@ -38,20 +40,21 @@ public class EnemyTrigger3 : MonoBehaviour {
         {
             doorClosed = Mathf.MoveTowards(doorClosed, doorOpened, timeToOpen * Time.deltaTime);
             exit.transform.localEulerAngles = new Vector3(0f, doorClosed, -180f);
+
+            GameObject.Find("MainCamera").GetComponent<Camera>().farClipPlane = 30f;
         }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject == exitTrigger)
-            opened4 = false;
-
-        if (other.gameObject == Trigger_Exit)
-            guardLeavesRoom = false;
     }
 
     void OnTriggerEnter(Collider collision)
     {
+        if (collision.gameObject == exit && opened3 == false)
+        {
+            collision.gameObject.GetComponent<Outline>().enabled = true;
+
+            if (text != null)
+                text.SetActive(true);
+        }
+
         if (collision.gameObject == Trigger_Exit)
             guardLeavesRoom = true;
 
@@ -59,5 +62,22 @@ public class EnemyTrigger3 : MonoBehaviour {
         {
             opened4 = true;
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject == exit)
+        {
+            other.gameObject.GetComponent<Outline>().enabled = false;
+
+            if (text != null)
+                text.SetActive(false);
+        }
+
+        if (other.gameObject == exitTrigger)
+            opened4 = false;
+
+        if (other.gameObject == Trigger_Exit)
+            guardLeavesRoom = false;
     }
 }

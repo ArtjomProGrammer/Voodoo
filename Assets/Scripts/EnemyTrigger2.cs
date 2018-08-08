@@ -13,7 +13,7 @@ public class EnemyTrigger2 : MonoBehaviour {
     public GameObject exitTrigger;
     public GameObject Trigger_Exit;
     public GameObject Trigger_Exit2;
-
+    public GameObject text;
 
     public bool guardLeavesRoom = false;
 
@@ -38,6 +38,14 @@ public class EnemyTrigger2 : MonoBehaviour {
 
     void OnTriggerEnter(Collider collision)
     {
+        if (collision.gameObject == exit && opened == false)
+        {
+            collision.gameObject.GetComponent<Outline>().enabled = true;
+
+            if (text != null)
+                text.SetActive(true);
+        }
+
         if (collision.gameObject == Trigger_Exit)
             guardLeavesRoom = true;
 
@@ -47,6 +55,14 @@ public class EnemyTrigger2 : MonoBehaviour {
 
     void OnTriggerExit(Collider collision)
     {
+        if (collision.gameObject == exit && GameObject.Find("CameraBase").GetComponent<CameraFollow1>().enemy02 == false)
+        {
+            collision.gameObject.GetComponent<Outline>().enabled = false;
+
+            if (text != null)
+                text.SetActive(false);
+        }
+
         if (collision.gameObject == Trigger_Exit)
         {
             guardLeavesRoom = false;

@@ -16,15 +16,27 @@ public class Movement : MonoBehaviour
     {
         // Player movement
         transform.Translate(Input.GetAxis("Horizontal") * Time.deltaTime * speed, 0,
-                            Input.GetAxis("Vertical") * Time.deltaTime * speed);  
-        
-        if((Input.GetAxis("Horizontal") > 0f || Input.GetAxis("Vertical") > 0f ||
+                            Input.GetAxis("Vertical") * Time.deltaTime * speed);
+        if(GameObject.Find("Interact_with_Objects").GetComponent<ControlledEnemy>().nearToFetish == true ||
+           GameObject.Find("Interact_with_Objects").GetComponent<ControlledEnemy>().nearToFetish02 == true &&
+           Input.GetKeyDown(KeyCode.Joystick1Button2))
+        {
+            Invoke("Gesture", 3);
+            speed = 0f;
+            anim.SetBool("isWalking", false);
+            anim.SetBool("isIdle", false);
+            anim.SetBool("isJumping", false);
+            anim.SetBool("isGesture", true);
+        }
+        else
+        if ((Input.GetAxis("Horizontal") > 0f || Input.GetAxis("Vertical") > 0f ||
             Input.GetAxis("Horizontal") < 0f || Input.GetAxis("Vertical") < 0f) && 
             GameObject.Find("Player").GetComponent<PlayerJump>().isGrounded == true)
         {
             anim.SetBool("isWalking", true);
             anim.SetBool("isIdle", false);
             anim.SetBool("isJumping", false);
+            anim.SetBool("isGesture", false);
         }
         else
         if (Input.GetAxis("Horizontal") == 0f && Input.GetAxis("Vertical") == 0f &&
@@ -33,7 +45,13 @@ public class Movement : MonoBehaviour
             anim.SetBool("isWalking", false);
             anim.SetBool("isIdle", true);
             anim.SetBool("isJumping", false);
+            anim.SetBool("isGesture", false);
         }
+    }
+
+    void Gesture()
+    {
+        speed = 1f;
     }
 
     private void LateUpdate()
