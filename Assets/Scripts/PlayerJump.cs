@@ -35,6 +35,7 @@ public class PlayerJump : MonoBehaviour
             anim.SetBool("isIdle", false);
             anim.SetBool("isWalking", false);
             anim.SetBool("isDead", false);
+            anim.SetBool("isGesture", false);
             rb.AddForce(jump * jumpForce, ForceMode.Impulse);
             isGrounded = false;
         }
@@ -45,6 +46,7 @@ public class PlayerJump : MonoBehaviour
             anim.SetBool("isIdle", false);
             anim.SetBool("isWalking", false);
             anim.SetBool("isDead", false);
+            anim.SetBool("isGesture", false);
         }
     }
 }

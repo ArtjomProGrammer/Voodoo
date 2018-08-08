@@ -10,6 +10,7 @@ public class ButtonSmash : MonoBehaviour {
     public GameObject mid;
 
     public GameObject buttonSmash;
+    public GameObject finished;
 
     public float curPosLeft; 
     public float curPosRight;
@@ -27,6 +28,7 @@ public class ButtonSmash : MonoBehaviour {
     private float maxPosLeft = -125f;
     private float maxPosRight = 125f;
 
+
     private bool isDone = true;
 
 
@@ -40,12 +42,6 @@ public class ButtonSmash : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-
-        //if(smashDone == true)
-        //{
-        //    left.transform.position = new Vector3(-37f, 0, 0);
-        //    right.transform.position = new Vector3(25f, 0, 0);
-        //}
         
         // left triangle strenght
         if (Input.GetKeyDown(KeyCode.Joystick1Button2) && isDone == true)
@@ -85,6 +81,8 @@ public class ButtonSmash : MonoBehaviour {
                 tempStrenght += .0125f;         // higher dynamic difficulty
             }
             isDone = false;
+            finished.GetComponent<Animator>().enabled = true;
+            buttonSmash.SetActive(false);
         }
 
         // Reduce amount over time
