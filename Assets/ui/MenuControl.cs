@@ -10,6 +10,7 @@ public class MenuControl : MonoBehaviour {
     public GameObject PanelCredits;
 
     public static int currentPage = 1;
+    public int page;
     public GameObject Ordner;
 
     public GameObject Page1;
@@ -19,7 +20,7 @@ public class MenuControl : MonoBehaviour {
 
     private void Update( )
     {
-        
+        page = currentPage;
     }
 
     private void Start( )
@@ -59,6 +60,8 @@ public class MenuControl : MonoBehaviour {
 
     public void OnClickReturn()
     {
+        anim = Ordner.GetComponent<Animator>();
+
         if (currentPage == 3)
         {
             anim.SetTrigger("ReturnFrom3");
