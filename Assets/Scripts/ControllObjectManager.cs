@@ -7,12 +7,14 @@ public class ControllObjectManager : MonoBehaviour
     public bool controllObject01 = false;
     public bool controllObject02 = false;
     public bool controllObject03 = false;
+    public bool room00           = false;
     public bool controllGuard    = false;
     public bool controllGuard02  = false;
     public bool controllGuard03  = false;
     public GameObject Object01;
     public GameObject Object02;
     public GameObject Object03;
+    public GameObject fetish00;
     public GameObject fetish01;
     public GameObject fetish02;
     public GameObject key_01;
@@ -22,11 +24,12 @@ public class ControllObjectManager : MonoBehaviour
     public GameObject _Object02;
     public GameObject _Object03;
     public GameObject text;
-
+    
     public GameObject vfx01;
     public GameObject vfx02;
     public GameObject vfx03;
 
+    public GameObject vfxOff00;
     public GameObject vfxOff01;
     public GameObject vfxOff02;
     public GameObject vfxOff03;
@@ -34,6 +37,8 @@ public class ControllObjectManager : MonoBehaviour
     public GameObject ButtonSmash;
     public GameObject ButtonSmash02;
     public GameObject ButtonSmash03;
+
+    private bool room = true;
 
     private void Update()
     {
@@ -100,6 +105,17 @@ public class ControllObjectManager : MonoBehaviour
         #endregion
 
         #region offer Keys of Guards
+        
+        // offer Keys of guard03 to the fetish00
+        if (collision.gameObject == fetish00 && room == true &&
+            Input.GetKeyDown(KeyCode.Joystick1Button2))
+        {
+            room00 = true;
+            vfxOff00.SetActive(true);
+            Invoke("deactivateVFX", 3f);
+            room = false;
+        }
+
         // offer Keys of guard01 to the fetish01
         if (collision.gameObject == fetish01 && controllObject01 == true && 
             Input.GetKeyDown(KeyCode.Joystick1Button2))
@@ -154,6 +170,7 @@ public class ControllObjectManager : MonoBehaviour
 
     void deactivateVFX()
     {
+        vfxOff00.SetActive(false);
         vfxOff01.SetActive(false);
         vfxOff02.SetActive(false);
         vfxOff03.SetActive(false);

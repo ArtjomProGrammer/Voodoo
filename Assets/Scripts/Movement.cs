@@ -9,22 +9,25 @@ public class Movement : MonoBehaviour
 
     public GameObject buttonSmash;
     public GameObject buttonSmash02;
+    public GameObject voodoo;
 
     public bool controllGuard = false;
     public bool controllGuard02 = false;
 
     public void Start()
     {
-        anim = GetComponent<Animator>();
+        anim = voodoo.GetComponent<Animator>();
+        anim.SetBool("isIdle", true);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         // Player movement
         transform.Translate(Input.GetAxis("Horizontal") * Time.deltaTime * speed, 0,
                             Input.GetAxis("Vertical") * Time.deltaTime * speed);
 
-        if ((GameObject.Find("Interact_with_Objects").GetComponent<ControlledEnemy>().nearToFetish == true ||
+        if ((GameObject.Find("Interact_with_Objects").GetComponent<ControlledEnemy>().nearToFetish00 == true ||
+            GameObject.Find("Interact_with_Objects").GetComponent<ControlledEnemy>().nearToFetish == true ||
             GameObject.Find("Interact_with_Objects").GetComponent<ControlledEnemy>().nearToFetish02 == true) &&
             Input.GetKeyDown(KeyCode.Joystick1Button2) &&
             GameObject.Find("CameraBase").GetComponent<CameraFollow1>().player == false)

@@ -295,7 +295,8 @@ public class CameraFollow1 : MonoBehaviour {
         #endregion
 
         #region Controll Mask_00
-        if (Input.GetKeyDown(KeyCode.Joystick1Button3) && wallCamera_00 == true && isRoom_00 == true)
+        if (Input.GetKeyDown(KeyCode.Joystick1Button3) && 
+            wallCamera_00 == true && isRoom_00 == true)
         {
             buero.SetActive(false);
             labor01.SetActive(false);
@@ -315,7 +316,7 @@ public class CameraFollow1 : MonoBehaviour {
             enemy = true;
             player = true;
             wallCamera_00 = false;
-            //StartCoroutine(Mask00());
+            StartCoroutine(Mask00());
             lookAt = Mask_00.transform;
             SetLookAt();
             Debug.Log("testestest");
@@ -497,6 +498,7 @@ public class CameraFollow1 : MonoBehaviour {
                 enemy02 = false;
                 enemy03 = true;
             }
+            wallCamera_00 = true;
             wallCamera_01 = true;
             wallCamera_02 = true;
             wallCamera_03 = false;
@@ -674,11 +676,11 @@ public class CameraFollow1 : MonoBehaviour {
         enemy03 = false;
     }
 
-    //public IEnumerator Mask00()
-    //{
-    //    yield return new WaitForSeconds(1f);
-    //    FadeInOut.SetBool("isFading", false);
-    //}
+    public IEnumerator Mask00()
+    {
+        yield return new WaitForSeconds(1f);
+        FadeInOut.SetBool("isFading", false);
+    }
 
     public IEnumerator Mask01()
     {

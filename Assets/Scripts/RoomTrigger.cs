@@ -10,10 +10,18 @@ public class RoomTrigger : MonoBehaviour {
     public bool isRoom_00 = true;
     public bool isRoom_02 = true;
     public bool isRoom_03 = false;
+    private bool temp = false;
+
+    private void Update()
+    {
+        if (isRoom_00 = GameObject.Find("Interact_with_Objects").GetComponent<ControllObjectManager>().room00 == true)
+            temp = true;
+
+    }
 
     void OnTriggerStay(Collider collision)
     {
-        if (collision.gameObject == Room_00_Trigger)
+        if (collision.gameObject == Room_00_Trigger && temp == true)
         {
             isRoom_00 = true;
         }
