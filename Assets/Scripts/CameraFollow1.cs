@@ -19,8 +19,11 @@ public class CameraFollow1 : MonoBehaviour {
     public float clampAngle8  = 180.0f;
     public float clampAngle9  = 90.0f;
     public float clampAngle10 = 180.0f;
+    public float clampAngle11 = -90f;
+    public float clampAngle12 = 90f;
     public float inputSensitivity = 150.0f;
     public GameObject cameraObject;
+    public bool isRoom_00 = true;
     public bool isRoom_02 = true;
     public bool isRoom_03 = true;
 
@@ -59,6 +62,7 @@ public class CameraFollow1 : MonoBehaviour {
     public GameObject Enemy_01;
     public GameObject Enemy_02;
     public GameObject Enemy_03;
+    public GameObject Mask_00;
     public GameObject Mask_01;
     public GameObject Mask_02;
     public GameObject Mask_03;
@@ -70,6 +74,7 @@ public class CameraFollow1 : MonoBehaviour {
     public bool enemy = true;
     public bool enemy02 = true;
     public bool enemy03 = true;
+    public bool wallCamera_00 = false;
     public bool wallCamera_01 = false;
     public bool wallCamera_02 = true;
     public bool wallCamera_03 = false;
@@ -145,6 +150,7 @@ public class CameraFollow1 : MonoBehaviour {
 
         transitionTime += Time.deltaTime;
 
+        isRoom_00 = GameObject.Find("Player").GetComponent<RoomTrigger>().isRoom_00;
         isRoom_02 = GameObject.Find("Player").GetComponent<RoomTrigger>().isRoom_02;
         isRoom_03 = GameObject.Find("Player").GetComponent<RoomTrigger>().isRoom_03;
         
@@ -286,6 +292,35 @@ public class CameraFollow1 : MonoBehaviour {
         }
 
 
+        #endregion
+
+        #region Controll Mask_00
+        if (Input.GetKeyDown(KeyCode.Joystick1Button3) && 
+            wallCamera_00 == true && isRoom_00 == true)
+        {
+            buero.SetActive(false);
+            labor01.SetActive(false);
+            labor02.SetActive(false);
+            labor03.SetActive(false);
+            anim.SetBool("isWalking", false);
+            anim.SetBool("isIdle", false);
+            anim.SetBool("isDead", true);
+            depthsCamera = true;
+            //_shader.SetActive(true);
+            FadeInOut.SetBool("isFading", true);
+            Camera.main.GetComponent<Camera>().fieldOfView = fieldOfView;
+            //hurtImage.SetActive(true);
+            distance = 650;
+            Enemy_01.GetComponent<GuardMovement>().enabled = false;
+            Player.GetComponent<Movement>().enabled = false;
+            enemy = true;
+            player = true;
+            wallCamera_00 = false;
+            StartCoroutine(Mask00());
+            lookAt = Mask_00.transform;
+            SetLookAt();
+            Debug.Log("testestest");
+        }
         #endregion
 
         #region Controll Mask_01
@@ -463,6 +498,7 @@ public class CameraFollow1 : MonoBehaviour {
                 enemy02 = false;
                 enemy03 = true;
             }
+            wallCamera_00 = true;
             wallCamera_01 = true;
             wallCamera_02 = true;
             wallCamera_03 = false;
@@ -474,6 +510,12 @@ public class CameraFollow1 : MonoBehaviour {
         #endregion
 
         #region Camera Clamp
+        if (wallCamera_00 == false && isRoom_00 == true && player == true && enemy == true)
+        {
+            rotY = Mathf.Clamp(rotY, 5, clampAngle2);
+            rotX = Mathf.Clamp(rotX, clampAngle11, clampAngle12);
+        }
+
         if (wallCamera_01 == false && isRoom_02 == true && player == true && enemy == true)
         {
             rotY = Mathf.Clamp(rotY, 5, clampAngle2);
@@ -492,7 +534,7 @@ public class CameraFollow1 : MonoBehaviour {
             rotX = Mathf.Clamp(rotX, clampAngle7, clampAngle8);
         }
         
-        if (wallCamera_04 == false && wallCamera_03 == false && player == true && enemy == true)
+        if (wallCamera_04 == false && wallCamera_03 == false && player == true && enemy == true && isRoom_00 == false)
         {
             rotY = Mathf.Clamp(rotY, 5, clampAngle2);
             rotX = Mathf.Clamp(rotX, clampAngle9, clampAngle10);
@@ -632,6 +674,12 @@ public class CameraFollow1 : MonoBehaviour {
         enemy02 = true;
         Enemy_03.GetComponent<GuardMovement>().enabled = true;
         enemy03 = false;
+    }
+
+    public IEnumerator Mask00()
+    {
+        yield return new WaitForSeconds(1f);
+        FadeInOut.SetBool("isFading", false);
     }
 
     public IEnumerator Mask01()

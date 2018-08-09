@@ -9,6 +9,7 @@ public class PlayerJump : MonoBehaviour
     public float jumpForce = 2.0f;
     private Animator anim;
     private AudioSource audioSource;
+    public GameObject voodoo;
 
     public bool isGrounded;
     Rigidbody rb;
@@ -16,7 +17,7 @@ public class PlayerJump : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         jump = new Vector3(0.0f, 2.0f, 0.0f);
-        anim = GetComponent<Animator>();
+        anim = voodoo.GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
     }
 
